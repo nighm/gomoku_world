@@ -76,7 +76,7 @@ jobs:
         python build.py ${{ runner.os }}
     
     - name: Upload artifacts
-      uses: actions/upload-artifact@v3
+      uses: actions/upload-artifact@v4
       with:
         name: gomoku-${{ runner.os }}
         path: dist/ 
