@@ -1,6 +1,6 @@
 """
 Game server implementation
-游戏服务器实现
+娓告垙鏈嶅姟鍣ㄥ疄鐜?
 """
 
 import asyncio
@@ -40,7 +40,7 @@ class Game:
 class GameServer:
     """
     Game server that handles multiple game sessions
-    处理多个游戏会话的游戏服务器
+    澶勭悊澶氫釜娓告垙浼氳瘽鐨勬父鎴忔湇鍔″櫒
     """
     
     def __init__(self, host: str = DEFAULT_HOST, port: int = DEFAULT_PORT):

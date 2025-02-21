@@ -1,6 +1,6 @@
 """
 Integration tests for manager instances
-管理器实例集成测试
+绠＄悊鍣ㄥ疄渚嬮泦鎴愭祴璇?
 """
 
 import pytest

@@ -1,6 +1,6 @@
 """
 Game client implementation
-游戏客户端实现
+娓告垙瀹㈡埛绔疄鐜?
 """
 
 import asyncio
@@ -18,7 +18,7 @@ logger = get_logger(__name__)
 class GameClient:
     """
     Game client that handles server communication
-    处理服务器通信的游戏客户端
+    澶勭悊鏈嶅姟鍣ㄩ€氫俊鐨勬父鎴忓鎴风
     """
     
     def __init__(self, host: str = DEFAULT_HOST, port: int = DEFAULT_PORT):
@@ -39,7 +39,7 @@ class GameClient:
     async def connect(self) -> bool:
         """
         Connect to the game server
-        连接到游戏服务器
+        杩炴帴鍒版父鎴忔湇鍔″櫒
         
         Returns:
             bool: True if connection successful
@@ -81,7 +81,7 @@ class GameClient:
     async def list_games(self) -> List[Dict]:
         """
         Get list of available games to spectate
-        获取可观战的游戏列表
+        鑾峰彇鍙鎴樼殑娓告垙鍒楄〃
         
         Returns:
             List[Dict]: List of game information
@@ -94,7 +94,7 @@ class GameClient:
     async def spectate_game(self, game_id: str) -> bool:
         """
         Start spectating a game
-        开始观战游戏
+        寮€濮嬭鎴樻父鎴?
         
         Args:
             game_id: Game ID to spectate
@@ -130,7 +130,7 @@ class GameClient:
     async def leave_spectate(self) -> bool:
         """
         Stop spectating current game
-        停止观战当前游戏
+        鍋滄瑙傛垬褰撳墠娓告垙
         
         Returns:
             bool: True if successfully stopped spectating
@@ -157,7 +157,7 @@ class GameClient:
     async def send_spectator_chat(self, message: str) -> bool:
         """
         Send chat message while spectating
-        发送观战聊天消息
+        鍙戦€佽鎴樿亰澶╂秷鎭?
         
         Args:
             message: Chat message
@@ -178,7 +178,7 @@ class GameClient:
     def on(self, event: str, callback: Callable):
         """
         Register event callback
-        注册事件回调
+        娉ㄥ唽浜嬩欢鍥炶皟
         
         Args:
             event: Event name

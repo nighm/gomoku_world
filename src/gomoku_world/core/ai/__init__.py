@@ -1,6 +1,6 @@
 """
 AI module for Gomoku
-五子棋AI模块
+浜斿瓙妫婣I妯″潡
 """
 
 from .engine import AI

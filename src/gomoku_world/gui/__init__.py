@@ -1,6 +1,6 @@
 """
 Gomoku Game GUI Package
-五子棋游戏图形界面包
+浜斿瓙妫嬫父鎴忓浘褰㈢晫闈㈠寘
 """
 
 from .gui import GomokuGUI

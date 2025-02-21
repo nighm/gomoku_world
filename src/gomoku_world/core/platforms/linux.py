@@ -1,4 +1,4 @@
 """
 Linux platform implementation
-Linux平台实现
+Linux骞冲彴瀹炵幇
 """ 

@@ -1,6 +1,6 @@
 """
 Game client launcher module
-游戏客户端启动模块
+娓告垙瀹㈡埛绔惎鍔ㄦā鍧?
 """
 
 import sys

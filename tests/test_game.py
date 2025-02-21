@@ -1,11 +1,12 @@
 """
-Unit tests for the game logic module.
+Game logic tests
+娓告垙閫昏緫娴嬭瘯
 """
 
-import unittest
-from src.game import Game, InvalidMoveError, Position
+import pytest
+from gomoku_world.core import Game, InvalidMoveError, Position
 
-class TestGame(unittest.TestCase):
+class TestGame(pytest.TestCase):
     def setUp(self):
         """Set up test cases"""
         self.game = Game(size=15)
@@ -111,4 +112,4 @@ class TestGame(unittest.TestCase):
         self.assertTrue(self.game.is_board_full())
 
 if __name__ == '__main__':
-    unittest.main() 
+    pytest.main() 

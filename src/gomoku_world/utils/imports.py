@@ -1,6 +1,6 @@
 """
 Centralized imports management
-中心化导入管理
+涓績鍖栧鍏ョ鐞?
 """
 
 import os
@@ -10,7 +10,7 @@ from typing import Dict, Any, Optional
 class ImportManager:
     """
     Manages dynamic imports for the project
-    管理项目的动态导入
+    绠＄悊椤圭洰鐨勫姩鎬佸鍏?
     """
     
     _instance = None
@@ -26,7 +26,7 @@ class ImportManager:
     def set_package_name(cls, name: str):
         """
         Set the package name
-        设置包名
+        璁剧疆鍖呭悕
         
         Args:
             name: New package name
@@ -37,7 +37,7 @@ class ImportManager:
     def get_package_name(cls) -> str:
         """
         Get the current package name
-        获取当前包名
+        鑾峰彇褰撳墠鍖呭悕
         
         Returns:
             str: Current package name
@@ -48,7 +48,7 @@ class ImportManager:
     def import_module(cls, module_path: str) -> Optional[Any]:
         """
         Dynamically import a module
-        动态导入模块
+        鍔ㄦ€佸鍏ユā鍧?
         
         Args:
             module_path: Relative module path (e.g. 'core.game')
@@ -72,7 +72,7 @@ class ImportManager:
     def get_class(cls, module_path: str, class_name: str) -> Optional[type]:
         """
         Get a class from a module
-        从模块中获取类
+        浠庢ā鍧椾腑鑾峰彇绫?
         
         Args:
             module_path: Relative module path
@@ -90,7 +90,7 @@ class ImportManager:
     def clear_cache(cls):
         """
         Clear the module cache
-        清除模块缓存
+        娓呴櫎妯″潡缂撳瓨
         """
         cls._modules.clear()
 

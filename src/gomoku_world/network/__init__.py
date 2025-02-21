@@ -1,6 +1,6 @@
 """
 Network module
-网络模块
+缃戠粶妯″潡
 """
 
 from .network import NetworkManager

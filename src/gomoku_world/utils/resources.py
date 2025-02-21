@@ -1,6 +1,6 @@
 """
 Resource management module
-资源管理模块
+璧勬簮绠＄悊妯″潡
 """
 
 import json
@@ -15,7 +15,7 @@ logger = get_logger(__name__)
 class ResourceManager:
     """
     Manages game resources like themes, translations, and sounds
-    管理游戏资源，如主题、翻译和音效
+    绠＄悊娓告垙璧勬簮锛屽涓婚銆佺炕璇戝拰闊虫晥
     """
     
     def __init__(self):
@@ -92,20 +92,20 @@ class ResourceManager:
             },
             "zh": {
                 "game": {
-                    "title": "五子棋世界",
-                    "new_game": "新游戏",
-                    "undo": "悔棋",
-                    "black_turn": "黑方回合",
-                    "white_turn": "白方回合",
-                    "black_wins": "黑方胜利！",
-                    "white_wins": "白方胜利！",
-                    "draw": "游戏平局！"
+                    "title": "浜斿瓙妫嬩笘鐣?,
+                    "new_game": "鏂版父鎴?,
+                    "undo": "鎮旀",
+                    "black_turn": "榛戞柟鍥炲悎",
+                    "white_turn": "鐧芥柟鍥炲悎",
+                    "black_wins": "榛戞柟鑳滃埄锛?,
+                    "white_wins": "鐧芥柟鑳滃埄锛?,
+                    "draw": "娓告垙骞冲眬锛?
                 },
                 "menu": {
-                    "game": "游戏",
-                    "settings": "设置",
-                    "help": "帮助",
-                    "exit": "退出"
+                    "game": "娓告垙",
+                    "settings": "璁剧疆",
+                    "help": "甯姪",
+                    "exit": "閫€鍑?
                 }
             }
         }
@@ -148,7 +148,7 @@ class ResourceManager:
     def get_theme(self, theme_name: Optional[str] = None) -> Dict:
         """
         Get theme settings
-        获取主题设置
+        鑾峰彇涓婚璁剧疆
         
         Args:
             theme_name: Theme name (default: current theme)
@@ -162,7 +162,7 @@ class ResourceManager:
     def get_text(self, key: str, lang: Optional[str] = None) -> str:
         """
         Get translated text
-        获取翻译文本
+        鑾峰彇缈昏瘧鏂囨湰
         
         Args:
             key: Text key (e.g. 'game.title')
@@ -189,7 +189,7 @@ class ResourceManager:
     def set_theme(self, theme_name: str):
         """
         Set current theme
-        设置当前主题
+        璁剧疆褰撳墠涓婚
         
         Args:
             theme_name: Theme name
@@ -203,7 +203,7 @@ class ResourceManager:
     def set_language(self, lang: str):
         """
         Set current language
-        设置当前语言
+        璁剧疆褰撳墠璇█
         
         Args:
             lang: Language code

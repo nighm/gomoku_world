@@ -1,6 +1,6 @@
 """
 Board class unit tests
-棋盘类单元测试
+妫嬬洏绫诲崟鍏冩祴璇?
 """
 
 import pytest

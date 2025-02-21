@@ -1,6 +1,6 @@
 """
 Configuration manager implementation
-配置管理器实现
+閰嶇疆绠＄悊鍣ㄥ疄鐜?
 
 This module provides centralized configuration management for the application.
 The ConfigManager class is implemented as a singleton to ensure consistent
@@ -32,7 +32,7 @@ logger = get_logger(__name__)
 class ConfigManager:
     """
     Configuration manager class
-    配置管理器类
+    閰嶇疆绠＄悊鍣ㄧ被
     
     This class manages application configuration, providing:
     - Singleton pattern implementation
@@ -92,7 +92,7 @@ class ConfigManager:
     def get_value(self, key: str, default: Any = None) -> Any:
         """
         Get configuration value
-        获取配置值
+        鑾峰彇閰嶇疆鍊?
         
         Args:
             key: Configuration key
@@ -106,7 +106,7 @@ class ConfigManager:
     def set_value(self, key: str, value: Any):
         """
         Set configuration value
-        设置配置值
+        璁剧疆閰嶇疆鍊?
         
         Args:
             key: Configuration key
@@ -119,7 +119,7 @@ class ConfigManager:
     def save_config(self, config: Dict[str, Any]):
         """
         Save configuration
-        保存配置
+        淇濆瓨閰嶇疆
         
         Args:
             config: Configuration dictionary
@@ -164,7 +164,7 @@ class ConfigManager:
     def load_config(self) -> Dict[str, Any]:
         """
         Load configuration
-        加载配置
+        鍔犺浇閰嶇疆
         
         Returns:
             Dict[str, Any]: Current configuration
@@ -189,7 +189,7 @@ class ConfigManager:
     def validate_config(self) -> bool:
         """
         Validate configuration
-        验证配置
+        楠岃瘉閰嶇疆
         
         Returns:
             bool: True if configuration is valid
@@ -198,5 +198,5 @@ class ConfigManager:
         return all(key in self._config for key in required_keys)
 
 # Create global instance
-# 创建全局实例
+# 鍒涘缓鍏ㄥ眬瀹炰緥
 config_manager = ConfigManager() 

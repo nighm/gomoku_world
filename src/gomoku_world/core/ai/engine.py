@@ -1,6 +1,6 @@
 """
 AI engine implementation
-AI引擎实现
+AI寮曟搸瀹炵幇
 """
 
 from typing import Tuple, List, Optional
@@ -14,13 +14,13 @@ logger = get_logger(__name__)
 class AI:
     """
     AI engine that manages game strategies and move generation
-    管理游戏策略和移动生成的AI引擎
+    绠＄悊娓告垙绛栫暐鍜岀Щ鍔ㄧ敓鎴愮殑AI寮曟搸
     """
     
     def __init__(self, difficulty: str = "medium"):
         """
         Initialize AI engine
-        初始化AI引擎
+        鍒濆鍖朅I寮曟搸
         
         Args:
             difficulty: AI difficulty level ("easy", "medium", "hard")
@@ -38,7 +38,7 @@ class AI:
     def _get_depth_for_difficulty(self) -> int:
         """
         Get search depth based on difficulty
-        根据难度获取搜索深度
+        鏍规嵁闅惧害鑾峰彇鎼滅储娣卞害
         
         Returns:
             int: Search depth
@@ -53,7 +53,7 @@ class AI:
     def get_move(self, board: Board, player: int) -> Tuple[int, int]:
         """
         Get next move for the AI
-        获取AI的下一步移动
+        鑾峰彇AI鐨勪笅涓€姝ョЩ鍔?
         
         Args:
             board: Current game board
@@ -80,7 +80,7 @@ class AI:
     def set_difficulty(self, difficulty: str):
         """
         Set AI difficulty level
-        设置AI难度等级
+        璁剧疆AI闅惧害绛夌骇
         
         Args:
             difficulty: New difficulty level
@@ -92,7 +92,7 @@ class AI:
     def evaluate_position(self, board: Board, player: int) -> float:
         """
         Evaluate current board position
-        评估当前棋盘局面
+        璇勪及褰撳墠妫嬬洏灞€闈?
         
         Args:
             board: Current game board
@@ -107,7 +107,7 @@ class AI:
                       num_moves: int = 3) -> List[Tuple[int, int]]:
         """
         Get top N best moves
-        获取前N个最佳移动
+        鑾峰彇鍓峃涓渶浣崇Щ鍔?
         
         Args:
             board: Current game board

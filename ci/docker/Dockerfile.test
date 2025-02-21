@@ -1,1 +1,19 @@
- 
+# 使用开发环境作为基础镜像
+FROM gomoku_world:dev
+
+# 设置工作目录
+WORKDIR /app
+
+# 设置测试环境变量
+ENV PYTHONPATH=/app/src \
+    PYTEST_ADDOPTS="--color=yes"
+
+# 安装额外的测试依赖
+RUN poetry install --with test
+
+# 运行测试
+CMD ["poetry", "run", "pytest", \
+     "--cov=gomoku_world", \
+     "--cov-report=term-missing", \
+     "--cov-report=xml", \
+     "tests/"] 

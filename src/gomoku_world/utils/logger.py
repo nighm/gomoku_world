@@ -1,6 +1,6 @@
 """
 Logging module
-日志模块
+鏃ュ織妯″潡
 """
 
 import logging
@@ -13,7 +13,7 @@ from ..config import LOG_FORMAT, LOG_LEVEL, LOG_FILE, LOG_DIR
 def setup_logging():
     """
     Setup logging configuration
-    设置日志配置
+    璁剧疆鏃ュ織閰嶇疆
     """
     # Create log directory if it doesn't exist
     LOG_DIR.mkdir(parents=True, exist_ok=True)
@@ -46,7 +46,7 @@ def setup_logging():
 def get_logger(name: str) -> logging.Logger:
     """
     Get a logger instance
-    获取日志记录器实例
+    鑾峰彇鏃ュ織璁板綍鍣ㄥ疄渚?
     
     Args:
         name: Logger name (usually __name__)

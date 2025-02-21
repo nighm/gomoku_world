@@ -1,11 +1,11 @@
 """
 Unit tests for the GomokuGUI main window
-五子棋游戏主窗口单元测试
+浜斿瓙妫嬫父鎴忎富绐楀彛鍗曞厓娴嬭瘯
 """
 
 import unittest
 import pygame
-from src.gui.main_window import GomokuGUI
+from gomoku_world.gui.main_window import GomokuGUI
 
 class TestGomokuGUI(unittest.TestCase):
     def setUp(self):
@@ -37,10 +37,10 @@ class TestGomokuGUI(unittest.TestCase):
         self.assertGreater(len(self.gui.buttons), 0)
         # Check if essential buttons exist
         button_texts = [button.text for button in self.gui.buttons]
-        self.assertIn('双人对战', button_texts)
-        self.assertIn('人机对战（简单）', button_texts)
-        self.assertIn('设置', button_texts)
-        self.assertIn('退出', button_texts)
+        self.assertIn('鍙屼汉瀵规垬', button_texts)
+        self.assertIn('浜烘満瀵规垬锛堢畝鍗曪級', button_texts)
+        self.assertIn('璁剧疆', button_texts)
+        self.assertIn('閫€鍑?, button_texts)
     
     def test_game_mode_setting(self):
         """Test setting game modes"""

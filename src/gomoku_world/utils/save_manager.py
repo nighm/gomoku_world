@@ -1,6 +1,6 @@
 """
 Save manager implementation
-存档管理器实现
+瀛樻。绠＄悊鍣ㄥ疄鐜?
 """
 
 import json
@@ -30,7 +30,7 @@ class GameSave:
 class SaveManager:
     """
     Manages game saves and replays
-    管理游戏存档和回放
+    绠＄悊娓告垙瀛樻。鍜屽洖鏀?
     """
     
     def __init__(self):
@@ -42,7 +42,7 @@ class SaveManager:
     def save_game(self, game_data: GameSave) -> bool:
         """
         Save a game
-        保存游戏
+        淇濆瓨娓告垙
         
         Args:
             game_data: Game data to save
@@ -71,7 +71,7 @@ class SaveManager:
     def load_game(self, save_id: str) -> Optional[GameSave]:
         """
         Load a saved game
-        加载已保存的游戏
+        鍔犺浇宸蹭繚瀛樼殑娓告垙
         
         Args:
             save_id: Save file ID
@@ -105,7 +105,7 @@ class SaveManager:
     def list_saves(self) -> List[Dict]:
         """
         List all saved games
-        列出所有已保存的游戏
+        鍒楀嚭鎵€鏈夊凡淇濆瓨鐨勬父鎴?
         
         Returns:
             List[Dict]: List of save info
@@ -138,7 +138,7 @@ class SaveManager:
     def delete_save(self, save_id: str) -> bool:
         """
         Delete a saved game
-        删除已保存的游戏
+        鍒犻櫎宸蹭繚瀛樼殑娓告垙
         
         Args:
             save_id: Save file ID
@@ -167,7 +167,7 @@ class SaveManager:
                         winner: Optional[int] = None, metadata: Dict = None) -> GameSave:
         """
         Create a new game save data object
-        创建新的游戏存档数据对象
+        鍒涘缓鏂扮殑娓告垙瀛樻。鏁版嵁瀵硅薄
         
         Args:
             game_id: Game ID
@@ -197,7 +197,7 @@ class SaveManager:
     def auto_save(self, game_data: GameSave) -> bool:
         """
         Auto save current game state
-        自动保存当前游戏状态
+        鑷姩淇濆瓨褰撳墠娓告垙鐘舵€?
         
         Args:
             game_data: Current game data
@@ -226,7 +226,7 @@ class SaveManager:
     def load_auto_save(self, game_id: str) -> Optional[GameSave]:
         """
         Load auto-saved game
-        加载自动保存的游戏
+        鍔犺浇鑷姩淇濆瓨鐨勬父鎴?
         
         Args:
             game_id: Game ID

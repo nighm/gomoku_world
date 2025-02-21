@@ -1,12 +1,12 @@
 """
 Status bar implementation
-状态栏实现
+鐘舵€佹爮瀹炵幇
 """
 
 import tkinter as tk
 from tkinter import ttk
 
-# 使用相对导入
+# 浣跨敤鐩稿瀵煎叆
 from ..utils.logger import get_logger
 
 logger = get_logger(__name__)
@@ -14,13 +14,13 @@ logger = get_logger(__name__)
 class StatusBar(ttk.Frame):
     """
     Status bar for displaying game information
-    用于显示游戏信息的状态栏
+    鐢ㄤ簬鏄剧ず娓告垙淇℃伅鐨勭姸鎬佹爮
     """
     
     def __init__(self, parent):
         """
         Initialize status bar
-        初始化状态栏
+        鍒濆鍖栫姸鎬佹爮
         
         Args:
             parent: Parent widget
@@ -38,7 +38,7 @@ class StatusBar(ttk.Frame):
     def _create_widgets(self):
         """
         Create status bar widgets
-        创建状态栏组件
+        鍒涘缓鐘舵€佹爮缁勪欢
         """
         # Message label
         self.message_label = ttk.Label(
@@ -59,7 +59,7 @@ class StatusBar(ttk.Frame):
     def _setup_layout(self):
         """
         Setup the layout of widgets
-        设置组件的布局
+        璁剧疆缁勪欢鐨勫竷灞€
         """
         # Add border
         self.configure(relief=tk.SUNKEN, borderwidth=1)
@@ -73,7 +73,7 @@ class StatusBar(ttk.Frame):
     def set_message(self, message: str):
         """
         Set status message
-        设置状态消息
+        璁剧疆鐘舵€佹秷鎭?
         
         Args:
             message: Message to display
@@ -84,7 +84,7 @@ class StatusBar(ttk.Frame):
     def start_progress(self):
         """
         Start progress bar animation
-        启动进度条动画
+        鍚姩杩涘害鏉″姩鐢?
         """
         self.progress_bar.pack(side=tk.RIGHT, padx=5)
         self.progress_bar.start()
@@ -93,7 +93,7 @@ class StatusBar(ttk.Frame):
     def stop_progress(self):
         """
         Stop progress bar animation
-        停止进度条动画
+        鍋滄杩涘害鏉″姩鐢?
         """
         self.progress_bar.stop()
         self.progress_bar.pack_forget()

@@ -1,11 +1,11 @@
 """
 Game rules implementation
-游戏规则实现
+娓告垙瑙勫垯瀹炵幇
 """
 
 from typing import List, Tuple
 
-# 使用相对导入
+# 浣跨敤鐩稿瀵煎叆
 from .board import Board
 from ..utils.logger import get_logger
 
@@ -14,14 +14,14 @@ logger = get_logger(__name__)
 class Rules:
     """
     Game rules and win condition checking
-    游戏规则和胜负判定
+    娓告垙瑙勫垯鍜岃儨璐熷垽瀹?
     """
     
     @staticmethod
     def check_win(board: Board, last_row: int, last_col: int) -> bool:
         """
         Check if the last move resulted in a win
-        检查最后一步是否导致胜利
+        妫€鏌ユ渶鍚庝竴姝ユ槸鍚﹀鑷磋儨鍒?
         
         Args:
             board: Game board
@@ -62,7 +62,7 @@ class Rules:
     def is_draw(board: Board) -> bool:
         """
         Check if the game is a draw
-        检查游戏是否平局
+        妫€鏌ユ父鎴忔槸鍚﹀钩灞€
         
         Args:
             board: Game board
@@ -76,7 +76,7 @@ class Rules:
     def get_valid_moves(board: Board) -> List[Tuple[int, int]]:
         """
         Get all valid moves on the board
-        获取棋盘上所有有效的移动
+        鑾峰彇妫嬬洏涓婃墍鏈夋湁鏁堢殑绉诲姩
         
         Args:
             board: Game board
@@ -90,7 +90,7 @@ class Rules:
     def is_valid_move(board: Board, row: int, col: int) -> bool:
         """
         Check if a move is valid according to game rules
-        根据游戏规则检查移动是否有效
+        鏍规嵁娓告垙瑙勫垯妫€鏌ョЩ鍔ㄦ槸鍚︽湁鏁?
         
         Args:
             board: Game board

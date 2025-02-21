@@ -1,6 +1,6 @@
 """
 Spectator window implementation
-观战窗口实现
+瑙傛垬绐楀彛瀹炵幇
 """
 
 import tkinter as tk
@@ -21,7 +21,7 @@ logger = get_logger(__name__)
 class SpectatorWindow(tk.Toplevel):
     """
     Spectator window for watching games
-    观战窗口用于观看游戏
+    瑙傛垬绐楀彛鐢ㄤ簬瑙傜湅娓告垙
     """
     
     def __init__(self, parent: tk.Tk, game_id: str,
@@ -158,7 +158,7 @@ class SpectatorWindow(tk.Toplevel):
     def update_game_state(self, game_state: Dict):
         """
         Update game state display
-        更新游戏状态显示
+        鏇存柊娓告垙鐘舵€佹樉绀?
         
         Args:
             game_state: Current game state
@@ -190,7 +190,7 @@ class SpectatorWindow(tk.Toplevel):
     def update_player_stats(self, black_stats: Dict, white_stats: Dict):
         """
         Update player statistics display
-        更新玩家统计信息显示
+        鏇存柊鐜╁缁熻淇℃伅鏄剧ず
         
         Args:
             black_stats: Black player statistics
@@ -224,7 +224,7 @@ class SpectatorWindow(tk.Toplevel):
     def add_move_to_history(self, move: Dict):
         """
         Add move to history display
-        添加移动到历史记录显示
+        娣诲姞绉诲姩鍒板巻鍙茶褰曟樉绀?
         
         Args:
             move: Move information
@@ -253,7 +253,7 @@ class SpectatorWindow(tk.Toplevel):
     def add_chat_message(self, sender: str, message: str):
         """
         Add message to chat display
-        添加消息到聊天显示
+        娣诲姞娑堟伅鍒拌亰澶╂樉绀?
         
         Args:
             sender: Message sender

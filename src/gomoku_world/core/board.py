@@ -55,14 +55,14 @@ class Game:
         
         self.size = size
         self.board = np.zeros((size, size), dtype=np.int8)
-        self.current_player = 1  # 1代表黑子，2代表白子
+        self.current_player = 1  # 1浠ｈ〃榛戝瓙锛?浠ｈ〃鐧藉瓙
         self.move_history = []
         self.winner = None
         self._game_over = False
         logger.info(f"New game started with board size {size}")
     
     def make_move(self, row: int, col: int) -> bool:
-        """尝试在指定位置落子"""
+        """灏濊瘯鍦ㄦ寚瀹氫綅缃惤瀛?""
         if not (0 <= row < self.size and 0 <= col < self.size):
             raise InvalidMoveError("Move is outside the board")
             
@@ -76,16 +76,15 @@ class Game:
         if self.check_winner(row, col):
             self.winner = self.current_player
         
-        self.current_player = 3 - self.current_player  # 切换玩家（1->2或2->1）
-        return True
+        self.current_player = 3 - self.current_player  # 鍒囨崲鐜╁锛?->2鎴?->1锛?        return True
     
     def check_winner(self, row: int, col: int) -> bool:
-        """检查是否有玩家获胜"""
+        """妫€鏌ユ槸鍚︽湁鐜╁鑾疯儨"""
         directions = [
-            [(0, 1), (0, -1)],   # 水平
-            [(1, 0), (-1, 0)],   # 垂直
-            [(1, 1), (-1, -1)],  # 主对角线
-            [(1, -1), (-1, 1)]   # 副对角线
+            [(0, 1), (0, -1)],   # 姘村钩
+            [(1, 0), (-1, 0)],   # 鍨傜洿
+            [(1, 1), (-1, -1)],  # 涓诲瑙掔嚎
+            [(1, -1), (-1, 1)]   # 鍓瑙掔嚎
         ]
         
         piece = self.board[row, col]
@@ -109,7 +108,7 @@ class Game:
         return False
     
     def reset(self):
-        """重置游戏"""
+        """閲嶇疆娓告垙"""
         self.board.fill(0)
         self.current_player = 1
         self.move_history.clear()
@@ -157,14 +156,13 @@ class Game:
 class Board:
     """
     Represents the game board
-    表示游戏棋盘
+    琛ㄧず娓告垙妫嬬洏
     """
     
     def __init__(self, size: int = 15):
         """
         Initialize board
-        初始化棋盘
-        
+        鍒濆鍖栨鐩?        
         Args:
             size: Board size (default: 15)
         """
@@ -175,8 +173,7 @@ class Board:
     def is_valid_move(self, row: int, col: int) -> bool:
         """
         Check if a move is valid
-        检查移动是否有效
-        
+        妫€鏌ョЩ鍔ㄦ槸鍚︽湁鏁?        
         Args:
             row: Row number
             col: Column number
@@ -191,7 +188,7 @@ class Board:
     def place_piece(self, row: int, col: int, player: int):
         """
         Place a piece on the board
-        在棋盘上放置棋子
+        鍦ㄦ鐩樹笂鏀剧疆妫嬪瓙
         
         Args:
             row: Row number
@@ -206,8 +203,7 @@ class Board:
     def clear_cell(self, row: int, col: int):
         """
         Clear a cell on the board
-        清除棋盘上的一个位置
-        
+        娓呴櫎妫嬬洏涓婄殑涓€涓綅缃?        
         Args:
             row: Row number
             col: Column number
@@ -218,7 +214,7 @@ class Board:
     def clear(self):
         """
         Clear the entire board
-        清空整个棋盘
+        娓呯┖鏁翠釜妫嬬洏
         """
         self.board.fill(0)
         logger.info("Board cleared")
@@ -226,8 +222,7 @@ class Board:
     def get_piece(self, row: int, col: int) -> int:
         """
         Get the piece at a position
-        获取指定位置的棋子
-        
+        鑾峰彇鎸囧畾浣嶇疆鐨勬瀛?        
         Args:
             row: Row number
             col: Column number
@@ -240,8 +235,7 @@ class Board:
     def is_full(self) -> bool:
         """
         Check if board is full
-        检查棋盘是否已满
-        
+        妫€鏌ユ鐩樻槸鍚﹀凡婊?        
         Returns:
             bool: True if board is full
         """
@@ -250,7 +244,7 @@ class Board:
     def get_empty_cells(self) -> List[Tuple[int, int]]:
         """
         Get all empty cells
-        获取所有空位置
+        鑾峰彇鎵€鏈夌┖浣嶇疆
         
         Returns:
             List[Tuple[int, int]]: List of empty cell coordinates
@@ -261,7 +255,7 @@ class Board:
     def __str__(self) -> str:
         """
         String representation of the board
-        棋盘的字符串表示
+        妫嬬洏鐨勫瓧绗︿覆琛ㄧず
         
         Returns:
             str: Board representation

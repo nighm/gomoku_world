@@ -1,6 +1,6 @@
 """
 Spectator management module
-观战管理模块
+瑙傛垬绠＄悊妯″潡
 """
 
 from typing import Dict, Set, Optional
@@ -14,7 +14,7 @@ logger = get_logger(__name__)
 class SpectatorInfo:
     """
     Spectator information
-    观战者信息
+    瑙傛垬鑰呬俊鎭?
     """
     id: str
     name: str
@@ -23,7 +23,7 @@ class SpectatorInfo:
 class SpectatorManager:
     """
     Manages game spectators
-    管理游戏观战者
+    绠＄悊娓告垙瑙傛垬鑰?
     """
     
     def __init__(self):
@@ -37,7 +37,7 @@ class SpectatorManager:
     def add_spectator(self, spectator_id: str, name: str, game_id: str) -> bool:
         """
         Add a spectator to a game
-        添加观战者到游戏
+        娣诲姞瑙傛垬鑰呭埌娓告垙
         
         Args:
             spectator_id: Spectator ID
@@ -73,7 +73,7 @@ class SpectatorManager:
     def remove_spectator(self, spectator_id: str) -> bool:
         """
         Remove a spectator
-        移除观战者
+        绉婚櫎瑙傛垬鑰?
         
         Args:
             spectator_id: Spectator ID
@@ -107,7 +107,7 @@ class SpectatorManager:
     def get_game_spectators(self, game_id: str) -> Set[str]:
         """
         Get all spectators for a game
-        获取游戏的所有观战者
+        鑾峰彇娓告垙鐨勬墍鏈夎鎴樿€?
         
         Args:
             game_id: Game ID
@@ -120,7 +120,7 @@ class SpectatorManager:
     def get_spectator_info(self, spectator_id: str) -> Optional[SpectatorInfo]:
         """
         Get spectator information
-        获取观战者信息
+        鑾峰彇瑙傛垬鑰呬俊鎭?
         
         Args:
             spectator_id: Spectator ID
@@ -133,7 +133,7 @@ class SpectatorManager:
     def get_spectator_count(self, game_id: str) -> int:
         """
         Get number of spectators for a game
-        获取游戏的观战者数量
+        鑾峰彇娓告垙鐨勮鎴樿€呮暟閲?
         
         Args:
             game_id: Game ID
@@ -147,7 +147,7 @@ class SpectatorManager:
                               callback) -> None:
         """
         Broadcast message to all spectators of a game
-        向游戏的所有观战者广播消息
+        鍚戞父鎴忕殑鎵€鏈夎鎴樿€呭箍鎾秷鎭?
         
         Args:
             game_id: Game ID
@@ -169,7 +169,7 @@ class SpectatorManager:
     def cleanup_game(self, game_id: str) -> None:
         """
         Clean up spectators when a game ends
-        游戏结束时清理观战者
+        娓告垙缁撴潫鏃舵竻鐞嗚鎴樿€?
         
         Args:
             game_id: Game ID

@@ -1,13 +1,13 @@
 """
 Control panel implementation
-控制面板实现
+鎺у埗闈㈡澘瀹炵幇
 """
 
 import tkinter as tk
 from tkinter import ttk
 from typing import TYPE_CHECKING
 
-# 使用相对导入
+# 浣跨敤鐩稿瀵煎叆
 from ..utils.logger import get_logger
 
 if TYPE_CHECKING:
@@ -18,13 +18,13 @@ logger = get_logger(__name__)
 class ControlPanel(ttk.Frame):
     """
     Control panel for game operations
-    游戏操作控制面板
+    娓告垙鎿嶄綔鎺у埗闈㈡澘
     """
     
     def __init__(self, parent, main_window: 'GomokuGUI'):
         """
         Initialize control panel
-        初始化控制面板
+        鍒濆鍖栨帶鍒堕潰鏉?
         
         Args:
             parent: Parent widget
@@ -42,7 +42,7 @@ class ControlPanel(ttk.Frame):
     def _create_widgets(self):
         """
         Create all control widgets
-        创建所有控制组件
+        鍒涘缓鎵€鏈夋帶鍒剁粍浠?
         """
         # Game control buttons
         self.new_game_btn = ttk.Button(
@@ -113,7 +113,7 @@ class ControlPanel(ttk.Frame):
     def _setup_layout(self):
         """
         Setup the layout of all widgets
-        设置所有组件的布局
+        璁剧疆鎵€鏈夌粍浠剁殑甯冨眬
         """
         # Game control buttons
         self.new_game_btn.pack(fill=tk.X, padx=5, pady=5)
@@ -135,7 +135,7 @@ class ControlPanel(ttk.Frame):
     def _on_mode_change(self):
         """
         Handle game mode change
-        处理游戏模式变更
+        澶勭悊娓告垙妯″紡鍙樻洿
         """
         self._update_difficulty_state()
         # TODO: Implement mode change logic
@@ -144,7 +144,7 @@ class ControlPanel(ttk.Frame):
     def _on_difficulty_change(self):
         """
         Handle difficulty change
-        处理难度变更
+        澶勭悊闅惧害鍙樻洿
         """
         # TODO: Implement difficulty change logic
         logger.info(f"AI difficulty changed to {self.difficulty_var.get()}")
@@ -152,7 +152,7 @@ class ControlPanel(ttk.Frame):
     def _update_difficulty_state(self):
         """
         Update difficulty selection state
-        更新难度选择状态
+        鏇存柊闅惧害閫夋嫨鐘舵€?
         """
         state = 'normal' if self.mode_var.get() == 'pvc' else 'disabled'
         self.difficulty_frame.configure(state=state)

@@ -1,6 +1,6 @@
 """
 AI performance tests
-AI 性能测试
+AI 鎬ц兘娴嬭瘯
 """
 
 import time

@@ -1,6 +1,6 @@
 """
 Global instances for AI
-AI全局实例
+AI鍏ㄥ眬瀹炰緥
 """
 
 from .engine import AI

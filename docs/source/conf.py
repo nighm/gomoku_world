@@ -1,6 +1,6 @@
 """
 Sphinx configuration
-Sphinx配置
+Sphinx閰嶇疆
 """
 
 import os

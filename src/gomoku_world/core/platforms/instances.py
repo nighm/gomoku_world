@@ -1,6 +1,6 @@
 """
 Global instances for platform
-平台全局实例
+骞冲彴鍏ㄥ眬瀹炰緥
 """
 
 import platform
@@ -15,7 +15,7 @@ from .web import WebPlatform
 def get_platform() -> PlatformBase:
     """
     Get appropriate platform implementation
-    获取适当的平台实现
+    鑾峰彇閫傚綋鐨勫钩鍙板疄鐜?
     
     Returns:
         PlatformBase: Platform-specific implementation

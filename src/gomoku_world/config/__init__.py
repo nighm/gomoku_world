@@ -1,6 +1,6 @@
 """
 Configuration package
-配置包
+閰嶇疆鍖?
 """
 
 from .settings import *

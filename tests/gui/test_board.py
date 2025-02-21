@@ -1,13 +1,13 @@
 """
 Unit tests for the Board component
-棋盘组件单元测试
+妫嬬洏缁勪欢鍗曞厓娴嬭瘯
 """
 
 import unittest
 import pygame
-from src.gui.board import Board
-from src.game import Game
-from src.theme import theme
+from gomoku_world.gui.board import Board
+from gomoku_world.core.game import Game
+from gomoku_world.theme import theme
 from tests.gui.test_base import GUITestCase
 
 class TestBoard(GUITestCase):
@@ -120,7 +120,7 @@ class TestBoard(GUITestCase):
         
         for row, col in star_points_15:
             pos = (self.board.grid_size * (row + 1), self.board.grid_size * (col + 1))
-            # 检查星位点周围的多个点
+            # 妫€鏌ユ槦浣嶇偣鍛ㄥ洿鐨勫涓偣
             offsets = [(0, 0), (2, 0), (-2, 0), (0, 2), (0, -2)]
             found_star = False
             for dx, dy in offsets:
@@ -143,7 +143,7 @@ class TestBoard(GUITestCase):
         
         for row, col in star_points_19:
             pos = (board.grid_size * (row + 1), board.grid_size * (col + 1))
-            # 检查星位点周围的多个点
+            # 妫€鏌ユ槦浣嶇偣鍛ㄥ洿鐨勫涓偣
             offsets = [(0, 0), (2, 0), (-2, 0), (0, 2), (0, -2)]
             found_star = False
             for dx, dy in offsets:

@@ -1,6 +1,6 @@
 """
 Game board component for the Gomoku game GUI
-五子棋游戏GUI棋盘组件
+浜斿瓙妫嬫父鎴廏UI妫嬬洏缁勪欢
 """
 
 import pygame
@@ -16,11 +16,11 @@ class Board:
     def __init__(self, window_size: int, game: Game):
         """
         Initialize the game board
-        初始化游戏棋盘
+        鍒濆鍖栨父鎴忔鐩?
         
         Args:
-            window_size: Window size in pixels (窗口大小)
-            game: Game instance (游戏实例)
+            window_size: Window size in pixels (绐楀彛澶у皬)
+            game: Game instance (娓告垙瀹炰緥)
         """
         self.window_size = window_size
         self.game = game
@@ -39,10 +39,10 @@ class Board:
     def draw(self, screen: pygame.Surface):
         """
         Draw the game board
-        绘制游戏棋盘
+        缁樺埗娓告垙妫嬬洏
         
         Args:
-            screen: Surface to draw on (绘制表面)
+            screen: Surface to draw on (缁樺埗琛ㄩ潰)
         """
         # Draw board background
         screen.fill(theme.get_color('background'))
@@ -63,7 +63,7 @@ class Board:
                            (self.window_size - self.grid_size, self.grid_size * (i + 1)),
                            line_width)
         
-        # Draw star points (天元和星)
+        # Draw star points (澶╁厓鍜屾槦)
         self._draw_star_points(screen)
         
         # Draw pieces
@@ -76,19 +76,19 @@ class Board:
     def _draw_star_points(self, screen: pygame.Surface):
         """Draw star points on the board"""
         star_points = []
-        if self.game.size == 15:  # 15路棋盘的星位
+        if self.game.size == 15:  # 15璺鐩樼殑鏄熶綅
             star_points = [(3, 3), (3, 7), (3, 11),
                          (7, 3), (7, 7), (7, 11),
                          (11, 3), (11, 7), (11, 11)]
-        elif self.game.size == 19:  # 19路棋盘的星位
+        elif self.game.size == 19:  # 19璺鐩樼殑鏄熶綅
             star_points = [(3, 3), (3, 9), (3, 15),
                          (9, 3), (9, 9), (9, 15),
                          (15, 3), (15, 9), (15, 15)]
         
         for row, col in star_points:
-            # 计算屏幕坐标时保持row和col的顺序一致
+            # 璁＄畻灞忓箷鍧愭爣鏃朵繚鎸乺ow鍜宑ol鐨勯『搴忎竴鑷?
             pos = (self.grid_size * (col + 1), self.grid_size * (row + 1))
-            # 使用更大的实心圆绘制星位点
+            # 浣跨敤鏇村ぇ鐨勫疄蹇冨渾缁樺埗鏄熶綅鐐?
             pygame.draw.circle(screen, theme.get_color('grid'), pos, 4, 0)
     
     def _draw_pieces(self, screen: pygame.Surface):
@@ -116,10 +116,10 @@ class Board:
     def handle_click(self, pos: tuple) -> tuple:
         """
         Handle mouse click on the board
-        处理棋盘上的鼠标点击
+        澶勭悊妫嬬洏涓婄殑榧犳爣鐐瑰嚮
         
         Args:
-            pos: Mouse position (鼠标位置)
+            pos: Mouse position (榧犳爣浣嶇疆)
         
         Returns:
             tuple: Board coordinates (row, col) or None
@@ -127,21 +127,21 @@ class Board:
         x, y = pos
         
         # Convert screen coordinates to board coordinates
-        # 计算相对于棋盘左上角的偏移
+        # 璁＄畻鐩稿浜庢鐩樺乏涓婅鐨勫亸绉?
         board_x = x - self.grid_size
         board_y = y - self.grid_size
         
-        # 计算最近的交叉点
+        # 璁＄畻鏈€杩戠殑浜ゅ弶鐐?
         col = round(board_x / self.grid_size)
         row = round(board_y / self.grid_size)
         
-        # 检查是否在有效范围内
+        # 妫€鏌ユ槸鍚﹀湪鏈夋晥鑼冨洿鍐?
         if 0 <= row < self.game.size and 0 <= col < self.game.size:
-            # 检查是否足够接近交叉点
+            # 妫€鏌ユ槸鍚﹁冻澶熸帴杩戜氦鍙夌偣
             actual_x = self.grid_size * (col + 1)
             actual_y = self.grid_size * (row + 1)
             
-            # 允许一定的误差范围（棋盘格的30%）
+            # 鍏佽涓€瀹氱殑璇樊鑼冨洿锛堟鐩樻牸鐨?0%锛?
             tolerance = self.grid_size * 0.3
             if (abs(x - actual_x) <= tolerance and 
                 abs(y - actual_y) <= tolerance):

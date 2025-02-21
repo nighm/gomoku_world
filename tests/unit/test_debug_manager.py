@@ -1,6 +1,6 @@
 """
 Debug manager unit tests
-调试管理器单元测试
+璋冭瘯绠＄悊鍣ㄥ崟鍏冩祴璇?
 """
 
 import pytest

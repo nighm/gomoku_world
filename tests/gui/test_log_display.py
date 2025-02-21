@@ -1,12 +1,12 @@
 """
 Unit tests for the LogDisplay component
-日志显示组件单元测试
+鏃ュ織鏄剧ず缁勪欢鍗曞厓娴嬭瘯
 """
 
 import unittest
 import pygame
-from src.gui.log_display import LogDisplay
-from src.theme import theme
+from gomoku_world.gui.log_display import LogDisplay
+from gomoku_world.theme import theme
 from tests.gui.test_base import GUITestCase
 
 class TestLogDisplay(GUITestCase):
@@ -92,11 +92,11 @@ class TestLogDisplay(GUITestCase):
     def test_unicode_text(self):
         """Test handling of Unicode text"""
         unicode_messages = [
-            "你好，世界",  # Chinese
-            "こんにちは",  # Japanese
-            "안녕하세요",  # Korean
-            "Привет",    # Russian
-            "🎮🎲🎯"     # Emojis
+            "浣犲ソ锛屼笘鐣?,  # Chinese
+            "銇撱倱銇仭銇?,  # Japanese
+            "鞎堧厱頃橃劯鞖?,  # Korean
+            "袩褉懈胁械褌",    # Russian
+            "馃幃馃幉馃幆"     # Emojis
         ]
         
         for msg in unicode_messages:

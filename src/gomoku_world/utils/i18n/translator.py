@@ -1,4 +1,4 @@
 """
 Translator implementation
-翻译器实现
+缈昏瘧鍣ㄥ疄鐜?
 """ 

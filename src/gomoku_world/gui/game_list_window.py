@@ -1,6 +1,6 @@
 """
 Game list window implementation
-游戏列表窗口实现
+娓告垙鍒楄〃绐楀彛瀹炵幇
 """
 
 import tkinter as tk
@@ -15,14 +15,14 @@ logger = get_logger(__name__)
 class GameListWindow(tk.Toplevel):
     """
     Window for displaying available games to spectate
-    显示可观战游戏的窗口
+    鏄剧ず鍙鎴樻父鎴忕殑绐楀彛
     """
     
     def __init__(self, parent: tk.Tk,
                  on_spectate: Optional[Callable[[str], None]] = None):
         """
         Initialize game list window
-        初始化游戏列表窗口
+        鍒濆鍖栨父鎴忓垪琛ㄧ獥鍙?
         
         Args:
             parent: Parent window
@@ -109,7 +109,7 @@ class GameListWindow(tk.Toplevel):
     def update_game_list(self, games: List[Dict]):
         """
         Update the game list
-        更新游戏列表
+        鏇存柊娓告垙鍒楄〃
         
         Args:
             games: List of game information

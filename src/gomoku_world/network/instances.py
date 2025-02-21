@@ -1,6 +1,6 @@
 """
 Global instances for networking
-网络全局实例
+缃戠粶鍏ㄥ眬瀹炰緥
 """
 
 from .network import NetworkManager

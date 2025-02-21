@@ -1,4 +1,4 @@
 """
 Resource manager implementation
-资源管理器实现
+璧勬簮绠＄悊鍣ㄥ疄鐜?
 """ 

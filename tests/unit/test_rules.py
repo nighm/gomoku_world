@@ -1,6 +1,6 @@
 """
 Rules class unit tests
-规则类单元测试
+瑙勫垯绫诲崟鍏冩祴璇?
 """
 
 import pytest

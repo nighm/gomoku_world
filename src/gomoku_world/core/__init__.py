@@ -1,6 +1,6 @@
 """
 Core game logic module
-核心游戏逻辑模块
+鏍稿績娓告垙閫昏緫妯″潡
 """
 
 from .board import Board

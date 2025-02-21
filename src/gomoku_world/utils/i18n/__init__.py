@@ -1,6 +1,6 @@
 """
 Internationalization module
-国际化模块
+鍥介檯鍖栨ā鍧?
 """
 
 from .translator import Translator

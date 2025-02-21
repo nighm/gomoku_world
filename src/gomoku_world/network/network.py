@@ -1,6 +1,6 @@
 """
 Network module for online Gomoku gameplay.
-五子棋网络对战模块
+浜斿瓙妫嬬綉缁滃鎴樻ā鍧?
 """
 
 import socket
@@ -18,7 +18,7 @@ logger = logging.getLogger(__name__)
 class NetworkManager:
     """
     Network manager for handling online gameplay
-    网络对战管理器
+    缃戠粶瀵规垬绠＄悊鍣?
     """
     
     def __init__(self):
@@ -44,7 +44,7 @@ class NetworkManager:
     def connect(self) -> bool:
         """
         Connect to game server
-        连接到游戏服务器
+        杩炴帴鍒版父鎴忔湇鍔″櫒
         
         Returns:
             bool: True if connected successfully
@@ -74,7 +74,7 @@ class NetworkManager:
     def disconnect(self):
         """
         Disconnect from game server
-        断开与游戏服务器的连接
+        鏂紑涓庢父鎴忔湇鍔″櫒鐨勮繛鎺?
         """
         if self.connected:
             try:
@@ -90,7 +90,7 @@ class NetworkManager:
     def create_room(self) -> Optional[str]:
         """
         Create a new game room
-        创建新的游戏房间
+        鍒涘缓鏂扮殑娓告垙鎴块棿
         
         Returns:
             str: Room ID if created successfully
@@ -117,10 +117,10 @@ class NetworkManager:
     def join_room(self, room_id: str) -> bool:
         """
         Join an existing game room
-        加入现有的游戏房间
+        鍔犲叆鐜版湁鐨勬父鎴忔埧闂?
         
         Args:
-            room_id: Room ID to join (房间ID)
+            room_id: Room ID to join (鎴块棿ID)
         
         Returns:
             bool: True if joined successfully
@@ -153,7 +153,7 @@ class NetworkManager:
     def leave_room(self):
         """
         Leave current game room
-        离开当前游戏房间
+        绂诲紑褰撳墠娓告垙鎴块棿
         """
         if self.room_id:
             self.send_message({'type': 'leave_room'})
@@ -164,11 +164,11 @@ class NetworkManager:
     def make_move(self, row: int, col: int) -> bool:
         """
         Send a move to the server
-        向服务器发送落子信息
+        鍚戞湇鍔″櫒鍙戦€佽惤瀛愪俊鎭?
         
         Args:
-            row: Row number (行号)
-            col: Column number (列号)
+            row: Row number (琛屽彿)
+            col: Column number (鍒楀彿)
         
         Returns:
             bool: True if move was sent successfully
@@ -187,11 +187,11 @@ class NetworkManager:
     def register_callback(self, event_type: str, callback: Callable):
         """
         Register a callback function for network events
-        注册网络事件的回调函数
+        娉ㄥ唽缃戠粶浜嬩欢鐨勫洖璋冨嚱鏁?
         
         Args:
-            event_type: Event type (事件类型)
-            callback: Callback function (回调函数)
+            event_type: Event type (浜嬩欢绫诲瀷)
+            callback: Callback function (鍥炶皟鍑芥暟)
         """
         self.callbacks[event_type] = callback
         logger.debug(i18n.get('callback_registered', event_type))
@@ -199,10 +199,10 @@ class NetworkManager:
     def send_message(self, message: Dict):
         """
         Send a message to the server
-        向服务器发送消息
+        鍚戞湇鍔″櫒鍙戦€佹秷鎭?
         
         Args:
-            message: Message to send (要发送的消息)
+            message: Message to send (瑕佸彂閫佺殑娑堟伅)
         """
         if self.connected:
             self.send_queue.put(message)
@@ -210,7 +210,7 @@ class NetworkManager:
     def _receive_loop(self):
         """
         Background thread for receiving messages
-        接收消息的后台线程
+        鎺ユ敹娑堟伅鐨勫悗鍙扮嚎绋?
         """
         while self.connected:
             try:
@@ -243,7 +243,7 @@ class NetworkManager:
     def _send_loop(self):
         """
         Background thread for sending messages
-        发送消息的后台线程
+        鍙戦€佹秷鎭殑鍚庡彴绾跨▼
         """
         while self.connected:
             try:

@@ -1,1 +1,36 @@
- 
+# 这个文件定义了代码的所有者，用于自动分配审阅者
+# This file defines code owners, used for automatic reviewer assignment
+
+# 默认所有者
+# Default owners for everything in the repo
+*       @nighm
+
+# 核心游戏逻辑
+# Core game logic
+/src/gomoku_world/core/    @nighm
+
+# AI相关代码
+# AI related code
+/src/gomoku_world/core/ai/ @nighm
+
+# 网络相关代码
+# Network related code
+/src/gomoku_world/network/ @nighm
+
+# GUI相关代码
+# GUI related code
+/src/gomoku_world/gui/     @nighm
+
+# 测试代码
+# Test code
+/tests/                    @nighm
+
+# 文档
+# Documentation
+/docs/                     @nighm
+*.md                      @nighm
+
+# 构建和部署配置
+# Build and deployment configuration
+/ci/                      @nighm
+/deployment/              @nighm 

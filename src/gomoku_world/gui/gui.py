@@ -1,6 +1,6 @@
 """
 Gomoku game GUI module
-五子棋游戏GUI模块
+浜斿瓙妫嬫父鎴廏UI妯″潡
 """
 
 from .gui.main_window import GomokuGUI

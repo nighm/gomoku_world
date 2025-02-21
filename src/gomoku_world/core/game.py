@@ -1,12 +1,12 @@
 """
 Core game logic
-核心游戏逻辑
+鏍稿績娓告垙閫昏緫
 """
 
 from typing import Optional, Tuple, List
 from dataclasses import dataclass
 
-# 使用相对导入
+# 浣跨敤鐩稿瀵煎叆
 from .board import Board
 from .rules import Rules
 from .ai import AI
@@ -18,7 +18,7 @@ logger = get_logger(__name__)
 class Move:
     """
     Represents a game move
-    表示一个游戏移动
+    琛ㄧず涓€涓父鎴忕Щ鍔?
     """
     row: int
     col: int
@@ -27,13 +27,13 @@ class Move:
 class Game:
     """
     Main game logic class
-    主游戏逻辑类
+    涓绘父鎴忛€昏緫绫?
     """
     
     def __init__(self, board_size: int = 15, game_mode: str = "pvp"):
         """
         Initialize game
-        初始化游戏
+        鍒濆鍖栨父鎴?
         
         Args:
             board_size: Size of the game board (default: 15)
@@ -52,7 +52,7 @@ class Game:
     def make_move(self, row: int, col: int) -> bool:
         """
         Make a move on the board
-        在棋盘上落子
+        鍦ㄦ鐩樹笂钀藉瓙
         
         Args:
             row: Row number
@@ -97,7 +97,7 @@ class Game:
     def _make_ai_move(self) -> bool:
         """
         Make AI move
-        执行AI移动
+        鎵цAI绉诲姩
         
         Returns:
             bool: True if move was successful
@@ -132,7 +132,7 @@ class Game:
     def undo_move(self) -> Optional[Move]:
         """
         Undo the last move
-        撤销最后一步
+        鎾ら攢鏈€鍚庝竴姝?
         
         Returns:
             Optional[Move]: The move that was undone, or None if no moves to undo
@@ -164,7 +164,7 @@ class Game:
     def get_valid_moves(self) -> List[Tuple[int, int]]:
         """
         Get all valid moves
-        获取所有有效的移动
+        鑾峰彇鎵€鏈夋湁鏁堢殑绉诲姩
         
         Returns:
             List[Tuple[int, int]]: List of valid move coordinates
@@ -174,7 +174,7 @@ class Game:
     def reset(self):
         """
         Reset the game to initial state
-        重置游戏到初始状态
+        閲嶇疆娓告垙鍒板垵濮嬬姸鎬?
         """
         self.board.clear()
         self.current_player = 1
@@ -186,7 +186,7 @@ class Game:
     def set_game_mode(self, mode: str):
         """
         Set game mode
-        设置游戏模式
+        璁剧疆娓告垙妯″紡
         
         Args:
             mode: Game mode (pvp/pvc)
@@ -201,7 +201,7 @@ class Game:
     def set_ai_difficulty(self, difficulty: str):
         """
         Set AI difficulty
-        设置AI难度
+        璁剧疆AI闅惧害
         
         Args:
             difficulty: AI difficulty level

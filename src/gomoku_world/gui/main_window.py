@@ -1,6 +1,6 @@
 """
 Main window implementation for the Gomoku World game
-五子棋世界游戏的主窗口实现
+浜斿瓙妫嬩笘鐣屾父鎴忕殑涓荤獥鍙ｅ疄鐜?
 """
 
 import sys
@@ -9,7 +9,7 @@ from tkinter import ttk, messagebox
 from typing import Optional, Tuple, List
 import asyncio
 
-# 使用相对导入
+# 浣跨敤鐩稿瀵煎叆
 from ..core.game import Game
 from ..utils.logger import get_logger
 from ..utils.resources import resource_manager
@@ -26,13 +26,13 @@ logger = get_logger(__name__)
 class GomokuGUI:
     """
     Main window class for the Gomoku World game
-    五子棋世界游戏的主窗口类
+    浜斿瓙妫嬩笘鐣屾父鎴忕殑涓荤獥鍙ｇ被
     """
     
     def __init__(self):
         """
         Initialize the main window
-        初始化主窗口
+        鍒濆鍖栦富绐楀彛
         """
         self.root = tk.Tk()
         self.root.title(resource_manager.get_text("game.title"))
@@ -56,7 +56,7 @@ class GomokuGUI:
     def _apply_theme(self):
         """
         Apply current theme
-        应用当前主题
+        搴旂敤褰撳墠涓婚
         """
         theme = resource_manager.get_theme()
         style = ttk.Style()
@@ -72,7 +72,7 @@ class GomokuGUI:
     def _create_widgets(self):
         """
         Create all GUI widgets
-        创建所有GUI组件
+        鍒涘缓鎵€鏈塆UI缁勪欢
         """
         # Create menu bar
         self.menu_bar = MenuBar(self.root, self)
@@ -107,7 +107,7 @@ class GomokuGUI:
     def _setup_layout(self):
         """
         Setup the layout of all widgets
-        设置所有组件的布局
+        璁剧疆鎵€鏈夌粍浠剁殑甯冨眬
         """
         # Setup main frame
         self.main_frame.pack(expand=True, fill=tk.BOTH, padx=5, pady=5)
@@ -129,7 +129,7 @@ class GomokuGUI:
     def new_game(self):
         """
         Start a new game
-        开始新游戏
+        寮€濮嬫柊娓告垙
         """
         self.game.reset()
         self.board_canvas.redraw()
@@ -140,7 +140,7 @@ class GomokuGUI:
     def undo_move(self):
         """
         Undo the last move
-        撤销最后一步
+        鎾ら攢鏈€鍚庝竴姝?
         """
         if self.game.undo_move():
             self.board_canvas.redraw()
@@ -155,7 +155,7 @@ class GomokuGUI:
     def handle_click(self, row: int, col: int):
         """
         Handle mouse click on the board
-        处理棋盘上的鼠标点击
+        澶勭悊妫嬬洏涓婄殑榧犳爣鐐瑰嚮
         
         Args:
             row: Row number
@@ -291,7 +291,7 @@ class GomokuGUI:
     def run(self):
         """
         Start the main event loop
-        启动主事件循环
+        鍚姩涓讳簨浠跺惊鐜?
         """
         logger.info("Starting main event loop")
         self.root.mainloop()

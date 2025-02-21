@@ -1,6 +1,6 @@
 """
 Main entry point for the Gomoku World game
-五子棋世界游戏的主入口点
+浜斿瓙妫嬩笘鐣屾父鎴忕殑涓诲叆鍙ｇ偣
 """
 
 import sys
@@ -14,7 +14,7 @@ from .config import LOG_DIR
 def main():
     """
     Main entry point
-    主入口点
+    涓诲叆鍙ｇ偣
     """
     # Setup logging
     setup_logging()

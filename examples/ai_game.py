@@ -1,6 +1,6 @@
 """
 AI game example
-AI对战示例
+AI瀵规垬绀轰緥
 """
 
 from gomoku_world.core import Board, Rules, AI

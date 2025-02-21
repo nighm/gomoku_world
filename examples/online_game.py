@@ -1,6 +1,6 @@
 """
 Online game example
-在线对战示例
+鍦ㄧ嚎瀵规垬绀轰緥
 """
 
 import asyncio

@@ -1,6 +1,6 @@
 """
 Configuration module for the Gomoku game.
-五子棋游戏配置模块
+浜斿瓙妫嬫父鎴忛厤缃ā鍧?
 """
 
 import json
@@ -14,39 +14,39 @@ logger = logging.getLogger(__name__)
 class Config:
     """
     Configuration manager class
-    配置管理器类
+    閰嶇疆绠＄悊鍣ㄧ被
     """
     
     DEFAULT_CONFIG = {
         'game': {
-            'board_size': 15,          # Board size (棋盘大小)
-            'win_condition': 5,        # Number of pieces to win (获胜条件)
-            'ai_enabled': False,       # Enable AI opponent (启用AI对手)
-            'ai_difficulty': 'medium', # AI difficulty (AI难度)
-            'network_mode': False,     # Enable network play (启用网络对战)
+            'board_size': 15,          # Board size (妫嬬洏澶у皬)
+            'win_condition': 5,        # Number of pieces to win (鑾疯儨鏉′欢)
+            'ai_enabled': False,       # Enable AI opponent (鍚敤AI瀵规墜)
+            'ai_difficulty': 'medium', # AI difficulty (AI闅惧害)
+            'network_mode': False,     # Enable network play (鍚敤缃戠粶瀵规垬)
         },
         'display': {
-            'window_size': 800,        # Window size in pixels (窗口大小)
-            'show_coordinates': True,  # Show board coordinates (显示坐标)
-            'highlight_last': True,    # Highlight last move (高亮最后一手)
-            'theme': 'classic',        # UI theme (界面主题)
-            'language': 'zh',          # Interface language (界面语言)
+            'window_size': 800,        # Window size in pixels (绐楀彛澶у皬)
+            'show_coordinates': True,  # Show board coordinates (鏄剧ず鍧愭爣)
+            'highlight_last': True,    # Highlight last move (楂樹寒鏈€鍚庝竴鎵?
+            'theme': 'classic',        # UI theme (鐣岄潰涓婚)
+            'language': 'zh',          # Interface language (鐣岄潰璇█)
         },
         'sound': {
-            'enabled': True,           # Enable sound effects (启用音效)
-            'volume': 50,              # Sound volume (音量)
-            'music_enabled': True,     # Enable background music (启用背景音乐)
-            'music_volume': 30,        # Music volume (音乐音量)
+            'enabled': True,           # Enable sound effects (鍚敤闊虫晥)
+            'volume': 50,              # Sound volume (闊抽噺)
+            'music_enabled': True,     # Enable background music (鍚敤鑳屾櫙闊充箰)
+            'music_volume': 30,        # Music volume (闊充箰闊抽噺)
         },
         'debug': {
-            'enabled': False,          # Enable debug mode (启用调试模式)
-            'show_fps': False,         # Show FPS counter (显示帧率)
-            'log_level': 'INFO',       # Logging level (日志级别)
+            'enabled': False,          # Enable debug mode (鍚敤璋冭瘯妯″紡)
+            'show_fps': False,         # Show FPS counter (鏄剧ず甯х巼)
+            'log_level': 'INFO',       # Logging level (鏃ュ織绾у埆)
         },
         'network': {
-            'server': 'localhost',     # Server address (服务器地址)
-            'port': 5000,             # Server port (服务器端口)
-            'username': '',           # Player username (玩家用户名)
+            'server': 'localhost',     # Server address (鏈嶅姟鍣ㄥ湴鍧€)
+            'port': 5000,             # Server port (鏈嶅姟鍣ㄧ鍙?
+            'username': '',           # Player username (鐜╁鐢ㄦ埛鍚?
         }
     }
     
@@ -62,7 +62,7 @@ class Config:
     def load_config(self) -> bool:
         """
         Load configuration from file
-        从文件加载配置
+        浠庢枃浠跺姞杞介厤缃?
         
         Returns:
             bool: True if loaded successfully
@@ -81,7 +81,7 @@ class Config:
     def save_config(self) -> bool:
         """
         Save configuration to file
-        保存配置到文件
+        淇濆瓨閰嶇疆鍒版枃浠?
         
         Returns:
             bool: True if saved successfully
@@ -99,15 +99,15 @@ class Config:
     def get(self, section: str, key: str, default: Any = None) -> Any:
         """
         Get configuration value
-        获取配置值
+        鑾峰彇閰嶇疆鍊?
         
         Args:
-            section: Configuration section (配置部分)
-            key: Configuration key (配置键)
-            default: Default value if not found (默认值)
+            section: Configuration section (閰嶇疆閮ㄥ垎)
+            key: Configuration key (閰嶇疆閿?
+            default: Default value if not found (榛樿鍊?
         
         Returns:
-            Configuration value (配置值)
+            Configuration value (閰嶇疆鍊?
         """
         try:
             return self.config[section][key]
@@ -118,12 +118,12 @@ class Config:
     def set(self, section: str, key: str, value: Any) -> bool:
         """
         Set configuration value
-        设置配置值
+        璁剧疆閰嶇疆鍊?
         
         Args:
-            section: Configuration section (配置部分)
-            key: Configuration key (配置键)
-            value: Configuration value (配置值)
+            section: Configuration section (閰嶇疆閮ㄥ垎)
+            key: Configuration key (閰嶇疆閿?
+            value: Configuration value (閰嶇疆鍊?
         
         Returns:
             bool: True if set successfully
@@ -141,10 +141,10 @@ class Config:
     def _merge_config(self, saved_config: Dict[str, Any]):
         """
         Merge saved configuration with defaults
-        合并保存的配置与默认配置
+        鍚堝苟淇濆瓨鐨勯厤缃笌榛樿閰嶇疆
         
         Args:
-            saved_config: Saved configuration (保存的配置)
+            saved_config: Saved configuration (淇濆瓨鐨勯厤缃?
         """
         for section, values in saved_config.items():
             if section in self.config:

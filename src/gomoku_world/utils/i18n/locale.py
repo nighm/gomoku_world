@@ -1,4 +1,4 @@
 """
 Locale manager implementation
-本地化管理器实现
+鏈湴鍖栫鐞嗗櫒瀹炵幇
 """ 

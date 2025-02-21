@@ -1,12 +1,12 @@
 """
 Board canvas implementation
-棋盘画布实现
+妫嬬洏鐢诲竷瀹炵幇
 """
 
 import tkinter as tk
 from typing import Optional, Tuple
 
-# 使用相对导入
+# 浣跨敤鐩稿瀵煎叆
 from ..core.game import Game
 from ..utils.logger import get_logger
 
@@ -15,13 +15,13 @@ logger = get_logger(__name__)
 class BoardCanvas(tk.Canvas):
     """
     Canvas for drawing the game board
-    用于绘制游戏棋盘的画布
+    鐢ㄤ簬缁樺埗娓告垙妫嬬洏鐨勭敾甯?
     """
     
     def __init__(self, parent, game: Game):
         """
         Initialize the board canvas
-        初始化棋盘画布
+        鍒濆鍖栨鐩樼敾甯?
         
         Args:
             parent: Parent widget
@@ -46,7 +46,7 @@ class BoardCanvas(tk.Canvas):
     def _resize_board(self):
         """
         Resize the board based on canvas size
-        根据画布大小调整棋盘
+        鏍规嵁鐢诲竷澶у皬璋冩暣妫嬬洏
         """
         width = self.winfo_width()
         height = self.winfo_height()
@@ -65,7 +65,7 @@ class BoardCanvas(tk.Canvas):
     def _on_resize(self, event):
         """
         Handle resize event
-        处理调整大小事件
+        澶勭悊璋冩暣澶у皬浜嬩欢
         
         Args:
             event: Resize event
@@ -75,7 +75,7 @@ class BoardCanvas(tk.Canvas):
     def _on_click(self, event):
         """
         Handle mouse click event
-        处理鼠标点击事件
+        澶勭悊榧犳爣鐐瑰嚮浜嬩欢
         
         Args:
             event: Mouse event
@@ -97,7 +97,7 @@ class BoardCanvas(tk.Canvas):
     def _draw_grid(self):
         """
         Draw the board grid
-        绘制棋盘网格
+        缁樺埗妫嬬洏缃戞牸
         """
         # Clear canvas
         self.delete('all')
@@ -146,7 +146,7 @@ class BoardCanvas(tk.Canvas):
     def _draw_pieces(self):
         """
         Draw all pieces on the board
-        绘制棋盘上的所有棋子
+        缁樺埗妫嬬洏涓婄殑鎵€鏈夋瀛?
         """
         for row in range(self.game.board.size):
             for col in range(self.game.board.size):
@@ -169,7 +169,7 @@ class BoardCanvas(tk.Canvas):
     def redraw(self):
         """
         Redraw the entire board
-        重新绘制整个棋盘
+        閲嶆柊缁樺埗鏁翠釜妫嬬洏
         """
         self._draw_grid()
         self._draw_pieces()

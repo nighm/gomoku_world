@@ -1,6 +1,6 @@
 """
 Basic game example
-基本游戏示例
+鍩烘湰娓告垙绀轰緥
 """
 
 from gomoku_world.core import Board, Rules

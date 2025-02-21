@@ -1,6 +1,6 @@
 """
 Settings menu for the Gomoku game
-五子棋游戏设置菜单
+浜斿瓙妫嬫父鎴忚缃彍鍗?
 """
 
 import pygame
@@ -15,29 +15,29 @@ logger = logging.getLogger(__name__)
 class SettingsMenu:
     """
     Settings menu interface
-    设置菜单界面
+    璁剧疆鑿滃崟鐣岄潰
     """
     
     def __init__(self, screen: pygame.Surface):
         """
         Initialize settings menu
-        初始化设置菜单
+        鍒濆鍖栬缃彍鍗?
         
         Args:
-            screen: Pygame surface to draw on (pygame绘制表面)
+            screen: Pygame surface to draw on (pygame缁樺埗琛ㄩ潰)
         """
         self.screen = screen
         self.rect = pygame.Rect(0, 0, 400, 500)
         self.rect.center = (screen.get_width() // 2, screen.get_height() // 2)
         
         # Create buttons
-        # 创建按钮
+        # 鍒涘缓鎸夐挳
         button_width = 300
         button_height = 40
         button_margin = 20
         
         # Volume slider
-        # 音量滑块
+        # 闊抽噺婊戝潡
         self.volume_rect = pygame.Rect(
             self.rect.left + 50,
             self.rect.top + 100,
@@ -46,7 +46,7 @@ class SettingsMenu:
         )
         
         # Language selection
-        # 语言选择
+        # 璇█閫夋嫨
         self.language_buttons = {
             'en': Button(
                 pygame.Rect(
@@ -64,12 +64,12 @@ class SettingsMenu:
                     button_width // 2 - 10,
                     button_height
                 ),
-                "中文"
+                "涓枃"
             )
         }
         
         # Theme selection
-        # 主题选择
+        # 涓婚閫夋嫨
         self.theme_buttons = {
             'classic': Button(
                 pygame.Rect(
@@ -101,7 +101,7 @@ class SettingsMenu:
         }
         
         # Save and cancel buttons
-        # 保存和取消按钮
+        # 淇濆瓨鍜屽彇娑堟寜閽?
         self.save_button = Button(
             pygame.Rect(
                 self.rect.left + 50,
@@ -123,7 +123,7 @@ class SettingsMenu:
         )
         
         # Current settings
-        # 当前设置
+        # 褰撳墠璁剧疆
         self.current_settings = {
             'volume': 0.7,
             'language': 'en',
@@ -133,18 +133,18 @@ class SettingsMenu:
     def draw(self, mouse_pos: Tuple[int, int]):
         """
         Draw the settings menu
-        绘制设置菜单
+        缁樺埗璁剧疆鑿滃崟
         
         Args:
-            mouse_pos: Current mouse position (当前鼠标位置)
+            mouse_pos: Current mouse position (褰撳墠榧犳爣浣嶇疆)
         """
         # Draw background
-        # 绘制背景
+        # 缁樺埗鑳屾櫙
         pygame.draw.rect(self.screen, theme.get_color('menu_bg'), self.rect)
         pygame.draw.rect(self.screen, theme.get_color('border'), self.rect, 2)
         
         # Draw title
-        # 绘制标题
+        # 缁樺埗鏍囬
         try:
             title_font = pygame.font.Font("C:\\Windows\\Fonts\\simhei.ttf", 24)
         except:
@@ -155,7 +155,7 @@ class SettingsMenu:
         self.screen.blit(title, title_rect)
         
         # Draw volume slider
-        # 绘制音量滑块
+        # 缁樺埗闊抽噺婊戝潡
         volume_label = title_font.render(i18n.get_bilingual("settings.volume"), True, theme.get_color('text'))
         self.screen.blit(volume_label, (self.volume_rect.left, self.volume_rect.top - 30))
         pygame.draw.rect(self.screen, theme.get_color('button'), self.volume_rect)
@@ -166,17 +166,17 @@ class SettingsMenu:
                                   self.volume_rect.height))
         
         # Draw language label
-        # 绘制语言标签
+        # 缁樺埗璇█鏍囩
         lang_label = title_font.render(i18n.get_bilingual("settings.language"), True, theme.get_color('text'))
         self.screen.blit(lang_label, (self.language_buttons['en'].rect.left, self.language_buttons['en'].rect.top - 30))
         
         # Draw theme label
-        # 绘制主题标签
+        # 缁樺埗涓婚鏍囩
         theme_label = title_font.render(i18n.get_bilingual("settings.theme"), True, theme.get_color('text'))
         self.screen.blit(theme_label, (self.theme_buttons['classic'].rect.left, self.theme_buttons['classic'].rect.top - 30))
         
         # Draw buttons
-        # 绘制按钮
+        # 缁樺埗鎸夐挳
         for button in self.language_buttons.values():
             button.draw(self.screen, mouse_pos)
         
@@ -189,27 +189,27 @@ class SettingsMenu:
     def handle_event(self, event: pygame.event.Event) -> bool:
         """
         Handle settings menu events
-        处理设置菜单事件
+        澶勭悊璁剧疆鑿滃崟浜嬩欢
         
         Args:
-            event: Pygame event (pygame事件)
+            event: Pygame event (pygame浜嬩欢)
         
         Returns:
-            bool: True if settings menu should close (如果设置菜单应该关闭则返回True)
+            bool: True if settings menu should close (濡傛灉璁剧疆鑿滃崟搴旇鍏抽棴鍒欒繑鍥濼rue)
         """
         if event.type == pygame.MOUSEBUTTONDOWN:
             if event.button == 1:  # Left click
                 mouse_pos = pygame.mouse.get_pos()
                 
                 # Handle volume slider
-                # 处理音量滑块
+                # 澶勭悊闊抽噺婊戝潡
                 if self.volume_rect.collidepoint(mouse_pos):
                     self.current_settings['volume'] = (mouse_pos[0] - self.volume_rect.left) / self.volume_rect.width
                     self.current_settings['volume'] = max(0, min(1, self.current_settings['volume']))
                     return False
                 
                 # Handle language buttons
-                # 处理语言按钮
+                # 澶勭悊璇█鎸夐挳
                 for lang, button in self.language_buttons.items():
                     if button.rect.collidepoint(mouse_pos):
                         self.current_settings['language'] = lang
@@ -217,7 +217,7 @@ class SettingsMenu:
                         return False
                 
                 # Handle theme buttons
-                # 处理主题按钮
+                # 澶勭悊涓婚鎸夐挳
                 for theme_name, button in self.theme_buttons.items():
                     if button.rect.collidepoint(mouse_pos):
                         self.current_settings['theme'] = theme_name
@@ -225,7 +225,7 @@ class SettingsMenu:
                         return False
                 
                 # Handle save/cancel
-                # 处理保存/取消
+                # 澶勭悊淇濆瓨/鍙栨秷
                 if self.save_button.rect.collidepoint(mouse_pos):
                     self.save_settings()
                     return True
@@ -238,8 +238,8 @@ class SettingsMenu:
     def save_settings(self):
         """
         Save current settings
-        保存当前设置
+        淇濆瓨褰撳墠璁剧疆
         """
         # TODO: Implement settings save
-        # TODO: 实现设置保存
+        # TODO: 瀹炵幇璁剧疆淇濆瓨
         pass 

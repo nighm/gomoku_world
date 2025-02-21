@@ -1,6 +1,6 @@
 """
 Sound management module
-声音管理模块
+澹伴煶绠＄悊妯″潡
 """
 
 import os
@@ -16,7 +16,7 @@ logger = get_logger(__name__)
 class SoundManager:
     """
     Manages game sounds and music
-    管理游戏音效和音乐
+    绠＄悊娓告垙闊虫晥鍜岄煶涔?
     """
     
     def __init__(self):
@@ -58,7 +58,7 @@ class SoundManager:
     def play(self, sound_name: str):
         """
         Play a sound effect
-        播放音效
+        鎾斁闊虫晥
         
         Args:
             sound_name: Name of the sound to play
@@ -79,7 +79,7 @@ class SoundManager:
     def set_enabled(self, enabled: bool):
         """
         Enable or disable sounds
-        启用或禁用声音
+        鍚敤鎴栫鐢ㄥ０闊?
         
         Args:
             enabled: Whether sounds should be enabled
@@ -90,7 +90,7 @@ class SoundManager:
     def set_volume(self, volume: float):
         """
         Set sound volume
-        设置音量
+        璁剧疆闊抽噺
         
         Args:
             volume: Volume level (0.0 to 1.0)

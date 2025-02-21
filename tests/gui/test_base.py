@@ -1,6 +1,6 @@
 """
 Base test class for GUI components
-GUI组件测试基类
+GUI缁勪欢娴嬭瘯鍩虹被
 """
 
 import unittest

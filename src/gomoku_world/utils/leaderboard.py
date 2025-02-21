@@ -1,6 +1,6 @@
 """
 Leaderboard implementation
-排行榜实现
+鎺掕姒滃疄鐜?
 """
 
 import json
@@ -33,7 +33,7 @@ class PlayerStats:
 class LeaderboardManager:
     """
     Manages player rankings and statistics
-    管理玩家排名和统计
+    绠＄悊鐜╁鎺掑悕鍜岀粺璁?
     """
     
     def __init__(self):
@@ -72,7 +72,7 @@ class LeaderboardManager:
     def get_player_stats(self, player_id: str) -> Optional[PlayerStats]:
         """
         Get player statistics
-        获取玩家统计信息
+        鑾峰彇鐜╁缁熻淇℃伅
         
         Args:
             player_id: Player ID
@@ -85,7 +85,7 @@ class LeaderboardManager:
     def update_player_stats(self, player_id: str, name: str, game_result: str):
         """
         Update player statistics after a game
-        更新玩家游戏后的统计信息
+        鏇存柊鐜╁娓告垙鍚庣殑缁熻淇℃伅
         
         Args:
             player_id: Player ID
@@ -132,7 +132,7 @@ class LeaderboardManager:
     def get_leaderboard(self, limit: int = 10) -> List[Dict]:
         """
         Get current leaderboard
-        获取当前排行榜
+        鑾峰彇褰撳墠鎺掕姒?
         
         Args:
             limit: Maximum number of players to return
@@ -161,7 +161,7 @@ class LeaderboardManager:
     def get_top_players(self, category: str = "rating", limit: int = 10) -> List[Dict]:
         """
         Get top players by category
-        按类别获取顶尖玩家
+        鎸夌被鍒幏鍙栭《灏栫帺瀹?
         
         Args:
             category: Ranking category (rating/wins/streak)
@@ -197,7 +197,7 @@ class LeaderboardManager:
     def get_active_players(self, days: int = 7) -> List[Dict]:
         """
         Get recently active players
-        获取最近活跃的玩家
+        鑾峰彇鏈€杩戞椿璺冪殑鐜╁
         
         Args:
             days: Number of days to look back
@@ -225,7 +225,7 @@ class LeaderboardManager:
                               result: str) -> int:
         """
         Calculate rating change after a game
-        计算游戏后的等级变化
+        璁＄畻娓告垙鍚庣殑绛夌骇鍙樺寲
         
         Args:
             player_rating: Player's current rating

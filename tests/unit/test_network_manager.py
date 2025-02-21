@@ -1,6 +1,6 @@
 """
 Network manager unit tests
-网络管理器单元测试
+缃戠粶绠＄悊鍣ㄥ崟鍏冩祴璇?
 """
 
 import pytest

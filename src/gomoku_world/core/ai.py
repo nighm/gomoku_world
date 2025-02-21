@@ -1,6 +1,6 @@
 """
 AI implementation for Gomoku
-五子棋AI实现
+浜斿瓙妫婣I瀹炵幇
 """
 
 import time
@@ -17,13 +17,13 @@ logger = get_logger(__name__)
 class AI:
     """
     AI player implementation using MinMax algorithm with alpha-beta pruning
-    使用带有alpha-beta剪枝的MinMax算法的AI玩家实现
+    浣跨敤甯︽湁alpha-beta鍓灊鐨凪inMax绠楁硶鐨凙I鐜╁瀹炵幇
     """
     
     def __init__(self, difficulty: str = "medium"):
         """
         Initialize AI player
-        初始化AI玩家
+        鍒濆鍖朅I鐜╁
         
         Args:
             difficulty: AI difficulty level (easy/medium/hard)
@@ -44,7 +44,7 @@ class AI:
     def get_move(self, board: Board, player: int) -> Tuple[int, int]:
         """
         Get the best move for the current position
-        获取当前位置的最佳移动
+        鑾峰彇褰撳墠浣嶇疆鐨勬渶浣崇Щ鍔?
         
         Args:
             board: Current board state

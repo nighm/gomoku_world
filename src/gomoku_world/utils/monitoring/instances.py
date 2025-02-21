@@ -1,6 +1,6 @@
 """
 Global instances for monitoring
-监控全局实例
+鐩戞帶鍏ㄥ眬瀹炰緥
 """
 
 from .metrics import MetricsCollector

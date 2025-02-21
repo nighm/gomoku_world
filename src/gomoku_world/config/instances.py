@@ -1,6 +1,6 @@
 """
 Global instances for configuration
-配置全局实例
+閰嶇疆鍏ㄥ眬瀹炰緥
 """
 
 from .manager import ConfigManager

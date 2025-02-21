@@ -1,6 +1,6 @@
 """
 Configuration manager unit tests
-配置管理器单元测试
+閰嶇疆绠＄悊鍣ㄥ崟鍏冩祴璇?
 """
 
 import pytest

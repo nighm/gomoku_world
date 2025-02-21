@@ -1,12 +1,12 @@
 """
-Unit tests for the Button component
-按钮组件单元测试
+Button GUI component tests
+鎸夐挳GUI缁勪欢娴嬭瘯
 """
 
 import unittest
 import pygame
-from src.gui.button import Button
-from src.theme import theme
+from gomoku_world.gui.button import Button
+from gomoku_world.theme import theme
 from tests.gui.test_base import GUITestCase
 
 class TestButton(GUITestCase):

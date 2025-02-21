@@ -1,13 +1,13 @@
 """
 Global configuration module
-全局配置模块
+鍏ㄥ眬閰嶇疆妯″潡
 """
 
 from pathlib import Path
 
 # Package information
 PACKAGE_NAME = "Gomoku World"
-VERSION = "1.0.0"
+VERSION = "1.1.0"
 
 # Directory paths
 ROOT_DIR = Path(__file__).parent.parent.parent.parent

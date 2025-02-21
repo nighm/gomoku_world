@@ -1,4 +1,4 @@
 """
 GUI tests package
-GUI测试包
+GUI娴嬭瘯鍖?
 """ 

@@ -1,6 +1,6 @@
 """
 AI strategy implementations
-AI策略实现
+AI绛栫暐瀹炵幇
 """
 
 import math
@@ -16,7 +16,7 @@ logger = get_logger(__name__)
 class MinMaxStrategy:
     """
     MinMax strategy with alpha-beta pruning
-    具有alpha-beta剪枝的MinMax策略
+    鍏锋湁alpha-beta鍓灊鐨凪inMax绛栫暐
     """
     
     def __init__(self):
@@ -27,7 +27,7 @@ class MinMaxStrategy:
     def get_move(self, board: Board, player: int, depth: int) -> Tuple[int, int]:
         """
         Get best move using MinMax algorithm
-        使用MinMax算法获取最佳移动
+        浣跨敤MinMax绠楁硶鑾峰彇鏈€浣崇Щ鍔?
         
         Args:
             board: Current game board
@@ -84,7 +84,7 @@ class MinMaxStrategy:
                  maximizing: bool, player: int) -> float:
         """
         MinMax algorithm with alpha-beta pruning
-        具有alpha-beta剪枝的MinMax算法
+        鍏锋湁alpha-beta鍓灊鐨凪inMax绠楁硶
         
         Args:
             board: Current game board
@@ -130,14 +130,14 @@ class MinMaxStrategy:
 class MCTSNode:
     """
     Monte Carlo Tree Search node
-    蒙特卡洛树搜索节点
+    钂欑壒鍗℃礇鏍戞悳绱㈣妭鐐?
     """
     
     def __init__(self, board: Board, parent: Optional['MCTSNode'] = None,
                  move: Optional[Tuple[int, int]] = None, player: int = 1):
         """
         Initialize MCTS node
-        初始化MCTS节点
+        鍒濆鍖朚CTS鑺傜偣
         
         Args:
             board: Game board
@@ -157,7 +157,7 @@ class MCTSNode:
     def uct_value(self, c: float = 1.41) -> float:
         """
         Calculate UCT value for node selection
-        计算节点选择的UCT值
+        璁＄畻鑺傜偣閫夋嫨鐨刄CT鍊?
         
         Args:
             c: Exploration parameter
@@ -173,7 +173,7 @@ class MCTSNode:
     def add_child(self, move: Tuple[int, int], board: Board) -> 'MCTSNode':
         """
         Add child node
-        添加子节点
+        娣诲姞瀛愯妭鐐?
         
         Args:
             move: Move to create child from
@@ -195,7 +195,7 @@ class MCTSNode:
     def update(self, result: float):
         """
         Update node statistics
-        更新节点统计信息
+        鏇存柊鑺傜偣缁熻淇℃伅
         
         Args:
             result: Game result (1 for win, 0 for loss)
@@ -207,13 +207,13 @@ class MCTSNode:
 class MCTSStrategy:
     """
     Monte Carlo Tree Search strategy
-    蒙特卡洛树搜索策略
+    钂欑壒鍗℃礇鏍戞悳绱㈢瓥鐣?
     """
     
     def __init__(self, simulation_time: float = 1.0):
         """
         Initialize MCTS strategy
-        初始化MCTS策略
+        鍒濆鍖朚CTS绛栫暐
         
         Args:
             simulation_time: Time limit for simulations in seconds
@@ -224,7 +224,7 @@ class MCTSStrategy:
     def get_move(self, board: Board, player: int) -> Tuple[int, int]:
         """
         Get best move using MCTS
-        使用MCTS获取最佳移动
+        浣跨敤MCTS鑾峰彇鏈€浣崇Щ鍔?
         
         Args:
             board: Current game board
@@ -252,7 +252,7 @@ class MCTSStrategy:
     def _select(self, node: MCTSNode) -> MCTSNode:
         """
         Select promising node to explore
-        选择有希望的节点进行探索
+        閫夋嫨鏈夊笇鏈涚殑鑺傜偣杩涜鎺㈢储
         
         Args:
             node: Starting node
@@ -267,7 +267,7 @@ class MCTSStrategy:
     def _expand(self, node: MCTSNode) -> MCTSNode:
         """
         Expand node by adding a child
-        通过添加子节点来扩展节点
+        閫氳繃娣诲姞瀛愯妭鐐规潵鎵╁睍鑺傜偣
         
         Args:
             node: Node to expand
@@ -283,7 +283,7 @@ class MCTSStrategy:
     def _simulate(self, node: MCTSNode) -> float:
         """
         Run simulation from node
-        从节点运行模拟
+        浠庤妭鐐硅繍琛屾ā鎷?
         
         Args:
             node: Starting node
@@ -312,7 +312,7 @@ class MCTSStrategy:
     def _backpropagate(self, node: MCTSNode, result: float):
         """
         Backpropagate simulation result
-        反向传播模拟结果
+        鍙嶅悜浼犳挱妯℃嫙缁撴灉
         
         Args:
             node: Starting node

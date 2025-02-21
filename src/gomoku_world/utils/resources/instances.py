@@ -1,6 +1,6 @@
 """
 Global instances for resource management
-资源管理全局实例
+璧勬簮绠＄悊鍏ㄥ眬瀹炰緥
 """
 
 from .manager import ResourceManager

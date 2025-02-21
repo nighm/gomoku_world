@@ -1,6 +1,6 @@
 """
 Platform-specific implementations
-平台特定实现
+骞冲彴鐗瑰畾瀹炵幇
 """
 
 import platform
@@ -27,7 +27,7 @@ __all__ = [
 def get_platform() -> PlatformBase:
     """
     Get appropriate platform implementation
-    获取适当的平台实现
+    鑾峰彇閫傚綋鐨勫钩鍙板疄鐜?
     
     Returns:
         PlatformBase: Platform-specific implementation
