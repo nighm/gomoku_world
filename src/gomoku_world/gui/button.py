@@ -55,7 +55,7 @@ class Button:
             mouse_pos: Current mouse position (褰撳墠榧犳爣浣嶇疆)
         """
         # Update hover state
-        # 鏇存柊鎮仠鐘舵€?
+        # 鏇存柊鎮仠鐘舵?
         self.is_hovered = self.rect.collidepoint(mouse_pos)
         
         # Draw button background

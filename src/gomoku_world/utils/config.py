@@ -28,7 +28,7 @@ class Config:
         'display': {
             'window_size': 800,        # Window size in pixels (绐楀彛澶у皬)
             'show_coordinates': True,  # Show board coordinates (鏄剧ず鍧愭爣)
-            'highlight_last': True,    # Highlight last move (楂樹寒鏈€鍚庝竴鎵?
+            'highlight_last': True,    # Highlight last move (楂樹寒鏈鍚庝竴鎵?
             'theme': 'classic',        # UI theme (鐣岄潰涓婚)
             'language': 'zh',          # Interface language (鐣岄潰璇█)
         },
@@ -44,7 +44,7 @@ class Config:
             'log_level': 'INFO',       # Logging level (鏃ュ織绾у埆)
         },
         'network': {
-            'server': 'localhost',     # Server address (鏈嶅姟鍣ㄥ湴鍧€)
+            'server': 'localhost',     # Server address (鏈嶅姟鍣ㄥ湴鍧)
             'port': 5000,             # Server port (鏈嶅姟鍣ㄧ鍙?
             'username': '',           # Player username (鐜╁鐢ㄦ埛鍚?
         }

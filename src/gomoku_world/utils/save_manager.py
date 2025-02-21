@@ -105,7 +105,7 @@ class SaveManager:
     def list_saves(self) -> List[Dict]:
         """
         List all saved games
-        鍒楀嚭鎵€鏈夊凡淇濆瓨鐨勬父鎴?
+        鍒楀嚭鎵鏈夊凡淇濆瓨鐨勬父鎴?
         
         Returns:
             List[Dict]: List of save info
@@ -197,7 +197,7 @@ class SaveManager:
     def auto_save(self, game_data: GameSave) -> bool:
         """
         Auto save current game state
-        鑷姩淇濆瓨褰撳墠娓告垙鐘舵€?
+        鑷姩淇濆瓨褰撳墠娓告垙鐘舵?
         
         Args:
             game_data: Current game data

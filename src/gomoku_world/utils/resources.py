@@ -105,7 +105,7 @@ class ResourceManager:
                     "game": "娓告垙",
                     "settings": "璁剧疆",
                     "help": "甯姪",
-                    "exit": "閫€鍑?
+                    "exit": "閫鍑?
                 }
             }
         }

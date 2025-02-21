@@ -197,7 +197,7 @@ class LeaderboardManager:
     def get_active_players(self, days: int = 7) -> List[Dict]:
         """
         Get recently active players
-        鑾峰彇鏈€杩戞椿璺冪殑鐜╁
+        鑾峰彇鏈杩戞椿璺冪殑鐜╁
         
         Args:
             days: Number of days to look back

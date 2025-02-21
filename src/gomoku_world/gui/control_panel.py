@@ -42,7 +42,7 @@ class ControlPanel(ttk.Frame):
     def _create_widgets(self):
         """
         Create all control widgets
-        鍒涘缓鎵€鏈夋帶鍒剁粍浠?
+        鍒涘缓鎵鏈夋帶鍒剁粍浠?
         """
         # Game control buttons
         self.new_game_btn = ttk.Button(
@@ -113,7 +113,7 @@ class ControlPanel(ttk.Frame):
     def _setup_layout(self):
         """
         Setup the layout of all widgets
-        璁剧疆鎵€鏈夌粍浠剁殑甯冨眬
+        璁剧疆鎵鏈夌粍浠剁殑甯冨眬
         """
         # Game control buttons
         self.new_game_btn.pack(fill=tk.X, padx=5, pady=5)
@@ -152,7 +152,7 @@ class ControlPanel(ttk.Frame):
     def _update_difficulty_state(self):
         """
         Update difficulty selection state
-        鏇存柊闅惧害閫夋嫨鐘舵€?
+        鏇存柊闅惧害閫夋嫨鐘舵?
         """
         state = 'normal' if self.mode_var.get() == 'pvc' else 'disabled'
         self.difficulty_frame.configure(state=state)

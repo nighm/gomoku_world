@@ -131,17 +131,17 @@ class Board:
         board_x = x - self.grid_size
         board_y = y - self.grid_size
         
-        # 璁＄畻鏈€杩戠殑浜ゅ弶鐐?
+        # 璁＄畻鏈杩戠殑浜ゅ弶鐐?
         col = round(board_x / self.grid_size)
         row = round(board_y / self.grid_size)
         
-        # 妫€鏌ユ槸鍚﹀湪鏈夋晥鑼冨洿鍐?
+        # 妫鏌ユ槸鍚﹀湪鏈夋晥鑼冨洿鍐?
         if 0 <= row < self.game.size and 0 <= col < self.game.size:
-            # 妫€鏌ユ槸鍚﹁冻澶熸帴杩戜氦鍙夌偣
+            # 妫鏌ユ槸鍚﹁冻澶熸帴杩戜氦鍙夌偣
             actual_x = self.grid_size * (col + 1)
             actual_y = self.grid_size * (row + 1)
             
-            # 鍏佽涓€瀹氱殑璇樊鑼冨洿锛堟鐩樻牸鐨?0%锛?
+            # 鍏佽涓瀹氱殑璇樊鑼冨洿锛堟鐩樻牸鐨?0%锛?
             tolerance = self.grid_size * 0.3
             if (abs(x - actual_x) <= tolerance and 
                 abs(y - actual_y) <= tolerance):

@@ -1,6 +1,6 @@
 """
 Status bar implementation
-鐘舵€佹爮瀹炵幇
+鐘舵佹爮瀹炵幇
 """
 
 import tkinter as tk
@@ -38,7 +38,7 @@ class StatusBar(ttk.Frame):
     def _create_widgets(self):
         """
         Create status bar widgets
-        鍒涘缓鐘舵€佹爮缁勪欢
+        鍒涘缓鐘舵佹爮缁勪欢
         """
         # Message label
         self.message_label = ttk.Label(
@@ -59,7 +59,7 @@ class StatusBar(ttk.Frame):
     def _setup_layout(self):
         """
         Setup the layout of widgets
-        璁剧疆缁勪欢鐨勫竷灞€
+        璁剧疆缁勪欢鐨勫竷灞
         """
         # Add border
         self.configure(relief=tk.SUNKEN, borderwidth=1)
@@ -73,7 +73,7 @@ class StatusBar(ttk.Frame):
     def set_message(self, message: str):
         """
         Set status message
-        璁剧疆鐘舵€佹秷鎭?
+        璁剧疆鐘舵佹秷鎭?
         
         Args:
             message: Message to display

@@ -1,0 +1,23 @@
+{
+    "window": {
+        "background": "#F0F0F0",
+        "foreground": "#000000"
+    },
+    "board": {
+        "background": "#DEB887",
+        "grid_color": "#000000",
+        "black_piece": "#000000",
+        "white_piece": "#FFFFFF",
+        "highlight": "#FF0000"
+    },
+    "button": {
+        "background": "#E0E0E0",
+        "foreground": "#000000",
+        "hover_background": "#D0D0D0",
+        "active_background": "#C0C0C0"
+    },
+    "status_bar": {
+        "background": "#F0F0F0",
+        "foreground": "#000000"
+    }
+} 

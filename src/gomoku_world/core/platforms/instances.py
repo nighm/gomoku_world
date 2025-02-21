@@ -1,9 +1,9 @@
 """
-Global instances for platform
-骞冲彴鍏ㄥ眬瀹炰緥
+Platform instance management
 """
 
 import platform
+import sys
 from typing import Optional
 
 from .base import PlatformBase
@@ -11,11 +11,13 @@ from .windows import WindowsPlatform
 from .linux import LinuxPlatform
 from .macos import MacOSPlatform
 from .web import WebPlatform
+from ...utils.logger import get_logger
+
+logger = get_logger(__name__)
 
 def get_platform() -> PlatformBase:
     """
     Get appropriate platform implementation
-    鑾峰彇閫傚綋鐨勫钩鍙板疄鐜?
     
     Returns:
         PlatformBase: Platform-specific implementation
@@ -34,4 +36,4 @@ def get_platform() -> PlatformBase:
 # Create global platform instance
 PLATFORM = get_platform()
 
-__all__ = ['PLATFORM'] 
+__all__ = ['get_platform', 'PLATFORM'] 

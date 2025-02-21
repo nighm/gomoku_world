@@ -48,7 +48,7 @@ class ImportManager:
     def import_module(cls, module_path: str) -> Optional[Any]:
         """
         Dynamically import a module
-        鍔ㄦ€佸鍏ユā鍧?
+        鍔ㄦ佸鍏ユā鍧?
         
         Args:
             module_path: Relative module path (e.g. 'core.game')

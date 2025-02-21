@@ -1,0 +1,6 @@
+{
+  "BOARD_SIZE": 15,
+  "WIN_LENGTH": 5,
+  "DEFAULT_THEME": "light",
+  "DEFAULT_LANGUAGE": "en"
+}

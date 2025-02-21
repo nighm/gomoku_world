@@ -18,7 +18,7 @@ logger = get_logger(__name__)
 class GameClient:
     """
     Game client that handles server communication
-    澶勭悊鏈嶅姟鍣ㄩ€氫俊鐨勬父鎴忓鎴风
+    澶勭悊鏈嶅姟鍣ㄩ氫俊鐨勬父鎴忓鎴风
     """
     
     def __init__(self, host: str = DEFAULT_HOST, port: int = DEFAULT_PORT):
@@ -94,7 +94,7 @@ class GameClient:
     async def spectate_game(self, game_id: str) -> bool:
         """
         Start spectating a game
-        寮€濮嬭鎴樻父鎴?
+        寮濮嬭鎴樻父鎴?
         
         Args:
             game_id: Game ID to spectate
@@ -157,7 +157,7 @@ class GameClient:
     async def send_spectator_chat(self, message: str) -> bool:
         """
         Send chat message while spectating
-        鍙戦€佽鎴樿亰澶╂秷鎭?
+        鍙戦佽鎴樿亰澶╂秷鎭?
         
         Args:
             message: Chat message

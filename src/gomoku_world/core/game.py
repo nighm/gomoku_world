@@ -18,7 +18,7 @@ logger = get_logger(__name__)
 class Move:
     """
     Represents a game move
-    琛ㄧず涓€涓父鎴忕Щ鍔?
+    琛ㄧず涓涓父鎴忕Щ鍔?
     """
     row: int
     col: int
@@ -27,7 +27,7 @@ class Move:
 class Game:
     """
     Main game logic class
-    涓绘父鎴忛€昏緫绫?
+    涓绘父鎴忛昏緫绫?
     """
     
     def __init__(self, board_size: int = 15, game_mode: str = "pvp"):
@@ -132,7 +132,7 @@ class Game:
     def undo_move(self) -> Optional[Move]:
         """
         Undo the last move
-        鎾ら攢鏈€鍚庝竴姝?
+        鎾ら攢鏈鍚庝竴姝?
         
         Returns:
             Optional[Move]: The move that was undone, or None if no moves to undo
@@ -164,7 +164,7 @@ class Game:
     def get_valid_moves(self) -> List[Tuple[int, int]]:
         """
         Get all valid moves
-        鑾峰彇鎵€鏈夋湁鏁堢殑绉诲姩
+        鑾峰彇鎵鏈夋湁鏁堢殑绉诲姩
         
         Returns:
             List[Tuple[int, int]]: List of valid move coordinates

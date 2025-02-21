@@ -4,14 +4,12 @@ AI module for Gomoku
 """
 
 from .engine import AI
-from .strategies import Strategy, MinMaxStrategy, MCTSStrategy
-from .evaluation import Evaluator, PositionEvaluator
+from .strategies import MinMaxStrategy, MCTSStrategy
+from .evaluation import PositionEvaluator
 
 __all__ = [
     'AI',
-    'Strategy',
     'MinMaxStrategy',
     'MCTSStrategy',
-    'Evaluator',
     'PositionEvaluator'
 ] 

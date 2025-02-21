@@ -21,7 +21,7 @@ class Rules:
     def check_win(board: Board, last_row: int, last_col: int) -> bool:
         """
         Check if the last move resulted in a win
-        妫€鏌ユ渶鍚庝竴姝ユ槸鍚﹀鑷磋儨鍒?
+        妫鏌ユ渶鍚庝竴姝ユ槸鍚﹀鑷磋儨鍒?
         
         Args:
             board: Game board
@@ -62,7 +62,7 @@ class Rules:
     def is_draw(board: Board) -> bool:
         """
         Check if the game is a draw
-        妫€鏌ユ父鎴忔槸鍚﹀钩灞€
+        妫鏌ユ父鎴忔槸鍚﹀钩灞
         
         Args:
             board: Game board
@@ -90,7 +90,7 @@ class Rules:
     def is_valid_move(board: Board, row: int, col: int) -> bool:
         """
         Check if a move is valid according to game rules
-        鏍规嵁娓告垙瑙勫垯妫€鏌ョЩ鍔ㄦ槸鍚︽湁鏁?
+        鏍规嵁娓告垙瑙勫垯妫鏌ョЩ鍔ㄦ槸鍚︽湁鏁?
         
         Args:
             board: Game board

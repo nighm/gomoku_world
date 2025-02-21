@@ -23,11 +23,11 @@ class LogDisplay:
         """
         self.rect = rect
         self.lines = []
-        self.max_lines = 20  # 澧炲姞鏈€澶ф樉绀鸿鏁?
+        self.max_lines = 20  # 澧炲姞鏈澶ф樉绀鸿鏁?
         self.scroll_position = 0  # 婊氬姩浣嶇疆
         self.dragging = False  # 鏄惁姝ｅ湪鎷栧姩婊氬姩鏉?
-        self.drag_start_y = 0  # 鎷栧姩寮€濮嬬殑y鍧愭爣
-        self.drag_start_scroll = 0  # 鎷栧姩寮€濮嬫椂鐨勬粴鍔ㄤ綅缃?
+        self.drag_start_y = 0  # 鎷栧姩寮濮嬬殑y鍧愭爣
+        self.drag_start_scroll = 0  # 鎷栧姩寮濮嬫椂鐨勬粴鍔ㄤ綅缃?
         
         self.colors = {
             'default': (0, 0, 0),
@@ -65,7 +65,7 @@ class LogDisplay:
         time_str = datetime.now().strftime("%H:%M:%S")
         color = self.colors.get(color_type, self.colors['default'])
         self.lines.append((time_str, text, color))
-        if len(self.lines) > 1000:  # 闄愬埗鏈€澶у瓨鍌ㄨ鏁?
+        if len(self.lines) > 1000:  # 闄愬埗鏈澶у瓨鍌ㄨ鏁?
             self.lines.pop(0)
         # 濡傛灉婊氬姩浣嶇疆鍦ㄥ簳閮紝鍒欒窡闅忔柊娑堟伅
         if self.scroll_position >= len(self.lines) - self.get_visible_lines():

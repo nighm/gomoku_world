@@ -53,7 +53,7 @@ class AI:
     def get_move(self, board: Board, player: int) -> Tuple[int, int]:
         """
         Get next move for the AI
-        鑾峰彇AI鐨勪笅涓€姝ョЩ鍔?
+        鑾峰彇AI鐨勪笅涓姝ョЩ鍔?
         
         Args:
             board: Current game board
@@ -92,7 +92,7 @@ class AI:
     def evaluate_position(self, board: Board, player: int) -> float:
         """
         Evaluate current board position
-        璇勪及褰撳墠妫嬬洏灞€闈?
+        璇勪及褰撳墠妫嬬洏灞闈?
         
         Args:
             board: Current game board

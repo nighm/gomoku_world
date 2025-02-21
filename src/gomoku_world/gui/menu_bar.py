@@ -41,7 +41,7 @@ class MenuBar(tk.Menu):
     def _create_menus(self):
         """
         Create all menus
-        鍒涘缓鎵€鏈夎彍鍗?
+        鍒涘缓鎵鏈夎彍鍗?
         """
         # Game menu
         game_menu = tk.Menu(self, tearoff=0)
@@ -128,7 +128,7 @@ class MenuBar(tk.Menu):
     def _on_exit(self):
         """
         Handle exit menu command
-        澶勭悊閫€鍑鸿彍鍗曞懡浠?
+        澶勭悊閫鍑鸿彍鍗曞懡浠?
         """
         if messagebox.askokcancel("Exit", "Do you want to quit?"):
             self.main_window.root.quit()

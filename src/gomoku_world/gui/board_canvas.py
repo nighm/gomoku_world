@@ -146,7 +146,7 @@ class BoardCanvas(tk.Canvas):
     def _draw_pieces(self):
         """
         Draw all pieces on the board
-        缁樺埗妫嬬洏涓婄殑鎵€鏈夋瀛?
+        缁樺埗妫嬬洏涓婄殑鎵鏈夋瀛?
         """
         for row in range(self.game.board.size):
             for col in range(self.game.board.size):

@@ -107,7 +107,7 @@ class SpectatorManager:
     def get_game_spectators(self, game_id: str) -> Set[str]:
         """
         Get all spectators for a game
-        鑾峰彇娓告垙鐨勬墍鏈夎鎴樿€?
+        鑾峰彇娓告垙鐨勬墍鏈夎鎴樿?
         
         Args:
             game_id: Game ID
@@ -133,7 +133,7 @@ class SpectatorManager:
     def get_spectator_count(self, game_id: str) -> int:
         """
         Get number of spectators for a game
-        鑾峰彇娓告垙鐨勮鎴樿€呮暟閲?
+        鑾峰彇娓告垙鐨勮鎴樿呮暟閲?
         
         Args:
             game_id: Game ID
@@ -147,7 +147,7 @@ class SpectatorManager:
                               callback) -> None:
         """
         Broadcast message to all spectators of a game
-        鍚戞父鎴忕殑鎵€鏈夎鎴樿€呭箍鎾秷鎭?
+        鍚戞父鎴忕殑鎵鏈夎鎴樿呭箍鎾秷鎭?
         
         Args:
             game_id: Game ID
@@ -169,7 +169,7 @@ class SpectatorManager:
     def cleanup_game(self, game_id: str) -> None:
         """
         Clean up spectators when a game ends
-        娓告垙缁撴潫鏃舵竻鐞嗚鎴樿€?
+        娓告垙缁撴潫鏃舵竻鐞嗚鎴樿?
         
         Args:
             game_id: Game ID

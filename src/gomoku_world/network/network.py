@@ -164,7 +164,7 @@ class NetworkManager:
     def make_move(self, row: int, col: int) -> bool:
         """
         Send a move to the server
-        鍚戞湇鍔″櫒鍙戦€佽惤瀛愪俊鎭?
+        鍚戞湇鍔″櫒鍙戦佽惤瀛愪俊鎭?
         
         Args:
             row: Row number (琛屽彿)
@@ -199,7 +199,7 @@ class NetworkManager:
     def send_message(self, message: Dict):
         """
         Send a message to the server
-        鍚戞湇鍔″櫒鍙戦€佹秷鎭?
+        鍚戞湇鍔″櫒鍙戦佹秷鎭?
         
         Args:
             message: Message to send (瑕佸彂閫佺殑娑堟伅)
@@ -243,7 +243,7 @@ class NetworkManager:
     def _send_loop(self):
         """
         Background thread for sending messages
-        鍙戦€佹秷鎭殑鍚庡彴绾跨▼
+        鍙戦佹秷鎭殑鍚庡彴绾跨▼
         """
         while self.connected:
             try:

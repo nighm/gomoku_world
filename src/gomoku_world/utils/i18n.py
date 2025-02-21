@@ -1,6 +1,6 @@
 """
 Internationalization module for the Gomoku game.
-澶氳瑷€鏀寔妯″潡
+澶氳瑷鏀寔妯″潡
 """
 
 import logging
@@ -11,7 +11,7 @@ logger = logging.getLogger(__name__)
 class I18n:
     """
     Internationalization class for handling multiple languages
-    澶氳瑷€鏀寔绫?
+    澶氳瑷鏀寔绫?
     """
     
     def __init__(self, default_lang: str = 'en'):
@@ -104,7 +104,7 @@ class I18n:
                 'network_mode': '鍦ㄧ嚎瀵规垬',
                 'load_game': '鍔犺浇娓告垙',
                 'settings': '璁剧疆',
-                'quit': '閫€鍑?,
+                'quit': '閫鍑?,
                 
                 # 娓告垙娑堟伅
                 'black_wins': '榛戞柟鑾疯儨锛?,
@@ -114,14 +114,14 @@ class I18n:
                 'game_reset': '娓告垙閲嶇疆',
                 'current_player': '褰撳墠鐜╁锛歿}',
                 'your_turn': '杞埌浣犱簡',
-                'ai_thinking': 'AI鎬濊€冧腑...',
+                'ai_thinking': 'AI鎬濊冧腑...',
                 'waiting_opponent': '绛夊緟瀵规墜...',
                 
                 # 鑿滃崟椤?
                 'volume': '闊抽噺锛歿}%',
                 'board_size': '妫嬬洏澶у皬锛歿}x{}',
                 'show_coordinates': '鏄剧ず鍧愭爣',
-                'highlight_last_move': '楂樹寒鏈€鍚庝竴鎵?,
+                'highlight_last_move': '楂樹寒鏈鍚庝竴鎵?,
                 'save': '淇濆瓨',
                 'cancel': '鍙栨秷',
                 'back_to_menu': '杩斿洖鑿滃崟',
@@ -134,14 +134,14 @@ class I18n:
                 'room_created': '鎴块棿宸插垱寤猴細{}',
                 'room_joined': '宸插姞鍏ユ埧闂达細{}',
                 'room_full': '鎴块棿宸叉弧',
-                'player_left': '瀵规墜宸茬寮€娓告垙',
+                'player_left': '瀵规墜宸茬寮娓告垙',
                 
                 # 瀛樻。娑堟伅
                 'save_success': '娓告垙宸蹭繚瀛?,
                 'save_failed': '淇濆瓨娓告垙澶辫触',
                 'load_success': '娓告垙宸插姞杞?,
                 'load_failed': '鍔犺浇娓告垙澶辫触',
-                'replay_start': '寮€濮嬪洖鏀?,
+                'replay_start': '寮濮嬪洖鏀?,
                 'replay_end': '鍥炴斁缁撴潫',
                 
                 # 璋冭瘯淇℃伅
@@ -152,11 +152,11 @@ class I18n:
                 'frame_time': '甯ф椂闂达細{:.1f} ms',
                 'mouse_position': '榧犳爣浣嶇疆锛歿}',
                 'board_position': '妫嬬洏浣嶇疆锛歿}',
-                'last_move': '鏈€鍚庤惤瀛愶細{}',
+                'last_move': '鏈鍚庤惤瀛愶細{}',
                 
                 # 绯荤粺娑堟伅
                 'log_initialized': '鏃ュ織绯荤粺宸插垵濮嬪寲',
-                'session_started': '鏂颁細璇濆凡寮€濮?,
+                'session_started': '鏂颁細璇濆凡寮濮?,
                 'session_ended': '浼氳瘽宸茬粨鏉?,
                 'settings_saved': '璁剧疆宸蹭繚瀛?,
                 'sound_volume_changed': '闊抽噺宸茶皟鏁翠负{}%',
@@ -188,7 +188,7 @@ class I18n:
         鑾峰彇缈昏瘧鍚庣殑瀛楃涓?
         
         Args:
-            key (str): Translation key (缈昏瘧閿€?
+            key (str): Translation key (缈昏瘧閿?
             *args: Format arguments (鏍煎紡鍖栧弬鏁?
         
         Returns:
@@ -207,7 +207,7 @@ class I18n:
     def get_all_languages(self) -> list:
         """
         Get list of all supported languages
-        鑾峰彇鎵€鏈夋敮鎸佺殑璇█鍒楄〃
+        鑾峰彇鎵鏈夋敮鎸佺殑璇█鍒楄〃
         
         Returns:
             list: List of language codes (璇█浠ｇ爜鍒楄〃)

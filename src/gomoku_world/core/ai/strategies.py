@@ -10,6 +10,7 @@ from typing import Tuple, List, Optional, Dict
 from ..board import Board
 from .evaluation import PositionEvaluator
 from ...utils.logger import get_logger
+import numpy as np
 
 logger = get_logger(__name__)
 
@@ -27,7 +28,7 @@ class MinMaxStrategy:
     def get_move(self, board: Board, player: int, depth: int) -> Tuple[int, int]:
         """
         Get best move using MinMax algorithm
-        浣跨敤MinMax绠楁硶鑾峰彇鏈€浣崇Щ鍔?
+        浣跨敤MinMax绠楁硶鑾峰彇鏈浣崇Щ鍔?
         
         Args:
             board: Current game board
@@ -53,12 +54,11 @@ class MinMaxStrategy:
             board.place_piece(move[0], move[1], player)
             
             # Get score from MinMax
-            score = self._min_max(
+            score = self._min_value(
                 board,
                 depth - 1,
                 alpha,
                 beta,
-                False,
                 player
             )
             
@@ -78,53 +78,92 @@ class MinMaxStrategy:
                 break
         
         logger.debug(f"MinMax selected move {best_move} with score {best_score}")
-        return best_move
+        return best_move if best_move else valid_moves[0]
     
-    def _min_max(self, board: Board, depth: int, alpha: float, beta: float,
-                 maximizing: bool, player: int) -> float:
+    def _min_value(self, board: Board, depth: int, 
+                   alpha: float, beta: float, player: int) -> float:
         """
-        MinMax algorithm with alpha-beta pruning
-        鍏锋湁alpha-beta鍓灊鐨凪inMax绠楁硶
+        Get minimum value for MinMax
         
         Args:
             board: Current game board
             depth: Remaining depth
             alpha: Alpha value
             beta: Beta value
-            maximizing: Whether maximizing or minimizing
             player: Original player
             
         Returns:
-            float: Position score
+            float: Minimum value
         """
-        # Terminal conditions
-        if depth == 0 or board.is_game_over():
-            return self.evaluator.evaluate(board, player)
+        if depth == 0:
+            return self.evaluator.evaluate(board.board, player)
+            
+        value = float('inf')
+        opponent = 3 - player  # Switch player
         
-        current_player = player if maximizing else 3 - player
+        for move in board.get_empty_cells():
+            # Try move
+            board.place_piece(move[0], move[1], opponent)
+            
+            # Get score from MaxValue
+            value = min(
+                value,
+                self._max_value(board, depth - 1, alpha, beta, player)
+            )
+            
+            # Undo move
+            board.clear_cell(move[0], move[1])
+            
+            # Update beta
+            beta = min(beta, value)
+            
+            # Alpha-beta pruning
+            if beta <= alpha:
+                break
+                
+        return value
+    
+    def _max_value(self, board: Board, depth: int,
+                   alpha: float, beta: float, player: int) -> float:
+        """
+        Get maximum value for MinMax
         
-        if maximizing:
-            max_eval = float('-inf')
-            for move in board.get_empty_cells():
-                board.place_piece(move[0], move[1], current_player)
-                eval = self._min_max(board, depth - 1, alpha, beta, False, player)
-                board.clear_cell(move[0], move[1])
-                max_eval = max(max_eval, eval)
-                alpha = max(alpha, eval)
-                if beta <= alpha:
-                    break
-            return max_eval
-        else:
-            min_eval = float('inf')
-            for move in board.get_empty_cells():
-                board.place_piece(move[0], move[1], current_player)
-                eval = self._min_max(board, depth - 1, alpha, beta, True, player)
-                board.clear_cell(move[0], move[1])
-                min_eval = min(min_eval, eval)
-                beta = min(beta, eval)
-                if beta <= alpha:
-                    break
-            return min_eval
+        Args:
+            board: Current game board
+            depth: Remaining depth
+            alpha: Alpha value
+            beta: Beta value
+            player: Original player
+            
+        Returns:
+            float: Maximum value
+        """
+        if depth == 0:
+            return self.evaluator.evaluate(board.board, player)
+            
+        value = float('-inf')
+        
+        for move in board.get_empty_cells():
+            # Try move
+            board.place_piece(move[0], move[1], player)
+            
+            # Get score from MinValue
+            value = max(
+                value,
+                self._min_value(board, depth - 1, alpha, beta, player)
+            )
+            
+            # Undo move
+            board.clear_cell(move[0], move[1])
+            
+            # Update alpha
+            alpha = max(alpha, value)
+            
+            # Alpha-beta pruning
+            if beta <= alpha:
+                break
+                
+        return value
 
 
 class MCTSNode:
@@ -133,28 +172,38 @@ class MCTSNode:
     钂欑壒鍗℃礇鏍戞悳绱㈣妭鐐?
     """
     
-    def __init__(self, board: Board, parent: Optional['MCTSNode'] = None,
-                 move: Optional[Tuple[int, int]] = None, player: int = 1):
+    def __init__(self, board: Board, player: int,
+                 parent: Optional['MCTSNode'] = None,
+                 move: Optional[Tuple[int, int]] = None):
         """
         Initialize MCTS node
         鍒濆鍖朚CTS鑺傜偣
         
         Args:
             board: Game board
+            player: Player who made the move
             parent: Parent node
             move: Move that led to this node
-            player: Player who made the move
         """
         self.board = board
+        self.player = player
         self.parent = parent
         self.move = move
-        self.player = player
-        self.children: List[MCTSNode] = []
-        self.wins = 0
+        self.children = []
         self.visits = 0
+        self.value = 0.0
         self.untried_moves = board.get_empty_cells()
         
-    def uct_value(self, c: float = 1.41) -> float:
+    def is_terminal(self) -> bool:
+        """
+        Check if node is terminal
+        
+        Returns:
+            bool: True if terminal
+        """
+        return self.board.is_full()
+    
+    def uct_value(self, c: float = math.sqrt(2)) -> float:
         """
         Calculate UCT value for node selection
         璁＄畻鑺傜偣閫夋嫨鐨刄CT鍊?
@@ -167,7 +216,7 @@ class MCTSNode:
         """
         if self.visits == 0:
             return float('inf')
-        return (self.wins / self.visits + 
+        return (self.value / self.visits + 
                 c * math.sqrt(math.log(self.parent.visits) / self.visits))
     
     def add_child(self, move: Tuple[int, int], board: Board) -> 'MCTSNode':
@@ -184,9 +233,9 @@ class MCTSNode:
         """
         child = MCTSNode(
             board=board,
+            player=3 - self.player,
             parent=self,
-            move=move,
-            player=3 - self.player
+            move=move
         )
         self.untried_moves.remove(move)
         self.children.append(child)
@@ -201,7 +250,7 @@ class MCTSNode:
             result: Game result (1 for win, 0 for loss)
         """
         self.visits += 1
-        self.wins += result
+        self.value += result
 
 
 class MCTSStrategy:
@@ -210,21 +259,22 @@ class MCTSStrategy:
     钂欑壒鍗℃礇鏍戞悳绱㈢瓥鐣?
     """
     
-    def __init__(self, simulation_time: float = 1.0):
+    def __init__(self, simulation_limit: int = 1000):
         """
         Initialize MCTS strategy
         鍒濆鍖朚CTS绛栫暐
         
         Args:
-            simulation_time: Time limit for simulations in seconds
+            simulation_limit: Maximum number of simulations
         """
-        self.simulation_time = simulation_time
+        self.simulation_limit = simulation_limit
+        self.evaluator = PositionEvaluator()
         logger.info("MCTS strategy initialized")
     
     def get_move(self, board: Board, player: int) -> Tuple[int, int]:
         """
         Get best move using MCTS
-        浣跨敤MCTS鑾峰彇鏈€浣崇Щ鍔?
+        浣跨敤MCTS鑾峰彇鏈浣崇Щ鍔?
         
         Args:
             board: Current game board
@@ -236,37 +286,50 @@ class MCTSStrategy:
         root = MCTSNode(board=board, player=player)
         
         # Run simulations
-        end_time = time.time() + self.simulation_time
-        while time.time() < end_time:
+        for _ in range(self.simulation_limit):
+            # Selection
             node = self._select(root)
-            if not node.board.is_game_over() and node.untried_moves:
+            
+            # Expansion
+            if not node.is_terminal() and node.untried_moves:
                 node = self._expand(node)
+            
+            # Simulation
             result = self._simulate(node)
+            
+            # Backpropagation
             self._backpropagate(node, result)
         
-        # Select best child
-        best_child = max(root.children, key=lambda c: c.visits)
+        # Get best move
+        best_child = max(
+            root.children,
+            key=lambda c: c.visits
+        )
+        
         logger.debug(f"MCTS selected move {best_child.move}")
         return best_child.move
     
-    def _select(self, node: MCTSNode) -> MCTSNode:
+    def _select(self, node: 'MCTSNode') -> 'MCTSNode':
         """
-        Select promising node to explore
+        Select a node for expansion
         閫夋嫨鏈夊笇鏈涚殑鑺傜偣杩涜鎺㈢储
         
         Args:
-            node: Starting node
+            node: Current node
             
         Returns:
             MCTSNode: Selected node
         """
         while node.children and not node.untried_moves:
-            node = max(node.children, key=lambda n: n.uct_value())
+            node = max(
+                node.children,
+                key=lambda c: c.uct_value()
+            )
         return node
     
-    def _expand(self, node: MCTSNode) -> MCTSNode:
+    def _expand(self, node: 'MCTSNode') -> 'MCTSNode':
         """
-        Expand node by adding a child
+        Expand a node
         閫氳繃娣诲姞瀛愯妭鐐规潵鎵╁睍鑺傜偣
         
         Args:
@@ -280,9 +343,9 @@ class MCTSStrategy:
         new_board.place_piece(move[0], move[1], node.player)
         return node.add_child(move, new_board)
     
-    def _simulate(self, node: MCTSNode) -> float:
+    def _simulate(self, node: 'MCTSNode') -> float:
         """
-        Run simulation from node
+        Run a simulation from a node
         浠庤妭鐐硅繍琛屾ā鎷?
         
         Args:
@@ -294,7 +357,7 @@ class MCTSStrategy:
         board = node.board.copy()
         current_player = node.player
         
-        while not board.is_game_over():
+        while not board.is_full():
             valid_moves = board.get_empty_cells()
             if not valid_moves:
                 break
@@ -302,14 +365,9 @@ class MCTSStrategy:
             board.place_piece(move[0], move[1], current_player)
             current_player = 3 - current_player
         
-        if board.is_winner(node.player):
-            return 1.0
-        elif board.is_winner(3 - node.player):
-            return 0.0
-        else:
-            return 0.5
+        return self.evaluator.evaluate(board.board, node.player)
     
-    def _backpropagate(self, node: MCTSNode, result: float):
+    def _backpropagate(self, node: 'MCTSNode', result: float):
         """
         Backpropagate simulation result
         鍙嶅悜浼犳挱妯℃嫙缁撴灉
@@ -319,7 +377,8 @@ class MCTSStrategy:
             result: Simulation result
         """
         while node:
-            node.update(result)
+            node.visits += 1
+            node.value += result
             node = node.parent
             if node:
                 result = 1 - result 

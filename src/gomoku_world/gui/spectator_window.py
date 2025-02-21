@@ -158,7 +158,7 @@ class SpectatorWindow(tk.Toplevel):
     def update_game_state(self, game_state: Dict):
         """
         Update game state display
-        鏇存柊娓告垙鐘舵€佹樉绀?
+        鏇存柊娓告垙鐘舵佹樉绀?
         
         Args:
             game_state: Current game state

@@ -72,7 +72,7 @@ class GomokuGUI:
     def _create_widgets(self):
         """
         Create all GUI widgets
-        鍒涘缓鎵€鏈塆UI缁勪欢
+        鍒涘缓鎵鏈塆UI缁勪欢
         """
         # Create menu bar
         self.menu_bar = MenuBar(self.root, self)
@@ -107,7 +107,7 @@ class GomokuGUI:
     def _setup_layout(self):
         """
         Setup the layout of all widgets
-        璁剧疆鎵€鏈夌粍浠剁殑甯冨眬
+        璁剧疆鎵鏈夌粍浠剁殑甯冨眬
         """
         # Setup main frame
         self.main_frame.pack(expand=True, fill=tk.BOTH, padx=5, pady=5)
@@ -129,7 +129,7 @@ class GomokuGUI:
     def new_game(self):
         """
         Start a new game
-        寮€濮嬫柊娓告垙
+        寮濮嬫柊娓告垙
         """
         self.game.reset()
         self.board_canvas.redraw()
@@ -140,7 +140,7 @@ class GomokuGUI:
     def undo_move(self):
         """
         Undo the last move
-        鎾ら攢鏈€鍚庝竴姝?
+        鎾ら攢鏈鍚庝竴姝?
         """
         if self.game.undo_move():
             self.board_canvas.redraw()
