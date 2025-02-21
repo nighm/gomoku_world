@@ -1,0 +1,24 @@
+include LICENSE
+include README.md
+include CHANGELOG.md
+include CONTRIBUTING.md
+include CODE_OF_CONDUCT.md
+include SECURITY.md
+include CITATION.cff
+include pyproject.toml
+include setup.cfg
+include tox.ini
+include Makefile
+include requirements.txt
+include requirements-dev.txt
+
+recursive-include src/gomoku_world/resources *
+recursive-include docs *
+recursive-include examples *.py
+recursive-include scripts *.py
+recursive-include tests *.py
+
+recursive-exclude * __pycache__
+recursive-exclude * *.py[cod]
+recursive-exclude * *.so
+recursive-exclude * .DS_Store 

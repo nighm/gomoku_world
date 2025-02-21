@@ -1,0 +1,29 @@
+{
+    "colors": {
+        "background": [240, 240, 240],
+        "menu_bg": [220, 220, 220],
+        "grid": [80, 80, 80],
+        "text": [0, 0, 0],
+        "button": [200, 200, 200],
+        "button_hover": [180, 180, 180],
+        "button_text": [0, 0, 0],
+        "black_piece": [0, 0, 0],
+        "white_piece": [255, 255, 255],
+        "highlight": [255, 0, 0]
+    },
+    "fonts": {
+        "default": {
+            "name": ["WenQuanYi Micro Hei", "SimHei", "Arial"],
+            "size": 16
+        },
+        "title": {
+            "name": ["WenQuanYi Micro Hei", "SimHei", "Arial"],
+            "size": 32
+        }
+    },
+    "sizes": {
+        "piece_scale": 0.4,
+        "button_height": 40,
+        "button_margin": 10
+    }
+} 

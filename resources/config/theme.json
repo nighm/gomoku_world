@@ -1,0 +1,29 @@
+{
+    "colors": {
+        "background": [238, 220, 192],
+        "menu_bg": [220, 220, 220],
+        "grid": [50, 50, 50],
+        "text": [0, 0, 0],
+        "button": [200, 200, 200],
+        "button_hover": [180, 180, 180],
+        "button_text": [0, 0, 0],
+        "black_piece": [0, 0, 0],
+        "white_piece": [255, 255, 255],
+        "highlight": [255, 0, 0]
+    },
+    "fonts": {
+        "default": {
+            "name": "SimHei",
+            "size": 14
+        },
+        "title": {
+            "name": "SimHei",
+            "size": 24
+        }
+    },
+    "sizes": {
+        "piece_scale": 0.25,
+        "button_height": 30,
+        "button_margin": 5
+    }
+} 
