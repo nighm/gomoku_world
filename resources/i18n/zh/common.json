@@ -4,6 +4,10 @@
     "app.version": "版本 {version}",
     
     "language.name": "中文",
+    "language.en": "英文",
+    "language.zh": "中文",
+    "language.ja": "日文",
+    "language.ko": "韩文",
     "region.name": "中国",
     
     "button.ok": "确定",
@@ -14,6 +18,7 @@
     "button.close": "关闭",
     "button.back": "返回",
     "button.next": "下一步",
+    "button.switch_language": "切换到{language}",
     
     "menu.file": "文件",
     "menu.edit": "编辑",
@@ -28,6 +33,11 @@
     "error.unknown": "发生未知错误",
     "error.not_found": "未找到资源：{resource}",
     "error.invalid_input": "无效输入：{input}",
+    
+    "network.status.online": "网络状态：在线",
+    "network.status.offline": "网络状态：离线",
+    "network.connecting": "连接中...",
+    "network.disconnected": "已断开连接",
     
     "loading": "加载中...",
     "processing": "处理中...",

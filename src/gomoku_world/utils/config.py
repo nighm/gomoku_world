@@ -7,7 +7,7 @@ import json
 import os
 import logging
 from typing import Dict, Any
-from .i18n import i18n
+from ..i18n import i18n_manager as i18n
 
 logger = logging.getLogger(__name__)
 

@@ -1,0 +1,35 @@
+{
+    "app.name": "五目並べワールド",
+    "app.description": "モダンな五目並べゲーム",
+    "app.version": "バージョン {version}",
+    
+    "language.name": "日本語",
+    "region.name": "日本",
+    
+    "button.ok": "OK",
+    "button.cancel": "キャンセル",
+    "button.confirm": "確認",
+    "button.save": "保存",
+    "button.load": "ロード",
+    "button.close": "閉じる",
+    "button.back": "戻る",
+    "button.next": "次へ",
+    
+    "menu.file": "ファイル",
+    "menu.edit": "編集",
+    "menu.view": "表示",
+    "menu.help": "ヘルプ",
+    
+    "dialog.error": "エラー",
+    "dialog.warning": "警告",
+    "dialog.info": "情報",
+    "dialog.confirm": "確認",
+    
+    "error.unknown": "不明なエラーが発生しました",
+    "error.not_found": "リソースが見つかりません：{resource}",
+    "error.invalid_input": "無効な入力：{input}",
+    
+    "loading": "読み込み中...",
+    "processing": "処理中...",
+    "please_wait": "お待ちください..."
+} 

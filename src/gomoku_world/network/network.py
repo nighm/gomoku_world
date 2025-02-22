@@ -10,7 +10,7 @@ import logging
 import time
 from typing import Dict, Optional, Tuple, Callable
 from queue import Queue
-from .i18n import i18n
+from ..i18n import i18n_manager as i18n
 from .config import config
 
 logger = logging.getLogger(__name__)

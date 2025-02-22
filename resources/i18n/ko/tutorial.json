@@ -1,0 +1,29 @@
+{
+    "tutorial.welcome": "오목 월드에 오신 것을 환영합니다!",
+    "tutorial.welcome.description": "이 튜토리얼에서는 게임의 기본적인 플레이 방법을 설명합니다.",
+    
+    "tutorial.basics.title": "기본 규칙",
+    "tutorial.basics.step1": "1. 흑과 백이 번갈아가며 돌을 놓습니다",
+    "tutorial.basics.step2": "2. 가로, 세로, 대각선 중 한 방향으로 5개를 연속으로 놓으면 승리합니다",
+    "tutorial.basics.step3": "3. 한번 놓은 돌은 움직일 수 없습니다",
+    
+    "tutorial.interface.title": "인터페이스 설명",
+    "tutorial.interface.board": "이것이 대국 판입니다. 클릭하여 돌을 놓습니다.",
+    "tutorial.interface.status": "여기에는 현재 차례와 상태가 표시됩니다.",
+    "tutorial.interface.menu": "메뉴에서 다양한 기능에 접근할 수 있습니다.",
+    
+    "tutorial.modes.title": "게임 모드 설명",
+    "tutorial.modes.single": "싱글플레이: AI와 대전합니다",
+    "tutorial.modes.multi": "멀티플레이: 친구와 대전합니다",
+    "tutorial.modes.online": "온라인: 인터넷 상의 플레이어와 대전합니다",
+    
+    "tutorial.features.title": "편리한 기능",
+    "tutorial.features.undo": "무르기: 직전에 놓은 돌을 되돌릴 수 있습니다",
+    "tutorial.features.save": "저장: 게임을 저장할 수 있습니다",
+    "tutorial.features.replay": "리플레이: 대국을 다시 볼 수 있습니다",
+    
+    "tutorial.next": "다음으로",
+    "tutorial.previous": "이전으로",
+    "tutorial.finish": "튜토리얼 종료",
+    "tutorial.skip": "건너뛰기"
+} 

@@ -1,0 +1,17 @@
+{
+    "network.status.online": "Network Status: Online",
+    "network.status.offline": "Network Status: Offline",
+    "network.connecting": "Connecting...",
+    "network.disconnected": "Disconnected",
+    "network.error": "Network Error",
+    "network.timeout": "Connection Timeout",
+    "network.retry": "Retrying...",
+    
+    "status.online": "Network Status: Online",
+    "status.offline": "Network Status: Offline",
+    "status.connecting": "Connecting...",
+    "status.disconnected": "Disconnected",
+    "status.error": "Network Error",
+    "status.timeout": "Connection Timeout",
+    "status.retry": "Retrying..."
+} 

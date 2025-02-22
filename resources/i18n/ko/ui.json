@@ -1,0 +1,26 @@
+{
+    "ui.title": "오목 월드",
+    "ui.menu": "메뉴",
+    "ui.settings": "설정",
+    "ui.profile": "프로필",
+    "ui.leaderboard": "리더보드",
+    "ui.achievements": "업적",
+    "ui.statistics": "통계",
+    
+    "ui.theme.light": "라이트 테마",
+    "ui.theme.dark": "다크 테마",
+    "ui.theme.classic": "클래식 테마",
+    "ui.theme.modern": "모던 테마",
+    
+    "ui.volume.master": "마스터 볼륨",
+    "ui.volume.music": "음악 볼륨",
+    "ui.volume.effects": "효과음 볼륨",
+    
+    "ui.display.fullscreen": "전체화면",
+    "ui.display.resolution": "해상도",
+    "ui.display.quality": "화질",
+    
+    "ui.controls.keyboard": "키보드 설정",
+    "ui.controls.mouse": "마우스 설정",
+    "ui.controls.gamepad": "게임패드 설정"
+} 

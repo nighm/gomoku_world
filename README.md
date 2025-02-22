@@ -40,6 +40,22 @@ from gomoku_world import GomokuGUI
 GomokuGUI().run()
 ```
 
+### Examples / 示例
+
+The `examples` directory contains several demo programs showing how to use different features:
+
+- `network_i18n_demo.py`: Demonstrates the network-aware internationalization system
+  ```python
+  # Run the network i18n demo / 运行网络国际化示例
+  python examples/network_i18n_demo.py
+  ```
+
+- `ai_game_demo.py`: Shows how to play against the AI
+- `multiplayer_demo.py`: Demonstrates online multiplayer functionality
+- `tournament_demo.py`: Shows how to set up and run a tournament
+
+See the comments in each example file for detailed usage instructions.
+
 ## Development / 开发
 
 ### Setup / 环境设置

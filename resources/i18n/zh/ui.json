@@ -1,0 +1,12 @@
+{
+    "title": "网络国际化演示",
+    "header": "网络状态监控",
+    "footer": "点击下方按钮切换语言",
+    
+    "status.label": "当前状态：",
+    "language.label": "当前语言：",
+    
+    "button.refresh": "刷新状态",
+    "button.reconnect": "重新连接",
+    "button.settings": "设置"
+} 

@@ -1,0 +1,42 @@
+{
+    "game.new": "新規ゲーム",
+    "game.load": "ゲームをロード",
+    "game.save": "ゲームを保存",
+    "game.quit": "ゲームを終了",
+    "game.restart": "ゲームをリスタート",
+    "game.pause": "一時停止",
+    "game.resume": "再開",
+    
+    "game.mode.single": "シングルプレイ",
+    "game.mode.multi": "マルチプレイ",
+    "game.mode.ai": "AI対戦",
+    "game.mode.online": "オンライン",
+    "game.mode.tournament": "トーナメント",
+    
+    "game.difficulty.easy": "簡単",
+    "game.difficulty.medium": "普通",
+    "game.difficulty.hard": "難しい",
+    
+    "game.status.start": "ゲーム開始",
+    "game.status.end": "ゲーム終了",
+    "game.status.draw": "引き分け",
+    "game.status.win": "{player}の勝利！",
+    "game.status.turn": "{player}の番",
+    
+    "player.black": "黒",
+    "player.white": "白",
+    "player.ai": "AI",
+    "player.guest": "ゲスト",
+    
+    "move.invalid": "無効な手",
+    "move.undo": "一手戻る",
+    "move.redo": "一手進む",
+    
+    "board.size": "盤面サイズ：{size}x{size}",
+    "board.theme": "盤面テーマ",
+    
+    "score.wins": "勝利：{count}",
+    "score.losses": "敗北：{count}",
+    "score.draws": "引分：{count}",
+    "score.rating": "レーティング：{rating}"
+} 

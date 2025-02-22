@@ -1,0 +1,21 @@
+{
+    "error.network.connection_failed": "네트워크 연결 실패",
+    "error.network.timeout": "네트워크 시간 초과",
+    "error.network.disconnected": "네트워크 연결이 끊어졌습니다",
+    
+    "error.game.invalid_move": "잘못된 수입니다",
+    "error.game.out_of_turn": "당신의 차례가 아닙니다",
+    "error.game.game_over": "게임이 이미 종료되었습니다",
+    
+    "error.save.failed": "게임 저장 실패",
+    "error.save.corrupted": "저장 데이터가 손상되었습니다",
+    "error.save.incompatible": "호환되지 않는 저장 데이터입니다",
+    
+    "error.system.initialization": "시스템 초기화 실패",
+    "error.system.resource_missing": "필요한 리소스를 찾을 수 없습니다: {resource}",
+    "error.system.out_of_memory": "메모리가 부족합니다",
+    
+    "error.validation.invalid_input": "잘못된 입력입니다: {input}",
+    "error.validation.required_field": "이 항목은 필수입니다",
+    "error.validation.invalid_format": "잘못된 형식입니다"
+} 

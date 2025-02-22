@@ -1,0 +1,26 @@
+{
+    "help.game.rules": "게임 규칙",
+    "help.game.rules.description": "오목은 가로, 세로, 대각선 중 한 방향으로 5개의 돌을 연속으로 놓는 것을 목표로 하는 게임입니다.",
+    "help.game.rules.winning": "승리 조건: 같은 색의 돌 5개를 연속으로 놓으면 승리합니다.",
+    
+    "help.controls.basic": "기본 조작",
+    "help.controls.mouse": "마우스: 판을 클릭하여 돌을 놓습니다",
+    "help.controls.keyboard": "키보드: 방향키로 이동, 스페이스바로 돌을 놓습니다",
+    
+    "help.modes.single": "싱글플레이 모드",
+    "help.modes.single.description": "컴퓨터 AI와 대전하는 모드입니다.",
+    "help.modes.multi": "멀티플레이 모드",
+    "help.modes.multi.description": "2명의 플레이어가 번갈아가며 돌을 놓는 모드입니다.",
+    "help.modes.online": "온라인 모드",
+    "help.modes.online.description": "인터넷을 통해 다른 플레이어와 대전할 수 있습니다.",
+    
+    "help.features.undo": "무르기",
+    "help.features.undo.description": "직전에 놓은 돌을 되돌릴 수 있습니다.",
+    "help.features.save": "저장 기능",
+    "help.features.save.description": "게임 진행 상황을 저장할 수 있습니다.",
+    
+    "help.tips.strategy": "전략 힌트",
+    "help.tips.strategy.1": "중앙 부근에 돌을 놓으면 유리합니다.",
+    "help.tips.strategy.2": "상대방의 4목은 반드시 막아야 합니다.",
+    "help.tips.strategy.3": "여러 가지 승리 패턴을 만드는 것을 목표로 하세요."
+} 

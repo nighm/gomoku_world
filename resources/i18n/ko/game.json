@@ -1,0 +1,42 @@
+{
+    "game.new": "새 게임",
+    "game.load": "게임 불러오기",
+    "game.save": "게임 저장",
+    "game.quit": "게임 종료",
+    "game.restart": "게임 재시작",
+    "game.pause": "일시정지",
+    "game.resume": "계속하기",
+    
+    "game.mode.single": "싱글플레이",
+    "game.mode.multi": "멀티플레이",
+    "game.mode.ai": "AI 대전",
+    "game.mode.online": "온라인",
+    "game.mode.tournament": "토너먼트",
+    
+    "game.difficulty.easy": "쉬움",
+    "game.difficulty.medium": "보통",
+    "game.difficulty.hard": "어려움",
+    
+    "game.status.start": "게임 시작",
+    "game.status.end": "게임 종료",
+    "game.status.draw": "무승부",
+    "game.status.win": "{player} 승리!",
+    "game.status.turn": "{player} 차례",
+    
+    "player.black": "흑",
+    "player.white": "백",
+    "player.ai": "AI",
+    "player.guest": "게스트",
+    
+    "move.invalid": "잘못된 수",
+    "move.undo": "무르기",
+    "move.redo": "다시하기",
+    
+    "board.size": "판 크기: {size}x{size}",
+    "board.theme": "판 테마",
+    
+    "score.wins": "승: {count}",
+    "score.losses": "패: {count}",
+    "score.draws": "무: {count}",
+    "score.rating": "레이팅: {rating}"
+} 

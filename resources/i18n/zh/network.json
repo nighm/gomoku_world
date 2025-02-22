@@ -1,0 +1,17 @@
+{
+    "network.status.online": "网络状态：在线",
+    "network.status.offline": "网络状态：离线",
+    "network.connecting": "连接中...",
+    "network.disconnected": "已断开连接",
+    "network.error": "网络错误",
+    "network.timeout": "连接超时",
+    "network.retry": "重试中...",
+    
+    "status.online": "网络状态：在线",
+    "status.offline": "网络状态：离线",
+    "status.connecting": "连接中...",
+    "status.disconnected": "已断开连接",
+    "status.error": "网络错误",
+    "status.timeout": "连接超时",
+    "status.retry": "重试中..."
+} 

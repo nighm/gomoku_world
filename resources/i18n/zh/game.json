@@ -1,42 +1,21 @@
 {
-    "game.new": "新游戏",
-    "game.load": "加载游戏",
-    "game.save": "保存游戏",
-    "game.quit": "退出游戏",
-    "game.restart": "重新开始",
-    "game.pause": "暂停游戏",
-    "game.resume": "继续游戏",
+    "new": "新游戏",
+    "load": "加载游戏",
+    "save": "保存游戏",
+    "quit": "退出游戏",
     
-    "game.mode.single": "单人游戏",
-    "game.mode.multi": "多人游戏",
-    "game.mode.ai": "对战AI",
-    "game.mode.online": "在线对战",
-    "game.mode.tournament": "比赛模式",
+    "mode.single": "单人游戏",
+    "mode.multi": "多人游戏",
+    "mode.ai": "人机对战",
     
-    "game.difficulty.easy": "简单",
-    "game.difficulty.medium": "中等",
-    "game.difficulty.hard": "困难",
+    "difficulty.easy": "简单",
+    "difficulty.medium": "中等",
+    "difficulty.hard": "困难",
     
-    "game.status.start": "游戏开始",
-    "game.status.end": "游戏结束",
-    "game.status.draw": "游戏平局",
-    "game.status.win": "{player}获胜！",
-    "game.status.turn": "{player}回合",
-    
-    "player.black": "黑方",
-    "player.white": "白方",
-    "player.ai": "AI",
-    "player.guest": "访客",
-    
-    "move.invalid": "无效移动",
-    "move.undo": "撤销移动",
-    "move.redo": "重做移动",
-    
-    "board.size": "棋盘大小：{size}x{size}",
-    "board.theme": "棋盘主题",
-    
-    "score.wins": "胜利：{count}",
-    "score.losses": "失败：{count}",
-    "score.draws": "平局：{count}",
-    "score.rating": "等级分：{rating}"
-} 
+    "status.your_turn": "你的回合",
+    "status.opponent_turn": "对方回合",
+    "status.game_over": "游戏结束",
+    "status.victory": "胜利！",
+    "status.defeat": "失败",
+    "status.draw": "平局"
+}

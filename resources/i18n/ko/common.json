@@ -1,0 +1,35 @@
+{
+    "app.name": "오목 월드",
+    "app.description": "현대적인 오목 게임",
+    "app.version": "버전 {version}",
+    
+    "language.name": "한국어",
+    "region.name": "대한민국",
+    
+    "button.ok": "확인",
+    "button.cancel": "취소",
+    "button.confirm": "확인",
+    "button.save": "저장",
+    "button.load": "불러오기",
+    "button.close": "닫기",
+    "button.back": "뒤로",
+    "button.next": "다음",
+    
+    "menu.file": "파일",
+    "menu.edit": "편집",
+    "menu.view": "보기",
+    "menu.help": "도움말",
+    
+    "dialog.error": "오류",
+    "dialog.warning": "경고",
+    "dialog.info": "정보",
+    "dialog.confirm": "확인",
+    
+    "error.unknown": "알 수 없는 오류가 발생했습니다",
+    "error.not_found": "리소스를 찾을 수 없습니다: {resource}",
+    "error.invalid_input": "잘못된 입력: {input}",
+    
+    "loading": "로딩 중...",
+    "processing": "처리 중...",
+    "please_wait": "잠시만 기다려주세요..."
+} 

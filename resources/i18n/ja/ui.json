@@ -1,0 +1,26 @@
+{
+    "ui.title": "五目並べワールド",
+    "ui.menu": "メニュー",
+    "ui.settings": "設定",
+    "ui.profile": "プロフィール",
+    "ui.leaderboard": "ランキング",
+    "ui.achievements": "実績",
+    "ui.statistics": "統計",
+    
+    "ui.theme.light": "ライトテーマ",
+    "ui.theme.dark": "ダークテーマ",
+    "ui.theme.classic": "クラシックテーマ",
+    "ui.theme.modern": "モダンテーマ",
+    
+    "ui.volume.master": "マスター音量",
+    "ui.volume.music": "音楽音量",
+    "ui.volume.effects": "効果音音量",
+    
+    "ui.display.fullscreen": "フルスクリーン",
+    "ui.display.resolution": "解像度",
+    "ui.display.quality": "画質",
+    
+    "ui.controls.keyboard": "キーボード設定",
+    "ui.controls.mouse": "マウス設定",
+    "ui.controls.gamepad": "ゲームパッド設定"
+} 

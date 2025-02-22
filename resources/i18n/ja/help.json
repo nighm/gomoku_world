@@ -1,0 +1,26 @@
+{
+    "help.game.rules": "ゲームルール",
+    "help.game.rules.description": "五目並べは、縦、横、斜めのいずれかの方向に5つの石を並べることを目指すゲームです。",
+    "help.game.rules.winning": "勝利条件：同じ色の石を5つ連続で並べると勝利です。",
+    
+    "help.controls.basic": "基本操作",
+    "help.controls.mouse": "マウス：盤面をクリックして石を置きます",
+    "help.controls.keyboard": "キーボード：矢印キーで移動、スペースキーで石を置きます",
+    
+    "help.modes.single": "シングルプレイモード",
+    "help.modes.single.description": "コンピュータAIと対戦するモードです。",
+    "help.modes.multi": "マルチプレイモード",
+    "help.modes.multi.description": "2人のプレイヤーが交互に手を打つモードです。",
+    "help.modes.online": "オンラインモード",
+    "help.modes.online.description": "インターネットを通じて他のプレイヤーと対戦できます。",
+    
+    "help.features.undo": "待った（取り消し）",
+    "help.features.undo.description": "直前の手を取り消すことができます。",
+    "help.features.save": "セーブ機能",
+    "help.features.save.description": "ゲームの途中経過を保存できます。",
+    
+    "help.tips.strategy": "戦略のヒント",
+    "help.tips.strategy.1": "中央付近に石を置くと有利です。",
+    "help.tips.strategy.2": "相手の4連を必ず防いでください。",
+    "help.tips.strategy.3": "複数の勝利パターンを作ることを心がけましょう。"
+} 

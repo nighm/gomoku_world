@@ -1,0 +1,21 @@
+{
+    "error.network.connection_failed": "ネットワーク接続に失敗しました",
+    "error.network.timeout": "ネットワークタイムアウト",
+    "error.network.disconnected": "ネットワークから切断されました",
+    
+    "error.game.invalid_move": "無効な手です",
+    "error.game.out_of_turn": "あなたの番ではありません",
+    "error.game.game_over": "ゲームは既に終了しています",
+    
+    "error.save.failed": "ゲームの保存に失敗しました",
+    "error.save.corrupted": "セーブデータが破損しています",
+    "error.save.incompatible": "互換性のないセーブデータです",
+    
+    "error.system.initialization": "システムの初期化に失敗しました",
+    "error.system.resource_missing": "必要なリソースが見つかりません：{resource}",
+    "error.system.out_of_memory": "メモリが不足しています",
+    
+    "error.validation.invalid_input": "無効な入力です：{input}",
+    "error.validation.required_field": "この項目は必須です",
+    "error.validation.invalid_format": "無効な形式です"
+} 

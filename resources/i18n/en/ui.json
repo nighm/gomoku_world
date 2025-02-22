@@ -1,0 +1,12 @@
+{
+    "title": "Network I18n Demo",
+    "header": "Network Status Monitor",
+    "footer": "Click the button below to switch language",
+    
+    "status.label": "Current Status:",
+    "language.label": "Current Language:",
+    
+    "button.refresh": "Refresh Status",
+    "button.reconnect": "Reconnect",
+    "button.settings": "Settings"
+} 

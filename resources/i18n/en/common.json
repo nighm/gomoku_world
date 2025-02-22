@@ -4,6 +4,10 @@
     "app.version": "Version {version}",
     
     "language.name": "English",
+    "language.en": "English",
+    "language.zh": "Chinese",
+    "language.ja": "Japanese",
+    "language.ko": "Korean",
     "region.name": "United States",
     
     "button.ok": "OK",
@@ -14,6 +18,7 @@
     "button.close": "Close",
     "button.back": "Back",
     "button.next": "Next",
+    "button.switch_language": "Switch to {language}",
     
     "menu.file": "File",
     "menu.edit": "Edit",
@@ -28,6 +33,11 @@
     "error.unknown": "An unknown error occurred",
     "error.not_found": "Resource not found: {resource}",
     "error.invalid_input": "Invalid input: {input}",
+    
+    "network.status.online": "Network Status: Online",
+    "network.status.offline": "Network Status: Offline",
+    "network.connecting": "Connecting...",
+    "network.disconnected": "Disconnected",
     
     "loading": "Loading...",
     "processing": "Processing...",

@@ -1,0 +1,29 @@
+{
+    "tutorial.welcome": "五目並べワールドへようこそ！",
+    "tutorial.welcome.description": "このチュートリアルでは、ゲームの基本的な遊び方を説明します。",
+    
+    "tutorial.basics.title": "基本ルール",
+    "tutorial.basics.step1": "1. 黒と白が交互に石を置きます",
+    "tutorial.basics.step2": "2. 縦、横、斜めのいずれかの方向に5つ並べると勝ちです",
+    "tutorial.basics.step3": "3. 一度置いた石は動かせません",
+    
+    "tutorial.interface.title": "インターフェースの説明",
+    "tutorial.interface.board": "これが対局盤です。クリックして石を置きます。",
+    "tutorial.interface.status": "ここには現在の手番や状態が表示されます。",
+    "tutorial.interface.menu": "メニューからは様々な機能にアクセスできます。",
+    
+    "tutorial.modes.title": "ゲームモードの説明",
+    "tutorial.modes.single": "シングルプレイ：AIと対戦します",
+    "tutorial.modes.multi": "マルチプレイ：友達と対戦します",
+    "tutorial.modes.online": "オンライン：ネット上のプレイヤーと対戦します",
+    
+    "tutorial.features.title": "便利な機能",
+    "tutorial.features.undo": "待った：直前の手を取り消せます",
+    "tutorial.features.save": "セーブ：ゲームを保存できます",
+    "tutorial.features.replay": "リプレイ：対局を振り返れます",
+    
+    "tutorial.next": "次へ進む",
+    "tutorial.previous": "前に戻る",
+    "tutorial.finish": "チュートリアルを終了",
+    "tutorial.skip": "スキップ"
+} 
