@@ -1,12 +1,11 @@
 """
-Gomoku World Game Package
-五子棋世界游戏包
+Gomoku World - A modern implementation of the classic Gomoku (Five in a Row) game
 """
 
-try:
-    from ._version import version as __version__
-except ImportError:
-    __version__ = "0.0.0"
+from ._version import version as __version__
+
+if not __version__:
+    __version__ = "1.4.4"
 
 __author__ = "Gomoku World Team"
 __email__ = "team@gomokuworld.com"

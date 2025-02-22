@@ -1,22 +1,22 @@
-# Gomoku World / 五子棋世界
+# 五子棋世界 / Gomoku World
 
-![License](https://img.shields.io/github/license/gomokuworld/gomoku-world)
-![Python Version](https://img.shields.io/badge/python-3.8%2B-blue)
-![Build Status](https://img.shields.io/github/workflow/status/gomokuworld/gomoku-world/CI)
-![Code Coverage](https://img.shields.io/codecov/c/github/gomokuworld/gomoku-world)
+![许可证](https://img.shields.io/github/license/gomokuworld/gomoku-world)
+![Python版本](https://img.shields.io/badge/python-3.8%2B-blue)
+![构建状态](https://img.shields.io/github/workflow/status/gomokuworld/gomoku-world/CI)
+![代码覆盖率](https://img.shields.io/codecov/c/github/gomokuworld/gomoku-world)
 
 [English](./README.md) | [简体中文](./README.zh-CN.md)
 
-A modern Gomoku (Five in a Row) game platform with advanced AI opponents, online multiplayer, and tournament features.
+一个现代化的五子棋游戏平台，具有高级 AI 对手、联机对战和比赛系统功能。
 
-## Latest Release / 最新版本
+## 最新版本 / Latest Release
 
-Version 1.4.4 is now available! Check out our detailed release notes:
-- [User Release Notes](docs/release_notes/v1.4.4.user.md)
-- [Beginner Developer Notes](docs/release_notes/v1.4.4.dev.beginner.md)
-- [Professional Developer Notes](docs/release_notes/v1.4.4.dev.professional.md)
+版本 1.4.4 现已发布！查看详细的版本说明：
+- [用户版本说明](docs/release_notes/v1.4.4.user.md)
+- [初级开发版本说明](docs/release_notes/v1.4.4.dev.beginner.md)
+- [专业开发版本说明](docs/release_notes/v1.4.4.dev.professional.md)
 
-## 功能特点 / Features
+## 功能特点
 
 - 🎮 **丰富的游戏模式**
   - 人机对战（多级 AI）
@@ -42,9 +42,9 @@ Version 1.4.4 is now available! Check out our detailed release notes:
   - 动画效果
   - 多语言支持
 
-## 快速开始 / Quick Start
+## 快速开始
 
-### 安装 / Installation
+### 安装
 
 ```bash
 # 从 PyPI 安装
@@ -56,7 +56,7 @@ cd gomoku-world
 pip install -e ".[dev]"
 ```
 
-### 运行 / Running
+### 运行
 
 ```python
 from gomoku_world import GomokuGUI
@@ -65,7 +65,7 @@ from gomoku_world import GomokuGUI
 GomokuGUI().run()
 ```
 
-## 项目结构 / Project Structure
+## 项目结构
 
 ```
 gomoku-world/
@@ -82,16 +82,16 @@ gomoku-world/
 └── scripts/              # 工具脚本
 ```
 
-## 文档 / Documentation
+## 文档
 
 - [教程总纲](docs/index.md)
 - [开发文档](docs/README.md)
 - [API 参考](https://docs.gomokuworld.com/api)
 - [示例代码](examples/)
 
-## 开发指南 / Development
+## 开发指南
 
-### 环境设置 / Setup
+### 环境设置
 
 ```bash
 # 创建虚拟环境
@@ -106,7 +106,7 @@ pip install -e ".[dev]"
 pre-commit install
 ```
 
-### 测试 / Testing
+### 测试
 
 ```bash
 # 运行所有测试
@@ -119,7 +119,7 @@ pytest --cov=gomoku_world
 pytest tests/performance/
 ```
 
-### 构建 / Building
+### 构建
 
 ```bash
 # 构建包
@@ -129,7 +129,7 @@ python -m build
 sphinx-build docs/ docs/_build/html
 ```
 
-## 贡献指南 / Contributing
+## 贡献指南
 
 我们欢迎各种形式的贡献，包括但不限于：
 
@@ -140,29 +140,29 @@ sphinx-build docs/ docs/_build/html
 
 详见 [贡献指南](CONTRIBUTING.md)。
 
-## 社区 / Community
+## 社区
 
 - [Discord](https://discord.gg/gomokuworld)
 - [论坛](https://forum.gomokuworld.com)
 - [微信群](https://gomokuworld.com/wechat)
 
-## 版本历史 / Changelog
+## 版本历史
 
 详见 [CHANGELOG.md](CHANGELOG.md)
 
-## 许可证 / License
+## 许可证
 
 本项目采用 MIT 许可证 - 详见 [LICENSE](LICENSE) 文件
 
-## 作者 / Authors
+## 作者
 
 - 开发团队 - [贡献者列表](https://github.com/gomokuworld/gomoku-world/graphs/contributors)
 
-## 致谢 / Acknowledgments
+## 致谢
 
 感谢所有为本项目做出贡献的开发者和用户。
 
-## 引用 / Citation
+## 引用
 
 如果您在研究中使用了本项目，请引用：
 

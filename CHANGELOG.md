@@ -5,6 +5,62 @@ All notable changes to GomokuWorld will be documented in this file.
 The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/),
 and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
+## [1.4.4] - 2024-03-21
+
+> 详细的版本说明请查看：
+> - [用户版本说明](docs/release_notes/v1.4.4.user.md)
+> - [初级开发版本说明](docs/release_notes/v1.4.4.dev.beginner.md)
+> - [专业开发版本说明](docs/release_notes/v1.4.4.dev.professional.md)
+
+> For detailed release notes, please see:
+> - [User Release Notes](docs/release_notes/v1.4.4.user.md)
+> - [Beginner Developer Release Notes](docs/release_notes/v1.4.4.dev.beginner.md)
+> - [Professional Developer Release Notes](docs/release_notes/v1.4.4.dev.professional.md)
+
+### 主要更新 / Major Updates
+- 全新的用户指南系统 / New user guide system
+- 优化的双语支持 / Enhanced bilingual support
+- 改进的界面交互 / Improved interface interaction
+
+### 改进 / Improvements
+- 更清晰的文档结构 / Clearer documentation structure
+- 更好的用户体验 / Better user experience
+- 更完善的帮助系统 / Enhanced help system
+
+### 修复 / Fixes
+- 界面和显示问题 / Interface and display issues
+- 文档和翻译问题 / Documentation and translation issues
+
+### 文档更新 / Documentation Updates
+- 全新的用户指南 / New User Guide
+  - 新手入门教程，从零开始学习五子棋 / Beginner's tutorial for learning Gomoku from scratch
+  - 详细的游戏规则说明，包含图解示例 / Detailed game rules with illustrated examples
+  - 界面操作指南，帮助快速上手 / Interface operation guide for quick start
+  - 常见问题解答，解决使用疑惑 / FAQ section to address common concerns
+
+- 双语支持优化 / Bilingual Support Enhancement
+  - 所有文档支持中英文对照 / All documentation available in both Chinese and English
+  - 界面语言无缝切换 / Seamless interface language switching
+  - 更准确的翻译内容 / More accurate translations
+  - 本地化支持更完善 / Enhanced localization support
+
+- 功能说明完善 / Feature Documentation
+  - AI对战模式详细说明 / Detailed explanation of AI battle modes
+  - 联机对战功能指南 / Online multiplayer feature guide
+  - 录像回放使用说明 / Game replay feature instructions
+  - 自定义设置详解 / Custom settings explanation
+
+### 使用体验改进 / User Experience Improvements
+- 更清晰的菜单结构 / Clearer menu structure
+- 更直观的设置选项 / More intuitive setting options
+- 更友好的错误提示 / Friendlier error messages
+
+### 问题修复 / Bug Fixes
+- 修复了一些界面显示问题 / Fixed some interface display issues
+- 改进了语言切换的稳定性 / Improved language switching stability
+- 优化了文档阅读体验 / Enhanced documentation reading experience
+- 解决了部分翻译不准确的问题 / Resolved some translation inaccuracies
+
 ## [1.4.3] - 2024-02-22
 
 ### Added / 新增
@@ -243,9 +299,36 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 ### Fixed / 修复
 - Initial bug fixes and optimizations / 初始bug修复和优化
 
-## [0.1.0] - 2024-02-20
+## [0.2.0] - 2024-03-21
 
-### Added / 新增
-- Project initialization / 项目初始化
-- Basic game functionality / 基本游戏功能
-- Simple AI implementation / 简单AI实现 
+### 新增 / Added
+- 完整的项目文档结构
+  - 新增中英文 README
+  - 新增中英文目录结构说明
+  - 新增完整的教程文档框架
+- 详细的教程文档
+  - 基础教程（游戏规则、环境配置等）
+  - 进阶教程（AI开发、网络功能等）
+  - 高级特性（性能优化、国际化等）
+- 标准的项目结构
+  - 优化源代码组织
+  - 完善测试目录结构
+  - 规范化资源管理
+
+### 改进 / Improved
+- 文档组织更加清晰
+- 双语支持更加完善
+- 目录结构更加规范
+- 开发指南更加详细
+
+### 修复 / Fixed
+- 文档结构不清晰的问题
+- 中英文内容不同步的问题
+- 目录说明不完整的问题
+
+## [0.1.0] - 2024-03-20
+
+### 新增 / Added
+- 项目基础框架
+- 基本游戏功能
+- 初始文档结构 
