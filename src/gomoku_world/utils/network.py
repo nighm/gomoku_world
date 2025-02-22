@@ -1,6 +1,7 @@
 """
-Network status monitoring service
-网络状态监控服务
+Network monitoring and management module.
+
+网络监控和管理模块。
 """
 
 import socket
@@ -16,21 +17,24 @@ from ..config.settings import (
     NETWORK_RETRY_DELAY,
     NETWORK_PROXY_SETTINGS
 )
-from .logger import get_logger
+from ..utils.logger import get_logger
 
 logger = get_logger(__name__)
 
 class NetworkMonitor:
-    """Network status monitoring service"""
+    """
+    Network status monitoring and management class.
+    
+    网络状态监控和管理类。
+    """
     
     def __init__(self, check_interval: int = NETWORK_CHECK_INTERVAL):
         """
-        Initialize network monitor
+        Initialize network monitor.
         
-        Args:
-            check_interval: Interval between checks in seconds
+        初始化网络监控器。
         """
-        self._is_online = False
+        self._is_online = True
         self._check_interval = check_interval
         self._stop_event = threading.Event()
         self._monitor_thread: Optional[threading.Thread] = None
@@ -38,43 +42,54 @@ class NetworkMonitor:
         self._lock = threading.Lock()
         self._latencies: Dict[str, List[float]] = {}
         self._proxy = NETWORK_PROXY_SETTINGS if NETWORK_PROXY_SETTINGS.get('enabled') else None
+        self._metrics: Dict[str, float] = {
+            "latency": 0.0,
+            "packet_loss": 0.0,
+            "bandwidth": 0.0
+        }
         
     def start(self):
-        """Start network monitoring"""
+        """
+        Start network monitoring.
+        
+        启动网络监控。
+        """
         if self._monitor_thread is not None:
             return
             
         self._stop_event.clear()
         self._monitor_thread = threading.Thread(target=self._monitor_loop, daemon=True)
         self._monitor_thread.start()
-        logger.info("Network monitoring started")
+        logger.info("Network monitor started / 网络监控已启动")
         
     def stop(self):
-        """Stop network monitoring"""
+        """
+        Stop network monitoring.
+        
+        停止网络监控。
+        """
         if self._monitor_thread is None:
             return
             
         self._stop_event.set()
         self._monitor_thread.join()
         self._monitor_thread = None
-        logger.info("Network monitoring stopped")
+        logger.info("Network monitor stopped / 网络监控已停止")
         
     def add_callback(self, callback: Callable[[bool], None]):
         """
-        Add status change callback
+        Add network status change callback.
         
-        Args:
-            callback: Callback function receiving online status
+        添加网络状态变化回调函数。
         """
         with self._lock:
             self._callbacks.append(callback)
             
     def remove_callback(self, callback: Callable[[bool], None]):
         """
-        Remove status change callback
+        Remove network status change callback.
         
-        Args:
-            callback: Callback function to remove
+        移除网络状态变化回调函数。
         """
         with self._lock:
             self._callbacks.remove(callback)
@@ -171,8 +186,20 @@ class NetworkMonitor:
                     
         return False
         
+    def get_metrics(self) -> Dict[str, float]:
+        """
+        Get current network metrics.
+        
+        获取当前网络指标。
+        """
+        return self._metrics.copy()
+        
     def _monitor_loop(self):
-        """Network monitoring loop with quality tracking"""
+        """
+        Main monitoring loop.
+        
+        主监控循环。
+        """
         while not self._stop_event.is_set():
             try:
                 # Check connection
@@ -196,11 +223,37 @@ class NetworkMonitor:
                             except Exception as e:
                                 logger.error(f"Error in network status callback: {e}")
                                 
+                # Update metrics / 更新指标
+                self._update_metrics()
+                
             except Exception as e:
-                logger.error(f"Error in network monitoring: {e}")
+                logger.error(f"Network monitoring error / 网络监控错误: {e}")
                 
             # Wait for next check
             self._stop_event.wait(self._check_interval)
+        
+    def _update_metrics(self):
+        """
+        Update network performance metrics.
+        
+        更新网络性能指标。
+        """
+        # Implementation here / 在此实现
+        pass
+        
+    def _notify_callbacks(self):
+        """
+        Notify all registered callbacks of status change.
+        
+        通知所有已注册的回调函数状态变化。
+        """
+        for callback in self._callbacks:
+            try:
+                callback(self._is_online)
+            except Exception as e:
+                logger.error(f"Callback error / 回调错误: {e}")
 
-# Create global network monitor instance
-network_monitor = NetworkMonitor() 
+# Global instance / 全局实例
+network_monitor = NetworkMonitor()
+
+__all__ = ['network_monitor'] 

@@ -1,0 +1,21 @@
+# Title: Summary of changes (50 chars or less)
+
+# Body: Detailed explanation of changes
+# - What was changed?
+# - Why was it changed?
+# - Any notable side effects?
+
+# For documentation changes:
+# - [ ] English documentation updated
+# - [ ] Chinese documentation updated
+# - [ ] Docstrings are bilingual
+# - [ ] Code comments are bilingual
+# - [ ] Documentation follows the guidelines in docs/DOCUMENTATION_GUIDELINES.md
+
+# Breaking changes:
+# - List any breaking changes here
+
+# Related issues:
+# - List related issue numbers here
+
+# Co-authored-by: Name <email> 

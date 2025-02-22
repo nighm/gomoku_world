@@ -40,4 +40,13 @@ repos:
     hooks:
     -   id: bandit
         args: ["-c", "pyproject.toml"]
-        additional_dependencies: ["bandit[toml]"] 
+        additional_dependencies: ["bandit[toml]"]
+
+-   repo: local
+    hooks:
+    -   id: check-bilingual-docs
+        name: Check bilingual documentation
+        entry: python scripts/check_bilingual_docs.py
+        language: python
+        types: [python, markdown]
+        exclude: ^(venv/|build/|dist/) 
