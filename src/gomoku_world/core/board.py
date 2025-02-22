@@ -1,6 +1,13 @@
 """
-Game logic module for the Gomoku game.
-This module contains the core game mechanics and board state management.
+Game board module for the Gomoku game.
+
+五子棋游戏的棋盘模块。
+
+This module contains the core game board mechanics and state management,
+including board representation, move validation, and game state tracking.
+
+本模块包含核心游戏棋盘机制和状态管理，
+包括棋盘表示、移动验证和游戏状态跟踪。
 """
 
 from typing import List, Tuple, Optional
@@ -9,22 +16,40 @@ import logging
 import numpy as np
 from ..utils.logger import get_logger
 
-# Configure logging
+# Configure logging / 配置日志
 logging.basicConfig(level=logging.INFO)
 logger = get_logger(__name__)
 
 @dataclass
 class Position:
-    """Represents a position on the game board"""
+    """
+    Represents a position on the game board.
+    
+    表示棋盘上的一个位置。
+    
+    Attributes:
+        row (int): Row index (0-based).
+                  行索引（从0开始）。
+        col (int): Column index (0-based).
+                  列索引（从0开始）。
+    """
     row: int
     col: int
 
 class GameError(Exception):
-    """Base exception class for game-related errors"""
+    """
+    Base exception class for game-related errors.
+    
+    游戏相关错误的基础异常类。
+    """
     pass
 
 class InvalidMoveError(GameError):
-    """Exception raised for invalid moves"""
+    """
+    Exception raised for invalid moves.
+    
+    无效移动时抛出的异常。
+    """
     pass
 
 class Game:
@@ -42,6 +67,8 @@ class Game:
     
     def __init__(self, size: int = 15):
         """
+        Initialize the game board.
+        
         Initialize the game board.
         
         Args:
@@ -156,102 +183,157 @@ class Game:
 
 class Board:
     """
-    Represents the game board
+    Game board class that manages the board state and move validation.
+    
+    Management board state and move validation game board class.
+    
+    Attributes:
+        size (int): The size of the game board (size x size).
+                    Game board size (size x size).
+        board (numpy.ndarray): The game board represented as a 2D array.
+                              Game board represented as a 2D array.
+        move_history (List[Position]): History of moves made in the game.
+                                      Game moves history.
     """
     
     def __init__(self, size: int = 15):
         """
-        Initialize board
+        Initialize the game board.
+        
+        Initialize the game board.
         
         Args:
-            size: Board size (default: 15)
+            size (int): The size of the board (default: 15).
+                        Game board size (default: 15).
+        
+        Raises:
+            ValueError: If size is less than 5 or greater than 19.
+                       If size is less than 5 or greater than 19.
         """
+        if not 5 <= size <= 19:
+            raise ValueError("Board size must be between 5 and 19 / Game board size must be between 5 and 19")
+            
         self.size = size
         self.board = np.zeros((size, size), dtype=np.int8)
-        logger.info(f"Board initialized with size {size}")
-    
+        self.move_history = []
+        
     def is_valid_move(self, row: int, col: int) -> bool:
         """
-        Check if a move is valid
+        Check if a move is valid.
+        
+        Check if a move is valid.
         
         Args:
-            row: Row number
-            col: Column number
-            
+            row (int): Row index of the move.
+                       Move row index.
+            col (int): Column index of the move.
+                       Move column index.
+                      
         Returns:
-            bool: True if move is valid
+            bool: True if the move is valid, False otherwise.
+                  If the move is valid then return True, otherwise return False.
         """
-        if not (0 <= row < self.size and 0 <= col < self.size):
-            return False
-        return self.board[row, col] == 0
-    
+        return (0 <= row < self.size and 
+                0 <= col < self.size and 
+                self.board[row, col] == 0)
+                
     def place_piece(self, row: int, col: int, player: int):
         """
-        Place a piece on the board
+        Place a piece on the board.
+        
+        Place a piece on the board.
         
         Args:
-            row: Row number
-            col: Column number
-            player: Player number (1 or 2)
+            row (int): Row index.
+                       Move row index.
+            col (int): Column index.
+                       Move column index.
+            player (int): Player number (1 for black, 2 for white).
+                          Player number (1 for black, 2 for white).
+                         
+        Raises:
+            InvalidMoveError: If the move is invalid.
+                             If the move is invalid.
         """
         if not self.is_valid_move(row, col):
-            raise ValueError(f"Invalid move at ({row}, {col})")
+            raise InvalidMoveError(f"Invalid move at ({row}, {col}) / Move at ({row}, {col}) is invalid")
+            
         self.board[row, col] = player
-        logger.debug(f"Piece placed at ({row}, {col}) by player {player}")
-    
+        self.move_history.append(Position(row, col))
+        
     def clear_cell(self, row: int, col: int):
         """
-        Clear a cell on the board
+        Clear a cell on the board.
+        
+        Clear a cell on the board.
         
         Args:
-            row: Row number
-            col: Column number
+            row (int): Row index.
+                       Move row index.
+            col (int): Column index.
+                       Move column index.
         """
         self.board[row, col] = 0
-        logger.debug(f"Cell cleared at ({row}, {col})")
-    
+        
     def clear(self):
-        """Clear the entire board"""
+        """
+        Clear the entire board.
+        
+        Clear the entire board.
+        """
         self.board.fill(0)
-        logger.info("Board cleared")
-    
+        self.move_history.clear()
+        
     def get_piece(self, row: int, col: int) -> int:
         """
-        Get the piece at a position
+        Get the piece at a specific position.
+        
+        Get the piece at a specific position.
         
         Args:
-            row: Row number
-            col: Column number
-            
+            row (int): Row index.
+                       Move row index.
+            col (int): Column index.
+                       Move column index.
+                      
         Returns:
-            int: 0 for empty, 1 for black, 2 for white
+            int: The piece value (0 for empty, 1 for black, 2 for white).
+                  The piece value (0 for empty, 1 for black, 2 for white).
         """
         return self.board[row, col]
-    
+        
     def is_full(self) -> bool:
         """
-        Check if board is full
+        Check if the board is full.
+        
+        Check if the board is full.
         
         Returns:
-            bool: True if board is full
+            bool: True if the board is full, False otherwise.
+                  If the board is full then return True, otherwise return False.
         """
         return np.all(self.board != 0)
-    
+        
     def get_empty_cells(self) -> List[Tuple[int, int]]:
         """
-        Get all empty cells
+        Get all empty cells on the board.
+        
+        Get all empty cells on the board.
         
         Returns:
-            List[Tuple[int, int]]: List of empty cell coordinates
+            List[Tuple[int, int]]: List of (row, col) tuples for empty cells.
+                                   List of (row, col) tuples for empty cells.
         """
-        empty = np.where(self.board == 0)
-        return list(zip(empty[0], empty[1]))
-    
+        return list(zip(*np.where(self.board == 0)))
+        
     def __str__(self) -> str:
         """
-        String representation of the board
+        Get string representation of the board.
+        
+        Get string representation of the board.
         
         Returns:
-            str: Board representation
+            str: ASCII representation of the board.
+                  ASCII representation of the board.
         """
         return str(self.board) 

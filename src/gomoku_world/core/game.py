@@ -1,6 +1,21 @@
 """
-Core game logic
-鏍稿績娓告垙閫昏緫
+Core game logic module.
+
+核心游戏逻辑模块。
+
+This module implements the main game logic for Gomoku, including:
+- Game state management
+- Move handling
+- Player turn management
+- Game mode control
+- AI integration
+
+本模块实现五子棋的主要游戏逻辑，包括：
+- 游戏状态管理
+- 移动处理
+- 玩家回合管理
+- 游戏模式控制
+- AI集成
 """
 
 from typing import Optional, Tuple, List
@@ -17,8 +32,17 @@ logger = get_logger(__name__)
 @dataclass
 class Move:
     """
-    Represents a game move
-    琛ㄧず涓涓父鎴忕Щ鍔?
+    Represents a game move.
+    
+    表示一个游戏移动。
+    
+    Attributes:
+        row (int): Row index of the move.
+                  移动的行索引。
+        col (int): Column index of the move.
+                  移动的列索引。
+        player (int): Player number (1 for black, 2 for white).
+                     玩家编号（1为黑棋，2为白棋）。
     """
     row: int
     col: int
@@ -26,21 +50,41 @@ class Move:
 
 class Game:
     """
-    Main game logic class
-    涓绘父鎴忛昏緫绫?
+    Main game logic class.
+    
+    主游戏逻辑类。
+    
+    This class manages:
+    - Game state and board
+    - Player moves and turns
+    - Game rules enforcement
+    - AI opponent (in PvC mode)
+    - Game history
+    
+    此类管理：
+    - 游戏状态和棋盘
+    - 玩家移动和回合
+    - 游戏规则执行
+    - AI对手（在PvC模式中）
+    - 游戏历史
     """
     
     def __init__(self, board_size: int = 15, game_mode: str = "pvp"):
         """
-        Initialize game
-        鍒濆鍖栨父鎴?
+        Initialize game instance.
+        
+        初始化游戏实例。
         
         Args:
-            board_size: Size of the game board (default: 15)
-            game_mode: Game mode (pvp/pvc) (default: pvp)
+            board_size (int): Size of the game board (default: 15).
+                            游戏棋盘的大小（默认：15）。
+            game_mode (str): Game mode (pvp/pvc) (default: pvp).
+                           游戏模式（pvp/pvc）（默认：pvp）。
+                           pvp: Player vs Player / 玩家对玩家
+                           pvc: Player vs Computer / 玩家对电脑
         """
         self.board = Board(board_size)
-        self.current_player = 1  # 1 for black, 2 for white
+        self.current_player = 1  # 1 for black, 2 for white / 1为黑棋，2为白棋
         self.moves: List[Move] = []
         self.game_over = False
         self.winner = None
@@ -51,163 +95,157 @@ class Game:
     
     def make_move(self, row: int, col: int) -> bool:
         """
-        Make a move on the board
-        鍦ㄦ鐩樹笂钀藉瓙
+        Make a move on the board.
+        
+        在棋盘上进行移动。
         
         Args:
-            row: Row number
-            col: Column number
-        
+            row (int): Row index of the move.
+                      移动的行索引。
+            col (int): Column index of the move.
+                      移动的列索引。
+                      
         Returns:
-            bool: True if move was successful
+            bool: True if the move was successful, False otherwise.
+                 如果移动成功则为True，否则为False。
         """
         if self.game_over:
-            logger.warning("Attempted move after game over")
+            logger.warning("Game is already over / 游戏已经结束")
             return False
             
-        if not self.board.is_valid_move(row, col):
-            logger.warning(f"Invalid move attempted at ({row}, {col})")
+        if not Rules.is_valid_move(self.board, row, col):
+            logger.warning(f"Invalid move at ({row}, {col}) / 在({row}, {col})的移动无效")
             return False
         
-        # Make player's move
+        # Make the move / 进行移动
         self.board.place_piece(row, col, self.current_player)
-        move = Move(row, col, self.current_player)
-        self.moves.append(move)
+        self.moves.append(Move(row, col, self.current_player))
         
-        # Check game state after player's move
+        # Check for win / 检查是否胜利
         if Rules.check_win(self.board, row, col):
             self.game_over = True
             self.winner = self.current_player
-            logger.info(f"Player {self.current_player} wins")
+            logger.info(f"Player {self.current_player} wins! / 玩家{self.current_player}获胜！")
             return True
-        elif Rules.is_draw(self.board):
+            
+        # Check for draw / 检查是否平局
+        if Rules.is_draw(self.board):
             self.game_over = True
-            logger.info("Game ends in draw")
+            logger.info("Game is a draw / 游戏平局")
             return True
         
-        # Switch player
-        self.current_player = 3 - self.current_player
+        # Switch players / 切换玩家
+        self.current_player = 3 - self.current_player  # Toggle between 1 and 2 / 在1和2之间切换
         
-        # If playing against AI and it's AI's turn
-        if self.game_mode == "pvc" and self.current_player == 2 and not self.game_over:
+        # Make AI move if in PvC mode / 如果在PvC模式下，进行AI移动
+        if self.game_mode == "pvc" and not self.game_over:
             return self._make_ai_move()
         
         return True
     
     def _make_ai_move(self) -> bool:
         """
-        Make AI move
-        鎵цAI绉诲姩
+        Make an AI move.
+        
+        进行AI移动。
         
         Returns:
-            bool: True if move was successful
+            bool: True if the AI move was successful, False otherwise.
+                 如果AI移动成功则为True，否则为False。
         """
         if not self.ai:
-            logger.error("AI not initialized")
+            logger.error("AI not initialized / AI未初始化")
             return False
         
-        # Get AI's move
-        ai_row, ai_col = self.ai.get_move(self.board, self.current_player)
-        
-        # Make AI's move
-        self.board.place_piece(ai_row, ai_col, self.current_player)
-        move = Move(ai_row, ai_col, self.current_player)
-        self.moves.append(move)
-        
-        # Check game state after AI's move
-        if Rules.check_win(self.board, ai_row, ai_col):
-            self.game_over = True
-            self.winner = self.current_player
-            logger.info(f"AI wins")
-            return True
-        elif Rules.is_draw(self.board):
-            self.game_over = True
-            logger.info("Game ends in draw")
-            return True
-        
-        # Switch back to player
-        self.current_player = 3 - self.current_player
-        return True
+        try:
+            row, col = self.ai.get_move(self.board, self.current_player)
+            return self.make_move(row, col)
+        except Exception as e:
+            logger.error(f"AI move error / AI移动错误: {e}")
+            return False
     
     def undo_move(self) -> Optional[Move]:
         """
-        Undo the last move
-        鎾ら攢鏈鍚庝竴姝?
+        Undo the last move.
+        
+        撤销最后一步移动。
         
         Returns:
-            Optional[Move]: The move that was undone, or None if no moves to undo
+            Optional[Move]: The undone move, or None if no moves to undo.
+                          被撤销的移动，如果没有可撤销的移动则为None。
         """
         if not self.moves:
-            logger.warning("No moves to undo")
             return None
         
-        # If playing against AI, undo both AI's move and player's move
-        if self.game_mode == "pvc" and len(self.moves) >= 2:
-            # Undo AI's move
-            ai_move = self.moves.pop()
-            self.board.clear_cell(ai_move.row, ai_move.col)
-            # Undo player's move
-            player_move = self.moves.pop()
-            self.board.clear_cell(player_move.row, player_move.col)
-            self.current_player = player_move.player
-        else:
-            # Just undo the last move
-            move = self.moves.pop()
-            self.board.clear_cell(move.row, move.col)
-            self.current_player = move.player
+        last_move = self.moves.pop()
+        self.board.clear_cell(last_move.row, last_move.col)
         
-        self.game_over = False
-        self.winner = None
-        logger.info("Move(s) undone")
-        return move
+        # Reset game state if game was over / 如果游戏已结束，重置游戏状态
+        if self.game_over:
+            self.game_over = False
+            self.winner = None
+        
+        # Switch back to previous player / 切换回前一个玩家
+        self.current_player = last_move.player
+        
+        logger.info(f"Move undone at ({last_move.row}, {last_move.col}) / 撤销了在({last_move.row}, {last_move.col})的移动")
+        return last_move
     
     def get_valid_moves(self) -> List[Tuple[int, int]]:
         """
-        Get all valid moves
-        鑾峰彇鎵鏈夋湁鏁堢殑绉诲姩
+        Get all valid moves.
+        
+        获取所有有效的移动。
         
         Returns:
-            List[Tuple[int, int]]: List of valid move coordinates
+            List[Tuple[int, int]]: List of valid move coordinates.
+                                  有效移动坐标列表。
         """
         return Rules.get_valid_moves(self.board)
     
     def reset(self):
         """
-        Reset the game to initial state
-        閲嶇疆娓告垙鍒板垵濮嬬姸鎬?
+        Reset the game to initial state.
+        
+        重置游戏到初始状态。
         """
         self.board.clear()
-        self.current_player = 1
         self.moves.clear()
+        self.current_player = 1
         self.game_over = False
         self.winner = None
-        logger.info("Game reset")
+        logger.info("Game reset / 游戏已重置")
     
     def set_game_mode(self, mode: str):
         """
-        Set game mode
-        璁剧疆娓告垙妯″紡
+        Set the game mode.
+        
+        设置游戏模式。
         
         Args:
-            mode: Game mode (pvp/pvc)
+            mode (str): Game mode ('pvp' or 'pvc').
+                       游戏模式（'pvp'或'pvc'）。
         """
-        if mode in ["pvp", "pvc"]:
-            self.game_mode = mode
-            self.ai = AI() if mode == "pvc" else None
-            logger.info(f"Game mode set to {mode}")
-        else:
-            logger.warning(f"Invalid game mode: {mode}")
+        if mode not in ["pvp", "pvc"]:
+            raise ValueError("Invalid game mode / 无效的游戏模式")
+            
+        self.game_mode = mode
+        self.ai = AI() if mode == "pvc" else None
+        self.reset()
+        logger.info(f"Game mode set to {mode} / 游戏模式设置为{mode}")
     
     def set_ai_difficulty(self, difficulty: str):
         """
-        Set AI difficulty
-        璁剧疆AI闅惧害
+        Set AI difficulty level.
+        
+        设置AI难度级别。
         
         Args:
-            difficulty: AI difficulty level
+            difficulty (str): Difficulty level ('easy', 'medium', or 'hard').
+                            难度级别（'easy'、'medium'或'hard'）。
         """
-        if self.ai:
-            self.ai = AI(difficulty)
-            logger.info(f"AI difficulty set to {difficulty}")
-        else:
-            logger.warning("Cannot set AI difficulty in PvP mode") 
+        if not self.ai:
+            raise RuntimeError("AI not initialized / AI未初始化")
+            
+        self.ai.set_difficulty(difficulty)
+        logger.info(f"AI difficulty set to {difficulty} / AI难度设置为{difficulty}") 
