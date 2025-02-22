@@ -3,7 +3,7 @@ Gomoku World Game Package
 五子棋世界游戏包
 """
 
-__version__ = "1.1.0"
+__version__ = "1.4.0"
 __author__ = "Gomoku World Team"
 __email__ = "team@gomokuworld.com"
 

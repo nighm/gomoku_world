@@ -1,0 +1,168 @@
+/* Tutorial Styles */
+
+/* Animation Container */
+.tutorial-animation {
+    margin: 20px 0;
+    padding: 10px;
+    border: 1px solid #ddd;
+    border-radius: 5px;
+    background: #f5f5f5;
+    box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+}
+
+/* Video Player */
+.tutorial-animation video {
+    max-width: 100%;
+    height: auto;
+    display: block;
+    margin: 0 auto;
+    border-radius: 3px;
+}
+
+/* Step-by-Step Guide */
+.tutorial-steps {
+    margin: 15px 0;
+    padding: 0;
+    list-style-type: none;
+    counter-reset: step-counter;
+}
+
+.tutorial-steps li {
+    margin: 10px 0;
+    padding: 10px;
+    background: #fff;
+    border-left: 3px solid #4A90E2;
+    counter-increment: step-counter;
+}
+
+.tutorial-steps li::before {
+    content: counter(step-counter);
+    margin-right: 10px;
+    background: #4A90E2;
+    color: white;
+    padding: 2px 8px;
+    border-radius: 3px;
+}
+
+/* Interactive Elements */
+.tutorial-interactive {
+    border: 2px solid #4A90E2;
+    padding: 15px;
+    margin: 20px 0;
+    border-radius: 5px;
+    background: #f8f9fa;
+}
+
+.tutorial-interactive:hover {
+    background: #e9ecef;
+    cursor: pointer;
+}
+
+/* Diagrams */
+.tutorial-diagram {
+    margin: 20px 0;
+    padding: 15px;
+    background: #fff;
+    border: 1px solid #ddd;
+    border-radius: 5px;
+}
+
+/* Code Blocks */
+.tutorial-code {
+    background: #282c34;
+    color: #abb2bf;
+    padding: 15px;
+    border-radius: 5px;
+    font-family: 'Consolas', monospace;
+    overflow-x: auto;
+}
+
+/* Responsive Design */
+@media (max-width: 768px) {
+    .tutorial-animation {
+        margin: 10px 0;
+        padding: 5px;
+    }
+    
+    .tutorial-steps li {
+        padding: 5px;
+    }
+    
+    .tutorial-interactive {
+        padding: 10px;
+    }
+}
+
+/* Dark Mode */
+@media (prefers-color-scheme: dark) {
+    .tutorial-animation {
+        background: #2d2d2d;
+        border-color: #444;
+    }
+    
+    .tutorial-steps li {
+        background: #333;
+        border-left-color: #4A90E2;
+        color: #fff;
+    }
+    
+    .tutorial-interactive {
+        background: #2d2d2d;
+        border-color: #4A90E2;
+        color: #fff;
+    }
+    
+    .tutorial-interactive:hover {
+        background: #3d3d3d;
+    }
+    
+    .tutorial-diagram {
+        background: #2d2d2d;
+        border-color: #444;
+        color: #fff;
+    }
+}
+
+/* Animation Effects */
+@keyframes fadeIn {
+    from { opacity: 0; }
+    to { opacity: 1; }
+}
+
+@keyframes slideIn {
+    from { transform: translateY(20px); opacity: 0; }
+    to { transform: translateY(0); opacity: 1; }
+}
+
+.tutorial-animation {
+    animation: fadeIn 0.5s ease-in-out;
+}
+
+.tutorial-steps li {
+    animation: slideIn 0.3s ease-in-out;
+    animation-fill-mode: both;
+}
+
+.tutorial-steps li:nth-child(1) { animation-delay: 0.1s; }
+.tutorial-steps li:nth-child(2) { animation-delay: 0.2s; }
+.tutorial-steps li:nth-child(3) { animation-delay: 0.3s; }
+.tutorial-steps li:nth-child(4) { animation-delay: 0.4s; }
+
+/* Print Styles */
+@media print {
+    .tutorial-animation {
+        border: none;
+        box-shadow: none;
+    }
+    
+    .tutorial-interactive {
+        border: 1px solid #000;
+        background: none;
+    }
+    
+    .tutorial-steps li::before {
+        background: none;
+        border: 1px solid #000;
+        color: #000;
+    }
+} 

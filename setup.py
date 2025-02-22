@@ -12,7 +12,7 @@ with open("requirements.txt", "r", encoding="utf-8") as fh:
 
 setup(
     name="gomoku_world",
-    version="1.3.0",
+    version="1.4.0",
     author="GomokuWorld Team",
     author_email="team@gomokuworld.org",
     description="A modern Gomoku (Five in a Row) game with AI and online multiplayer support",
@@ -39,7 +39,11 @@ setup(
         "Topic :: Games/Entertainment :: Board Games",
     ],
     python_requires=">=3.8",
-    install_requires=requirements,
+    install_requires=[
+        "pygame>=2.5.0",
+        "numpy>=1.24.0",
+        "opencv-python>=4.8.0",
+    ],
     entry_points={
         "console_scripts": [
             "gomoku_world=gomoku_world.gui:main",

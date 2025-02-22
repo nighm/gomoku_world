@@ -7,7 +7,7 @@ from pathlib import Path
 
 # Package information
 PACKAGE_NAME = "Gomoku World"
-VERSION = "1.1.0"
+VERSION = "1.4.0"
 
 # Directory paths
 ROOT_DIR = Path(__file__).parent.parent.parent.parent

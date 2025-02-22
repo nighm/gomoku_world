@@ -5,6 +5,44 @@ All notable changes to GomokuWorld will be documented in this file.
 The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/),
 and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
+## [1.4.0] - 2024-02-22
+
+### Added / 新增
+- Tutorial video generation system / 教程视频生成系统
+  - Start game animation / 开始游戏动画
+  - Making moves animation / 落子动画
+  - Win conditions animation / 胜利条件动画
+  - AI game animation / AI对战动画
+  - Theme switch animation / 主题切换动画
+- Video encoding improvements / 视频编码改进
+  - MP4V codec support / MP4V编码器支持
+  - Frame format optimization / 帧格式优化
+  - Color space conversion / 色彩空间转换
+- Animation utilities / 动画工具
+  - Board animation helpers / 棋盘动画辅助函数
+  - Menu animation effects / 菜单动画效果
+  - Transition effects / 过渡效果
+
+### Changed / 变更
+- Enhanced video generation / 增强的视频生成
+  - Improved frame handling / 改进的帧处理
+  - Better color management / 更好的颜色管理
+  - Optimized animation timing / 优化的动画时间
+- Updated documentation / 更新的文档
+  - Added tutorial video section / 添加教程视频部分
+  - Enhanced animation documentation / 增强的动画文档
+  - New video generation guide / 新的视频生成指南
+
+### Fixed / 修复
+- Video encoding issues / 视频编码问题
+  - Frame format conversion / 帧格式转换
+  - Color space handling / 色彩空间处理
+  - Video writer configuration / 视频写入器配置
+- Animation timing issues / 动画时间问题
+  - Frame rate consistency / 帧率一致性
+  - Animation duration control / 动画时长控制
+  - Transition smoothness / 过渡平滑度
+
 ## [1.3.0] - 2024-02-21
 
 ### Added / 新增

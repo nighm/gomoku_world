@@ -1,5 +1,5 @@
 # GUI
-pygame>=2.5.2
+pygame>=2.5.0
 
 # Networking
 aiohttp>=3.8.5
@@ -28,4 +28,7 @@ black>=23.7.0
 pylint>=2.17.0
 mypy>=1.5.0
 kubernetes>=28.1.0
-chardet>=4.0.0 
+chardet>=4.0.0
+
+# Animation
+opencv-python>=4.8.0 
