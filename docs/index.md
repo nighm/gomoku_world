@@ -6,10 +6,10 @@
 
 ## 版本说明 / Release Notes
 
-最新版本 (v1.4.4):
-- [用户版本说明](release_notes/v1.4.4.user.md) - 面向普通用户
-- [初级开发版本说明](release_notes/v1.4.4.dev.beginner.md) - 面向初级开发者
-- [专业开发版本说明](release_notes/v1.4.4.dev.professional.md) - 面向专业开发者
+最新版本 (v1.4.5):
+- [用户版本说明](release_notes/v1.4.5.user.md) - 面向普通用户
+- [初级开发版本说明](release_notes/v1.4.5.dev.beginner.md) - 面向初级开发者
+- [专业开发版本说明](release_notes/v1.4.5.dev.professional.md) - 面向专业开发者
 
 ## 如何使用本文档 / How to Use This Documentation
 

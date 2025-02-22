@@ -11,10 +11,10 @@ A modern Gomoku (Five in a Row) game platform with advanced AI opponents, online
 
 ## Latest Release / 最新版本
 
-Version 1.4.4 is now available! Check out our detailed release notes:
-- [User Release Notes](docs/release_notes/v1.4.4.user.md)
-- [Beginner Developer Notes](docs/release_notes/v1.4.4.dev.beginner.md)
-- [Professional Developer Notes](docs/release_notes/v1.4.4.dev.professional.md)
+Version 1.4.5 is now available! Check out our detailed release notes:
+- [User Release Notes](docs/release_notes/v1.4.5.user.md)
+- [Beginner Developer Notes](docs/release_notes/v1.4.5.dev.beginner.md)
+- [Professional Developer Notes](docs/release_notes/v1.4.5.dev.professional.md)
 
 ## 功能特点 / Features
 
