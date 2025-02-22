@@ -4,7 +4,7 @@ build-backend = "setuptools.build_meta"
 
 [project]
 name = "gomoku_world"
-version = "1.4.0"
+dynamic = ["version"]
 description = "A modern implementation of the classic Gomoku (Five in a Row) game"
 authors = [
     {name = "Gomoku World Team", email = "team@gomokuworld.com"},
@@ -166,4 +166,9 @@ deps =
     -r requirements-dev.txt
 commands =
     pytest {posargs:tests}
-""" 
+"""
+
+[tool.setuptools_scm]
+write_to = "src/gomoku_world/_version.py"
+version_scheme = "post-release"
+local_scheme = "node-and-date" 

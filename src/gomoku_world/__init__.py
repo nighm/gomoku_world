@@ -3,7 +3,11 @@ Gomoku World Game Package
 五子棋世界游戏包
 """
 
-__version__ = "1.4.0"
+try:
+    from ._version import version as __version__
+except ImportError:
+    __version__ = "0.0.0"
+
 __author__ = "Gomoku World Team"
 __email__ = "team@gomokuworld.com"
 

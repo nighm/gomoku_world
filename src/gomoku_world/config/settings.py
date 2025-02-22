@@ -4,10 +4,11 @@ Global configuration module
 """
 
 from pathlib import Path
+from .. import __version__
 
 # Package information
 PACKAGE_NAME = "Gomoku World"
-VERSION = "1.4.0"
+VERSION = __version__
 
 # Directory paths
 ROOT_DIR = Path(__file__).parent.parent.parent.parent

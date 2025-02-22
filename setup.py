@@ -12,7 +12,8 @@ with open("requirements.txt", "r", encoding="utf-8") as fh:
 
 setup(
     name="gomoku_world",
-    version="1.4.0",
+    use_scm_version=True,
+    setup_requires=['setuptools_scm'],
     author="GomokuWorld Team",
     author_email="team@gomokuworld.org",
     description="A modern Gomoku (Five in a Row) game with AI and online multiplayer support",

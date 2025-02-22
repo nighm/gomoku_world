@@ -5,6 +5,15 @@ All notable changes to GomokuWorld will be documented in this file.
 The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/),
 and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
+## [1.4.1] - 2024-02-22
+
+### Changed / 变更
+- Enhanced version management system / 增强的版本管理系统
+  - Migrated to setuptools_scm for automatic version management / 迁移到setuptools_scm实现自动版本管理
+  - Centralized version handling through git tags / 通过git标签集中管理版本
+  - Removed manual version update process / 移除手动版本更新流程
+  - Improved version consistency across package / 改进整个包的版本一致性
+
 ## [1.4.0] - 2024-02-22
 
 ### Added / 新增
