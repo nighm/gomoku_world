@@ -1,1 +1,35 @@
- 
+{
+    "app.name": "五子棋世界",
+    "app.description": "现代五子棋游戏",
+    "app.version": "版本 {version}",
+    
+    "language.name": "中文",
+    "region.name": "中国",
+    
+    "button.ok": "确定",
+    "button.cancel": "取消",
+    "button.confirm": "确认",
+    "button.save": "保存",
+    "button.load": "加载",
+    "button.close": "关闭",
+    "button.back": "返回",
+    "button.next": "下一步",
+    
+    "menu.file": "文件",
+    "menu.edit": "编辑",
+    "menu.view": "视图",
+    "menu.help": "帮助",
+    
+    "dialog.error": "错误",
+    "dialog.warning": "警告",
+    "dialog.info": "信息",
+    "dialog.confirm": "确认",
+    
+    "error.unknown": "发生未知错误",
+    "error.not_found": "未找到资源：{resource}",
+    "error.invalid_input": "无效输入：{input}",
+    
+    "loading": "加载中...",
+    "processing": "处理中...",
+    "please_wait": "请稍候..."
+} 

@@ -8,6 +8,7 @@ import tkinter as tk
 from tkinter import ttk, messagebox
 from typing import Optional, Tuple, List
 import asyncio
+import pygame
 
 # 浣跨敤鐩稿瀵煎叆
 from ..core.game import Game
@@ -20,6 +21,9 @@ from .status_bar import StatusBar
 from .menu_bar import MenuBar
 from .game_list_window import GameListWindow
 from .spectator_window import SpectatorWindow
+from .widgets.button import Button
+from ..i18n import i18n_manager
+from ..theme import theme
 
 logger = get_logger(__name__)
 
@@ -52,6 +56,20 @@ class GomokuGUI:
         sound_manager.play("start")
         
         logger.info("Main window initialized")
+        
+        # Set window title from translations
+        self._update_window_title()
+        
+        # Create UI elements
+        self.buttons: List[Button] = [
+            Button("button.new_game", 300, 200, callback=self.start_new_game),
+            Button("button.settings", 300, 260, callback=self.open_settings),
+            Button("button.quit", 300, 320, callback=self.quit_game)
+        ]
+        
+        # Register for language/theme changes
+        i18n_manager.add_change_listener(self._on_language_change)
+        theme.add_change_listener(self._on_theme_change)
     
     def _apply_theme(self):
         """
@@ -288,6 +306,62 @@ class GomokuGUI:
             
             logger.info(f"Stopped spectating game {game_id}")
     
+    def _update_window_title(self):
+        """Update window title when language changes"""
+        title = i18n_manager.get_text("app.name")
+        self.root.title(title)
+        
+    def _on_language_change(self):
+        """Handle language change"""
+        self._update_window_title()
+        # Update all button texts
+        for button in self.buttons:
+            button.update_text()
+            
+    def _on_theme_change(self):
+        """Handle theme change"""
+        # Update all button styles
+        for button in self.buttons:
+            button.update_style()
+            
+    def handle_events(self):
+        """Handle pygame events"""
+        for event in pygame.event.get():
+            if event.type == pygame.QUIT:
+                return False
+                
+            # Pass event to all buttons
+            for button in self.buttons:
+                if button.handle_event(event):
+                    break
+                    
+        return True
+        
+    def draw(self):
+        """Draw window contents"""
+        # Clear screen with theme background color
+        self.root.configure(bg=theme.get_color("window.background"))
+        
+        # Draw all buttons
+        for button in self.buttons:
+            button.draw(self.root)
+            
+        # Update display
+        self.root.update()
+        
+    def start_new_game(self):
+        """Start new game callback"""
+        print(i18n_manager.get_text("game.new"))
+        
+    def open_settings(self):
+        """Open settings callback"""
+        print(i18n_manager.get_text("menu.settings"))
+        
+    def quit_game(self):
+        """Quit game callback"""
+        print(i18n_manager.get_text("game.quit"))
+        pygame.quit()
+        
     def run(self):
         """
         Start the main event loop
@@ -297,4 +371,42 @@ class GomokuGUI:
         self.root.mainloop()
         
         # Clean up
-        sound_manager.cleanup() 
+        sound_manager.cleanup()
+
+    def update_language(self):
+        """Update all UI texts when language changes"""
+        # Update window title
+        self._update_window_title()
+        
+        # Update menu bar
+        self.menu_bar.update_language()
+        
+        # Update control panel
+        self.control_panel.update_language()
+        
+        # Update status bar
+        self.status_bar.update_language()
+        
+        # Update game list window if open
+        if self.game_list_window:
+            self.game_list_window.update_language()
+            
+        # Update spectator windows
+        for window in self.spectator_windows.values():
+            window.update_language()
+            
+        # Update current game status
+        if self.game.winner is not None:
+            win_text = i18n_manager.get_text(
+                "game.black_wins" if self.game.winner == 1 else "game.white_wins"
+            )
+            self.status_bar.set_message(win_text)
+        elif self.game.is_draw():
+            self.status_bar.set_message(i18n_manager.get_text("game.draw"))
+        else:
+            turn_text = i18n_manager.get_text(
+                "game.black_turn" if self.game.current_player == 1 else "game.white_turn"
+            )
+            self.status_bar.set_message(turn_text)
+            
+        logger.info("UI language updated") 

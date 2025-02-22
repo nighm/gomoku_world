@@ -5,6 +5,33 @@ All notable changes to GomokuWorld will be documented in this file.
 The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/),
 and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
+## [1.4.3] - 2024-02-22
+
+### Added / 新增
+- Network-aware internationalization / 网络感知的国际化系统
+  - Online/offline mode detection / 在线/离线模式检测
+  - Multi-layer translation loading strategy / 多层翻译加载策略
+    - Local cache / 本地缓存
+    - Remote translation service / 远程翻译服务
+    - Bundled translations / 内置翻译
+  - Thread-safe translation management / 线程安全的翻译管理
+  - Network status monitoring / 网络状态监控
+  - Automatic fallback mechanism / 自动回退机制
+
+### Changed / 变更
+- Enhanced translation loading / 增强的翻译加载
+  - Improved caching mechanism / 改进的缓存机制
+  - Better error handling / 更好的错误处理
+  - Optimized network requests / 优化的网络请求
+  - Smarter language detection / 更智能的语言检测
+
+### Fixed / 修复
+- Network-related issues / 网络相关问题
+  - Connection timeout handling / 连接超时处理
+  - Service unavailability handling / 服务不可用处理
+  - Cache corruption recovery / 缓存损坏恢复
+  - Network state transitions / 网络状态转换
+
 ## [1.4.2] - 2024-02-22
 
 ### Added / 新增

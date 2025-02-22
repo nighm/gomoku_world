@@ -5,10 +5,22 @@ Global configuration module
 
 from pathlib import Path
 from .. import __version__
+import os
 
 # Package information
 PACKAGE_NAME = "Gomoku World"
 VERSION = __version__
+
+# Translation service settings
+TRANSLATION_SERVICE_URL = os.getenv("TRANSLATION_SERVICE_URL", "https://api.translations.gomokuworld.org")
+TRANSLATION_API_KEY = os.getenv("TRANSLATION_API_KEY")
+TRANSLATION_CACHE_DIR = Path.home() / ".gomoku_world" / "translations"
+TRANSLATION_TIMEOUT = 5  # seconds
+NETWORK_CHECK_TIMEOUT = 1  # seconds
+NETWORK_CHECK_HOSTS = [
+    "api.translations.gomokuworld.org",
+    "8.8.8.8"  # Google DNS as fallback
+]
 
 # Directory paths
 ROOT_DIR = Path(__file__).parent.parent.parent.parent
