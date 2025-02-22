@@ -5,6 +5,13 @@ All notable changes to this project will be documented in this file.
 The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/),
 and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
+## [1.4.6] - 2024-03-15
+
+### Changed
+- 优化AI评估结果缓存机制，提高决策效率 / Optimized AI evaluation result caching mechanism for better decision efficiency
+- 改进AI节点计数器，更准确地追踪搜索性能 / Improved AI node counter for more accurate search performance tracking
+- 优化缓存清理机制，防止内存占用过高 / Enhanced cache cleaning mechanism to prevent excessive memory usage
+
 ## [2.0.0] - 2024-03-15
 
 ### Breaking Changes
@@ -131,4 +138,4 @@ For detailed release notes, see:
 - Simple UI implementation
 - Basic network support
 
-[1.4.3]: https://github.com/gomokuworld/gomoku_world/releases/tag/v1.4.3 
+[1.4.3]: https://github.com/gomokuworld/gomoku_world/releases/tag/v1.4.3
