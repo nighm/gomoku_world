@@ -59,7 +59,15 @@ class AI:
         self.difficulty = difficulty
         self.max_depth = self._get_depth_for_difficulty()
         self.time_limit = AI_THINKING_TIME
+        self.cache = {}
+        self.nodes_evaluated = 0
         logger.info(f"AI initialized with {difficulty} difficulty / AI已初始化，难度为{difficulty}")
+        
+    def _clear_cache(self):
+        """Clear evaluation cache to prevent memory bloat / 清除评估缓存以防止内存膨胀"""
+        if len(self.cache) > 10000:  # Prevent excessive memory usage
+            self.cache.clear()
+            logger.debug("Evaluation cache cleared / 评估缓存已清除")
     
     def _get_depth_for_difficulty(self) -> int:
         """
@@ -429,4 +437,4 @@ class AI:
         empty_cells = board.get_empty_cells()
         if not empty_cells:
             raise RuntimeError("No valid moves available / 没有有效的移动")
-        return random.choice(empty_cells) 
+        return random.choice(empty_cells)
