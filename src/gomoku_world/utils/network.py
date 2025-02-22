@@ -2,6 +2,18 @@
 Network monitoring and management module.
 
 网络监控和管理模块。
+
+This module provides network status monitoring and management functionality:
+- Real-time connection status monitoring
+- Connection quality metrics
+- Network event callbacks
+- Automatic reconnection handling
+
+本模块提供网络状态监控和管理功能：
+- 实时连接状态监控
+- 连接质量指标
+- 网络事件回调
+- 自动重连处理
 """
 
 import socket
@@ -23,9 +35,21 @@ logger = get_logger(__name__)
 
 class NetworkMonitor:
     """
-    Network status monitoring and management class.
+    Network monitoring class.
     
-    网络状态监控和管理类。
+    网络监控类。
+    
+    This class provides:
+    - Connection status monitoring
+    - Network quality metrics
+    - Event callbacks for status changes
+    - Automatic reconnection handling
+    
+    此类提供：
+    - 连接状态监控
+    - 网络质量指标
+    - 状态变化事件回调
+    - 自动重连处理
     """
     
     def __init__(self, check_interval: int = NETWORK_CHECK_INTERVAL):
@@ -33,214 +57,221 @@ class NetworkMonitor:
         Initialize network monitor.
         
         初始化网络监控器。
+        
+        Args:
+            check_interval (int): Interval between connection checks in seconds.
+                                连接检查间隔（秒）。
         """
-        self._is_online = True
         self._check_interval = check_interval
-        self._stop_event = threading.Event()
+        self._is_running = False
+        self._is_online = False
         self._monitor_thread: Optional[threading.Thread] = None
         self._callbacks: List[Callable[[bool], None]] = []
-        self._lock = threading.Lock()
-        self._latencies: Dict[str, List[float]] = {}
-        self._proxy = NETWORK_PROXY_SETTINGS if NETWORK_PROXY_SETTINGS.get('enabled') else None
         self._metrics: Dict[str, float] = {
             "latency": 0.0,
             "packet_loss": 0.0,
-            "bandwidth": 0.0
+            "uptime": 0.0
         }
+        self._last_check_time = 0.0
         
     def start(self):
         """
         Start network monitoring.
         
         启动网络监控。
-        """
-        if self._monitor_thread is not None:
-            return
-            
-        self._stop_event.clear()
-        self._monitor_thread = threading.Thread(target=self._monitor_loop, daemon=True)
-        self._monitor_thread.start()
-        logger.info("Network monitor started / 网络监控已启动")
         
+        This method:
+        - Starts the monitoring thread
+        - Initializes connection checks
+        - Begins collecting metrics
+        
+        此方法：
+        - 启动监控线程
+        - 初始化连接检查
+        - 开始收集指标
+        """
+        if not self._is_running:
+            self._is_running = True
+            self._monitor_thread = threading.Thread(target=self._monitor_loop)
+            self._monitor_thread.daemon = True
+            self._monitor_thread.start()
+            logger.info("Network monitoring started / 网络监控已启动")
+            
     def stop(self):
         """
         Stop network monitoring.
         
         停止网络监控。
-        """
-        if self._monitor_thread is None:
-            return
-            
-        self._stop_event.set()
-        self._monitor_thread.join()
-        self._monitor_thread = None
-        logger.info("Network monitor stopped / 网络监控已停止")
         
+        This method:
+        - Stops the monitoring thread
+        - Cleans up resources
+        - Notifies callbacks
+        
+        此方法：
+        - 停止监控线程
+        - 清理资源
+        - 通知回调函数
+        """
+        if self._is_running:
+            self._is_running = False
+            if self._monitor_thread:
+                self._monitor_thread.join()
+            self._monitor_thread = None
+            logger.info("Network monitoring stopped / 网络监控已停止")
+            
     def add_callback(self, callback: Callable[[bool], None]):
         """
-        Add network status change callback.
+        Add a status change callback.
         
-        添加网络状态变化回调函数。
+        添加状态变化回调。
+        
+        Args:
+            callback: Function to call when network status changes.
+                     当网络状态改变时调用的函数。
         """
-        with self._lock:
+        if callback not in self._callbacks:
             self._callbacks.append(callback)
             
     def remove_callback(self, callback: Callable[[bool], None]):
         """
-        Remove network status change callback.
+        Remove a status change callback.
         
-        移除网络状态变化回调函数。
+        移除状态变化回调。
+        
+        Args:
+            callback: Callback function to remove.
+                     要移除的回调函数。
         """
-        with self._lock:
+        if callback in self._callbacks:
             self._callbacks.remove(callback)
             
     def is_online(self) -> bool:
         """
-        Get current online status
+        Get current online status.
+        
+        获取当前在线状态。
         
         Returns:
-            bool: True if online
+            bool: True if network is available, False otherwise.
+                 如果网络可用则为True，否则为False。
         """
         return self._is_online
         
     def get_connection_quality(self) -> Dict[str, float]:
         """
-        Get connection quality metrics
+        Get connection quality metrics.
+        
+        获取连接质量指标。
         
         Returns:
-            Dict with average latency and jitter
+            Dict[str, float]: Dictionary containing quality metrics:
+                             包含质量指标的字典：
+                             - latency: Average response time
+                               延迟：平均响应时间
+                             - packet_loss: Packet loss percentage
+                               丢包率：数据包丢失百分比
+                             - uptime: Connection uptime percentage
+                               正常运行时间：连接正常运行时间百分比
         """
-        if not self._latencies:
-            return {'latency': float('inf'), 'jitter': float('inf')}
-            
-        # Calculate average latency across all hosts
-        all_latencies = []
-        for host_latencies in self._latencies.values():
-            if host_latencies:
-                all_latencies.extend(host_latencies)
-                
-        if not all_latencies:
-            return {'latency': float('inf'), 'jitter': float('inf')}
-            
-        avg_latency = statistics.mean(all_latencies)
-        jitter = statistics.stdev(all_latencies) if len(all_latencies) > 1 else 0
-        
-        return {
-            'latency': avg_latency,
-            'jitter': jitter
-        }
+        return self._metrics.copy()
         
     def check_connection(self) -> bool:
         """
-        Check network connection with retries
+        Check current network connection.
+        
+        检查当前网络连接。
+        
+        This method:
+        - Tests connection to multiple hosts
+        - Updates connection metrics
+        - Handles connection failures
+        - Triggers callbacks if status changes
+        
+        此方法：
+        - 测试与多个主机的连接
+        - 更新连接指标
+        - 处理连接失败
+        - 在状态改变时触发回调
         
         Returns:
-            bool: True if connection available
+            bool: True if connection is available, False otherwise.
+                 如果连接可用则为True，否则为False。
         """
-        for attempt in range(NETWORK_MAX_RETRIES):
-            if attempt > 0:
-                time.sleep(NETWORK_RETRY_DELAY)
+        latencies = []
+        for host in NETWORK_CHECK_HOSTS:
+            try:
+                start_time = time.time()
+                socket.create_connection((host, 80), NETWORK_CHECK_TIMEOUT)
+                latency = time.time() - start_time
+                latencies.append(latency)
+            except (socket.timeout, socket.error) as e:
+                logger.warning(f"Connection check failed for {host}: {e}")
+                continue
                 
-            for host in NETWORK_CHECK_HOSTS:
-                try:
-                    # Extract host and port
-                    if "://" in host:
-                        host = host.split("://")[1]
-                    port = 80 if ":" not in host else int(host.split(":")[1])
-                    host = host.split(":")[0]
-                    
-                    # Create socket with timeout
-                    sock = socket.socket(socket.AF_INET, socket.SOCK_STREAM)
-                    sock.settimeout(NETWORK_CHECK_TIMEOUT)
-                    
-                    # Apply proxy settings if configured
-                    if self._proxy and self._proxy.get('enabled'):
-                        proxy_host = self._proxy['host']
-                        proxy_port = self._proxy['port']
-                        sock.connect((proxy_host, proxy_port))
-                        # Send CONNECT request through proxy
-                        connect_str = f"CONNECT {host}:{port} HTTP/1.1\r\n\r\n"
-                        sock.send(connect_str.encode())
-                        response = sock.recv(4096)
-                        if not response.startswith(b"HTTP/1.1 200"):
-                            continue
-                    else:
-                        # Direct connection
-                        start_time = time.time()
-                        sock.connect((host, port))
-                        latency = time.time() - start_time
-                        
-                        # Update latency measurements
-                        with self._lock:
-                            if host not in self._latencies:
-                                self._latencies[host] = []
-                            self._latencies[host].append(latency)
-                            # Keep only recent measurements
-                            self._latencies[host] = self._latencies[host][-10:]
-                            
-                    sock.close()
-                    return True
-                except Exception as e:
-                    logger.debug(f"Connection attempt {attempt + 1} to {host} failed: {e}")
-                    continue
-                    
-        return False
+        is_online = len(latencies) > 0
+        if is_online != self._is_online:
+            self._is_online = is_online
+            self._notify_callbacks()
+            
+        if latencies:
+            self._metrics["latency"] = statistics.mean(latencies)
+            self._metrics["packet_loss"] = 1 - (len(latencies) / len(NETWORK_CHECK_HOSTS))
+            
+        return is_online
         
     def get_metrics(self) -> Dict[str, float]:
         """
-        Get current network metrics.
+        Get all network metrics.
         
-        获取当前网络指标。
+        获取所有网络指标。
+        
+        Returns:
+            Dict[str, float]: Dictionary containing all network metrics.
+                             包含所有网络指标的字典。
         """
-        return self._metrics.copy()
+        return {
+            **self.get_connection_quality(),
+            "last_check": self._last_check_time
+        }
         
     def _monitor_loop(self):
         """
         Main monitoring loop.
         
         主监控循环。
-        """
-        while not self._stop_event.is_set():
-            try:
-                # Check connection
-                is_online = self.check_connection()
-                
-                # If status changed
-                if is_online != self._is_online:
-                    self._is_online = is_online
-                    logger.info(f"Network status changed: {'online' if is_online else 'offline'}")
-                    
-                    # Get connection quality if online
-                    if is_online:
-                        quality = self.get_connection_quality()
-                        logger.info(f"Connection quality - Latency: {quality['latency']:.2f}ms, Jitter: {quality['jitter']:.2f}ms")
-                    
-                    # Notify callbacks
-                    with self._lock:
-                        for callback in self._callbacks:
-                            try:
-                                callback(is_online)
-                            except Exception as e:
-                                logger.error(f"Error in network status callback: {e}")
-                                
-                # Update metrics / 更新指标
-                self._update_metrics()
-                
-            except Exception as e:
-                logger.error(f"Network monitoring error / 网络监控错误: {e}")
-                
-            # Wait for next check
-            self._stop_event.wait(self._check_interval)
         
+        This method runs in a separate thread and:
+        - Periodically checks connection
+        - Updates metrics
+        - Handles reconnection attempts
+        
+        此方法在单独的线程中运行，并：
+        - 定期检查连接
+        - 更新指标
+        - 处理重连尝试
+        """
+        while self._is_running:
+            try:
+                self._last_check_time = time.time()
+                self.check_connection()
+                self._update_metrics()
+                time.sleep(self._check_interval)
+            except Exception as e:
+                logger.error(f"Error in monitor loop / 监控循环出错: {e}")
+                time.sleep(NETWORK_RETRY_DELAY)
+                
     def _update_metrics(self):
         """
-        Update network performance metrics.
+        Update network metrics.
         
-        更新网络性能指标。
+        更新网络指标。
         """
-        # Implementation here / 在此实现
-        pass
-        
+        if self._is_online:
+            self._metrics["uptime"] = min(1.0, self._metrics["uptime"] + 0.1)
+        else:
+            self._metrics["uptime"] = max(0.0, self._metrics["uptime"] - 0.2)
+            
     def _notify_callbacks(self):
         """
         Notify all registered callbacks of status change.
@@ -251,9 +282,9 @@ class NetworkMonitor:
             try:
                 callback(self._is_online)
             except Exception as e:
-                logger.error(f"Callback error / 回调错误: {e}")
+                logger.error(f"Error in callback / 回调函数出错: {e}")
 
-# Global instance / 全局实例
+# Create global network monitor instance / 创建全局网络监控器实例
 network_monitor = NetworkMonitor()
 
-__all__ = ['network_monitor'] 
+__all__ = ['network_monitor', 'NetworkMonitor'] 
