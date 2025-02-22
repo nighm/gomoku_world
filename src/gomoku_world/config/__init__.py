@@ -1,22 +1,27 @@
 """
-Configuration package
-閰嶇疆鍖?
+Configuration management system.
+
+配置管理系统。
+
+This package provides a unified configuration management system for the Gomoku World project.
+Features:
+- YAML-based configuration files
+- Default configurations for game and i18n
+- Dot notation for accessing nested configuration values
+- Configuration persistence
+- Automatic merging of user configurations with defaults
+- Type hints and bilingual documentation
+
+本包为五子棋世界项目提供统一的配置管理系统。
+特性：
+- 基于YAML的配置文件
+- 游戏和国际化的默认配置
+- 使用点号表示法访问嵌套配置值
+- 配置持久化
+- 自动合并用户配置和默认配置
+- 类型提示和双语文档
 """
 
-from .settings import *
+from .base import ConfigManager, game_config, i18n_config
 
-__all__ = [
-    'PACKAGE_NAME', 'VERSION',
-    'ROOT_DIR', 'SRC_DIR', 'RESOURCES_DIR', 'LOG_DIR', 'SAVE_DIR',
-    'BOARD_SIZE', 'WIN_LENGTH',
-    'DEFAULT_THEME', 'DEFAULT_LANGUAGE',
-    'LOG_FORMAT', 'LOG_LEVEL', 'LOG_FILE',
-    'WINDOW_SIZE', 'CELL_SIZE', 'PIECE_RADIUS',
-    'DEFAULT_HOST', 'DEFAULT_PORT',
-    'AI_DIFFICULTY_LEVELS', 'DEFAULT_AI_DIFFICULTY', 'AI_THINKING_TIME',
-    'AUTO_SAVE_INTERVAL', 'MAX_AUTO_SAVES', 'MAX_SAVE_FILES', 'SAVE_FILE_FORMAT',
-    'INITIAL_RATING', 'K_FACTOR', 'RATING_FLOOR', 'RATING_CHANGES',
-    'LEADERBOARD_CATEGORIES', 'LEADERBOARD_LIMIT', 'ACTIVE_DAYS', 'INACTIVE_PENALTY',
-    'MAX_SPECTATORS_PER_GAME', 'SPECTATOR_UPDATE_INTERVAL',
-    'SPECTATOR_CHAT_ENABLED', 'SPECTATOR_CHAT_HISTORY', 'SPECTATOR_FEATURES'
-]
+__all__ = ["ConfigManager", "game_config", "i18n_config"]

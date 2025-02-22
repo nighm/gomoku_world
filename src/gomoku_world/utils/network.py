@@ -30,6 +30,7 @@ from ..config.settings import (
     NETWORK_PROXY_SETTINGS
 )
 from ..utils.logger import get_logger
+from ..i18n import i18n_manager
 
 logger = get_logger(__name__)
 
@@ -44,12 +45,14 @@ class NetworkMonitor:
     - Network quality metrics
     - Event callbacks for status changes
     - Automatic reconnection handling
+    - Localized status messages
     
     此类提供：
     - 连接状态监控
     - 网络质量指标
     - 状态变化事件回调
     - 自动重连处理
+    - 本地化状态消息
     """
     
     def __init__(self, check_interval: int = NETWORK_CHECK_INTERVAL):
@@ -73,52 +76,33 @@ class NetworkMonitor:
             "uptime": 0.0
         }
         self._last_check_time = 0.0
+        self._retry_count = 0
         
     def start(self):
         """
         Start network monitoring.
         
         启动网络监控。
-        
-        This method:
-        - Starts the monitoring thread
-        - Initializes connection checks
-        - Begins collecting metrics
-        
-        此方法：
-        - 启动监控线程
-        - 初始化连接检查
-        - 开始收集指标
         """
         if not self._is_running:
             self._is_running = True
             self._monitor_thread = threading.Thread(target=self._monitor_loop)
             self._monitor_thread.daemon = True
             self._monitor_thread.start()
-            logger.info("Network monitoring started / 网络监控已启动")
+            logger.info(i18n_manager.get_text("network.status.monitoring_started"))
             
     def stop(self):
         """
         Stop network monitoring.
         
         停止网络监控。
-        
-        This method:
-        - Stops the monitoring thread
-        - Cleans up resources
-        - Notifies callbacks
-        
-        此方法：
-        - 停止监控线程
-        - 清理资源
-        - 通知回调函数
         """
         if self._is_running:
             self._is_running = False
             if self._monitor_thread:
                 self._monitor_thread.join()
             self._monitor_thread = None
-            logger.info("Network monitoring stopped / 网络监控已停止")
+            logger.info(i18n_manager.get_text("network.status.monitoring_stopped"))
             
     def add_callback(self, callback: Callable[[bool], None]):
         """
@@ -158,41 +142,36 @@ class NetworkMonitor:
         """
         return self._is_online
         
-    def get_connection_quality(self) -> Dict[str, float]:
+    def get_connection_quality(self) -> Dict[str, str]:
         """
-        Get connection quality metrics.
+        Get localized connection quality metrics.
         
-        获取连接质量指标。
+        获取本地化的连接质量指标。
         
         Returns:
-            Dict[str, float]: Dictionary containing quality metrics:
-                             包含质量指标的字典：
-                             - latency: Average response time
-                               延迟：平均响应时间
-                             - packet_loss: Packet loss percentage
-                               丢包率：数据包丢失百分比
-                             - uptime: Connection uptime percentage
-                               正常运行时间：连接正常运行时间百分比
+            Dict[str, str]: Dictionary containing localized quality metrics:
+                           包含本地化质量指标的字典：
+                           - latency: Average response time
+                             延迟：平均响应时间
+                           - packet_loss: Packet loss percentage
+                             丢包率：数据包丢失百分比
+                           - uptime: Connection uptime percentage
+                             正常运行时间：连接正常运行时间百分比
         """
-        return self._metrics.copy()
+        return {
+            "latency": i18n_manager.get_text("network.metrics.latency", 
+                                           ms=round(self._metrics["latency"] * 1000)),
+            "packet_loss": i18n_manager.get_text("network.metrics.packet_loss",
+                                               percent=round(self._metrics["packet_loss"] * 100, 1)),
+            "uptime": i18n_manager.get_text("network.metrics.uptime",
+                                          percent=round(self._metrics["uptime"] * 100, 1))
+        }
         
     def check_connection(self) -> bool:
         """
         Check current network connection.
         
         检查当前网络连接。
-        
-        This method:
-        - Tests connection to multiple hosts
-        - Updates connection metrics
-        - Handles connection failures
-        - Triggers callbacks if status changes
-        
-        此方法：
-        - 测试与多个主机的连接
-        - 更新连接指标
-        - 处理连接失败
-        - 在状态改变时触发回调
         
         Returns:
             bool: True if connection is available, False otherwise.
@@ -205,84 +184,87 @@ class NetworkMonitor:
                 socket.create_connection((host, 80), NETWORK_CHECK_TIMEOUT)
                 latency = time.time() - start_time
                 latencies.append(latency)
+                self._retry_count = 0  # Reset retry count on successful connection
             except (socket.timeout, socket.error) as e:
-                logger.warning(f"Connection check failed for {host}: {e}")
+                logger.warning(i18n_manager.get_text("network.error.connection_failed",
+                                                   host=host, error=str(e)))
                 continue
                 
         is_online = len(latencies) > 0
         if is_online != self._is_online:
             self._is_online = is_online
+            status_key = "network.status.online" if is_online else "network.status.offline"
+            logger.info(i18n_manager.get_text(status_key))
             self._notify_callbacks()
             
         if latencies:
             self._metrics["latency"] = statistics.mean(latencies)
             self._metrics["packet_loss"] = 1 - (len(latencies) / len(NETWORK_CHECK_HOSTS))
+            self._metrics["uptime"] = time.time() - self._last_check_time
             
         return is_online
         
-    def get_metrics(self) -> Dict[str, float]:
+    def get_status_message(self) -> str:
         """
-        Get all network metrics.
+        Get localized network status message.
         
-        获取所有网络指标。
+        获取本地化的网络状态消息。
         
         Returns:
-            Dict[str, float]: Dictionary containing all network metrics.
-                             包含所有网络指标的字典。
+            str: Current network status message.
+                 当前网络状态消息。
         """
-        return {
-            **self.get_connection_quality(),
-            "last_check": self._last_check_time
-        }
-        
+        if not self._is_running:
+            return i18n_manager.get_text("network.status.not_monitoring")
+            
+        if self._is_online:
+            metrics = self.get_connection_quality()
+            return i18n_manager.get_text("network.status.details",
+                                       latency=metrics["latency"],
+                                       packet_loss=metrics["packet_loss"])
+        else:
+            if self._retry_count > 0:
+                return i18n_manager.get_text("network.status.reconnecting",
+                                           retry=self._retry_count,
+                                           max_retries=NETWORK_MAX_RETRIES)
+            return i18n_manager.get_text("network.status.offline")
+            
     def _monitor_loop(self):
         """
         Main monitoring loop.
         
         主监控循环。
-        
-        This method runs in a separate thread and:
-        - Periodically checks connection
-        - Updates metrics
-        - Handles reconnection attempts
-        
-        此方法在单独的线程中运行，并：
-        - 定期检查连接
-        - 更新指标
-        - 处理重连尝试
         """
         while self._is_running:
             try:
+                if not self.check_connection() and self._retry_count < NETWORK_MAX_RETRIES:
+                    self._retry_count += 1
+                    logger.info(i18n_manager.get_text("network.status.retry",
+                                                    retry=self._retry_count,
+                                                    max_retries=NETWORK_MAX_RETRIES))
+                    time.sleep(NETWORK_RETRY_DELAY)
+                    continue
+                    
                 self._last_check_time = time.time()
-                self.check_connection()
-                self._update_metrics()
                 time.sleep(self._check_interval)
+                
             except Exception as e:
-                logger.error(f"Error in monitor loop / 监控循环出错: {e}")
+                logger.error(i18n_manager.get_text("network.error.monitoring_failed",
+                                                 error=str(e)))
                 time.sleep(NETWORK_RETRY_DELAY)
                 
-    def _update_metrics(self):
-        """
-        Update network metrics.
-        
-        更新网络指标。
-        """
-        if self._is_online:
-            self._metrics["uptime"] = min(1.0, self._metrics["uptime"] + 0.1)
-        else:
-            self._metrics["uptime"] = max(0.0, self._metrics["uptime"] - 0.2)
-            
     def _notify_callbacks(self):
         """
         Notify all registered callbacks of status change.
         
-        通知所有已注册的回调函数状态变化。
+        通知所有注册的回调状态变化。
         """
         for callback in self._callbacks:
             try:
                 callback(self._is_online)
             except Exception as e:
-                logger.error(f"Error in callback / 回调函数出错: {e}")
+                logger.error(i18n_manager.get_text("network.error.callback_failed",
+                                                 error=str(e)))
 
 # Create global network monitor instance / 创建全局网络监控器实例
 network_monitor = NetworkMonitor()

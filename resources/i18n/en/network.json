@@ -1,11 +1,35 @@
 {
     "network.status.online": "Network Status: Online",
     "network.status.offline": "Network Status: Offline",
-    "network.connecting": "Connecting...",
-    "network.disconnected": "Disconnected",
-    "network.error": "Network Error",
-    "network.timeout": "Connection Timeout",
-    "network.retry": "Retrying...",
+    "network.status.connecting": "Connecting...",
+    "network.status.disconnected": "Disconnected",
+    "network.status.monitoring_started": "Network monitoring started",
+    "network.status.monitoring_stopped": "Network monitoring stopped",
+    "network.status.not_monitoring": "Network monitoring is not active",
+    "network.status.retry": "Retry attempt {retry}/{max_retries}",
+    "network.status.reconnecting": "Reconnecting... (Attempt {retry}/{max_retries})",
+    "network.status.details": "Network Status: Online (Latency: {latency}, Packet Loss: {packet_loss})",
+
+    "network.metrics.latency": "{ms}ms",
+    "network.metrics.packet_loss": "{percent}%",
+    "network.metrics.uptime": "{percent}%",
+    
+    "network.error.connection_failed": "Connection check failed for {host}: {error}",
+    "network.error.monitoring_failed": "Network monitoring error: {error}",
+    "network.error.callback_failed": "Network status callback error: {error}",
+    
+    "network.connection.success": "Successfully connected to server",
+    "network.connection.failed": "Failed to connect to server",
+    "network.connection.lost": "Connection lost",
+    "network.connection.timeout": "Connection timeout",
+    
+    "network.server.unavailable": "Server unavailable",
+    "network.server.maintenance": "Server under maintenance",
+    "network.server.error": "Server error",
+    
+    "network.latency": "Latency: {ms}ms",
+    "network.bandwidth": "Bandwidth: {speed}",
+    "network.packets": "Packets: {sent}/{received}",
     
     "status.online": "Network Status: Online",
     "status.offline": "Network Status: Offline",

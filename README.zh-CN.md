@@ -11,10 +11,9 @@
 
 ## 最新版本 / Latest Release
 
-版本 1.4.5 现已发布！查看详细的版本说明：
-- [用户版本说明](docs/release_notes/v1.4.5.user.md)
-- [初级开发版本说明](docs/release_notes/v1.4.5.dev.beginner.md)
-- [专业开发版本说明](docs/release_notes/v1.4.5.dev.professional.md)
+版本 1.4.6 现已发布！查看详细的版本说明：
+- [用户版本说明](docs/release_notes/v1.4.6.user.md)
+- [开发者版本说明](docs/release_notes/v1.4.6.dev.md)
 
 ## 功能特点
 
