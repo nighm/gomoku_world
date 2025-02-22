@@ -5,6 +5,33 @@ All notable changes to GomokuWorld will be documented in this file.
 The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/),
 and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
+## [1.4.5] - 2024-03-22
+
+> 详细的版本说明请查看：
+> - [用户版本说明](docs/release_notes/v1.4.5.user.md)
+> - [初级开发版本说明](docs/release_notes/v1.4.5.dev.beginner.md)
+> - [专业开发版本说明](docs/release_notes/v1.4.5.dev.professional.md)
+
+> For detailed release notes, please see:
+> - [User Release Notes](docs/release_notes/v1.4.5.user.md)
+> - [Beginner Developer Release Notes](docs/release_notes/v1.4.5.dev.beginner.md)
+> - [Professional Developer Release Notes](docs/release_notes/v1.4.5.dev.professional.md)
+
+### 主要更新 / Major Updates
+- 优化项目目录结构 / Optimized project directory structure
+- 统一国际化资源管理 / Unified internationalization resource management
+- 清理冗余文件和目录 / Cleaned up redundant files and directories
+
+### 改进 / Improvements
+- 统一虚拟环境管理 / Unified virtual environment management
+- 优化源代码组织结构 / Improved source code organization
+- 规范化项目文件布局 / Standardized project file layout
+
+### 清理 / Cleanup
+- 移除重复的配置文件 / Removed duplicate configuration files
+- 整理临时文件和脚本 / Organized temporary files and scripts
+- 规范化资源目录结构 / Standardized resource directory structure
+
 ## [1.4.4] - 2024-03-21
 
 > 详细的版本说明请查看：

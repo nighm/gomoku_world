@@ -4,7 +4,7 @@ build-backend = "hatchling.build"
 
 [project]
 name = "gomoku-world"
-version = "1.4.4"
+version = "1.4.5"
 description = "A modern Gomoku (Five in a Row) game platform with advanced AI and online features"
 authors = [
     {name = "Gomoku World Team", email = "team@gomokuworld.com"},

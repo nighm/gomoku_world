@@ -21,7 +21,7 @@
 import tkinter as tk
 from tkinter import messagebox
 import logging
-from gomoku_world.i18n import i18n_manager
+from gomoku_world.i18n import i18n_manager  # 使用正确的i18n_manager实例
 from gomoku_world.utils.network import network_monitor
 from gomoku_world.utils.logger import get_logger
 
@@ -121,7 +121,7 @@ class Demo(tk.Tk):
             if not initialize_systems():
                 raise RuntimeError(i18n_manager.get_text("system.initialization", category="error"))
             
-            self.title(i18n_manager.get_text("title", category="ui"))
+            self.title("Network I18n Demo")
             
             # 创建UI元素
             self._create_widgets()
@@ -140,9 +140,8 @@ class Demo(tk.Tk):
             self.protocol("WM_DELETE_WINDOW", self.on_closing)
             
         except Exception as e:
-            error_msg = i18n_manager.get_text("system.initialization", category="error")
-            logger.error(f"{error_msg}: {e}")
-            messagebox.showerror(i18n_manager.get_text("dialog.error"), f"{error_msg}: {str(e)}")
+            logger.error(f"Initialization failed: {e}")
+            messagebox.showerror("Error", f"Initialization failed: {str(e)}")
             self.destroy()
     
     def _create_widgets(self):
@@ -154,6 +153,7 @@ class Demo(tk.Tk):
         # 网络状态标签
         self.status_label = tk.Label(
             self.status_frame,
+            text="Checking network status...",
             font=('Arial', 12),
             wraplength=350
         )
@@ -166,6 +166,7 @@ class Demo(tk.Tk):
         # 当前语言标签
         self.lang_label = tk.Label(
             self.lang_frame,
+            text="Current Language",
             font=('Arial', 12)
         )
         self.lang_label.pack()
@@ -173,6 +174,7 @@ class Demo(tk.Tk):
         # 语言切换按钮
         self.lang_button = tk.Button(
             self.lang_frame,
+            text="Switch Language",
             command=self.toggle_language,
             font=('Arial', 12)
         )
@@ -185,6 +187,7 @@ class Demo(tk.Tk):
         # 示例文本标签
         self.text_label = tk.Label(
             self.text_frame,
+            text="Loading...",
             font=('Arial', 12),
             wraplength=350
         )
@@ -204,15 +207,11 @@ class Demo(tk.Tk):
         try:
             current = i18n_manager.current_language
             new_lang = "zh" if current == "en" else "en"
-            i18n_manager.set_language(new_lang)
+            i18n_manager.set_language(new_lang, force_reload=True)
             self.update_ui()
         except Exception as e:
-            error_msg = i18n_manager.get_text("validation.invalid_input", category="error", input="language")
             logger.error(f"Language toggle failed: {e}")
-            messagebox.showerror(
-                i18n_manager.get_text("dialog.error"),
-                f"{error_msg}: {str(e)}"
-            )
+            messagebox.showerror("Error", f"Failed to switch language: {str(e)}")
     
     def on_network_change(self, is_online):
         """处理网络状态变化"""
@@ -224,54 +223,25 @@ class Demo(tk.Tk):
     def update_ui(self):
         """更新UI显示"""
         try:
-            logger.debug("Updating UI...")
-            
-            # 更新窗口标题
-            title = i18n_manager.get_text("title", category="ui")
-            logger.debug(f"Setting window title: {title}")
-            self.title(title)
-            
             # 更新网络状态
             is_online = network_monitor.is_online()
-            status_key = "status.online" if is_online else "status.offline"
-            status_text = i18n_manager.get_text(status_key, category="network")
-            logger.debug(f"Setting network status: {status_text}")
-            self.status_label["text"] = status_text
+            status_key = "network.status.online" if is_online else "network.status.offline"
+            self.status_label["text"] = i18n_manager.get_text(status_key)
             
             # 更新语言信息
             current = i18n_manager.current_language
-            lang_text = i18n_manager.get_text(f"language.{current}")
-            logger.debug(f"Setting language label: {lang_text}")
-            self.lang_label["text"] = lang_text
+            self.lang_label["text"] = f"Current Language: {current.upper()}"
             
             # 更新切换按钮
             target = "zh" if current == "en" else "en"
-            target_lang = i18n_manager.get_text(f"language.{target}")
-            button_text = i18n_manager.get_text(
-                "button.switch_language",
-                {"language": target_lang}
-            )
-            logger.debug(f"Setting language button: {button_text}")
-            self.lang_button["text"] = button_text
+            self.lang_button["text"] = f"Switch to {target.upper()}"
             
             # 更新示例文本
-            example_texts = [
-                i18n_manager.get_text("new", category="game"),
-                i18n_manager.get_text("mode.single", category="game"),
-                i18n_manager.get_text("difficulty.medium", category="game")
-            ]
-            example_text = "\n".join(example_texts)
-            logger.debug(f"Setting example text: {example_text}")
-            self.text_label["text"] = example_text
+            self.text_label["text"] = i18n_manager.get_text("app.name")
             
-            logger.debug("UI update completed successfully")
         except Exception as e:
-            error_msg = i18n_manager.get_text("system.resource_missing", category="error", resource="translations")
             logger.error(f"UI update failed: {e}")
-            messagebox.showerror(
-                i18n_manager.get_text("dialog.error"),
-                f"{error_msg}: {str(e)}"
-            )
+            messagebox.showerror("Error", f"Failed to update UI: {str(e)}")
     
     def on_closing(self):
         """处理窗口关闭事件"""

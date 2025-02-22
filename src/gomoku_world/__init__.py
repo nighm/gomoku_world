@@ -5,7 +5,7 @@ Gomoku World - A modern implementation of the classic Gomoku (Five in a Row) gam
 from ._version import version as __version__
 
 if not __version__:
-    __version__ = "1.4.4"
+    __version__ = "1.4.5"
 
 __author__ = "Gomoku World Team"
 __email__ = "team@gomokuworld.com"

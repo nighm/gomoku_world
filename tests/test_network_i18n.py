@@ -10,7 +10,7 @@ def test_i18n_network_integration():
     
     # 测试在线加载
     i18n_manager.set_language("zh", force_reload=True)
-    assert i18n_manager.get_text("game.new") == "新游戏"
+    assert i18n_manager.get_text("new", "game") == "新游戏"
     
     # 模拟网络断开
     network_monitor._is_online = False
@@ -18,7 +18,7 @@ def test_i18n_network_integration():
     
     # 测试离线加载
     i18n_manager.set_language("en", force_reload=True)
-    assert i18n_manager.get_text("game.new") == "New Game"
+    assert i18n_manager.get_text("new", "game") == "New Game"
     
     # 清理
     network_monitor.stop() 
