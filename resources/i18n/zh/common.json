@@ -4,10 +4,10 @@
     "app.version": "版本 {version}",
     
     "language.name": "中文",
-    "language.en": "英文",
+    "language.en": "英语",
     "language.zh": "中文",
-    "language.ja": "日文",
-    "language.ko": "韩文",
+    "language.ja": "日语",
+    "language.ko": "韩语",
     "region.name": "中国",
     
     "button.ok": "确定",
@@ -36,7 +36,7 @@
     
     "network.status.online": "网络状态：在线",
     "network.status.offline": "网络状态：离线",
-    "network.connecting": "连接中...",
+    "network.connecting": "正在连接...",
     "network.disconnected": "已断开连接",
     
     "loading": "加载中...",

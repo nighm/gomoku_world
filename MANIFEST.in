@@ -1,5 +1,7 @@
 include LICENSE
 include README.md
+include README.zh-CN.md
+include VERSION
 include CHANGELOG.md
 include CONTRIBUTING.md
 include CODE_OF_CONDUCT.md
@@ -12,13 +14,19 @@ include Makefile
 include requirements.txt
 include requirements-dev.txt
 
-recursive-include src/gomoku_world/resources *
-recursive-include docs *
+recursive-include src/gomoku_world/resources/i18n *.json
+recursive-include src/gomoku_world/resources/images *
+recursive-include src/gomoku_world/resources/sounds *
+recursive-include src/gomoku_world/resources/themes *
+recursive-include src/gomoku_world/config *.yaml *.json
+
+recursive-include docs *.md *.rst *.txt *.py
 recursive-include examples *.py
-recursive-include scripts *.py
 recursive-include tests *.py
 
 recursive-exclude * __pycache__
 recursive-exclude * *.py[cod]
 recursive-exclude * *.so
-recursive-exclude * .DS_Store 
+recursive-exclude * *.dylib
+recursive-exclude * .DS_Store
+recursive-exclude * Thumbs.db 

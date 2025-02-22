@@ -3,17 +3,34 @@
     "load": "加载游戏",
     "save": "保存游戏",
     "quit": "退出游戏",
+    "pause": "暂停",
+    "resume": "继续",
+    "restart": "重新开始",
     
-    "mode.single": "单人游戏",
-    "mode.multi": "多人游戏",
+    "mode.single": "单人模式",
+    "mode.multi": "多人模式",
     "mode.ai": "人机对战",
+    "mode.online": "在线模式",
     
     "difficulty.easy": "简单",
     "difficulty.medium": "中等",
     "difficulty.hard": "困难",
+    "difficulty.expert": "专家",
+    
+    "player.black": "黑棋",
+    "player.white": "白棋",
+    "player.turn": "{player}回合",
+    "player.win": "{player}胜利！",
+    
+    "board.size": "棋盘大小：{size}x{size}",
+    "board.theme": "棋盘主题",
+    
+    "score": "得分：{score}",
+    "time": "时间：{time}",
+    "moves": "步数：{moves}",
     
     "status.your_turn": "你的回合",
-    "status.opponent_turn": "对方回合",
+    "status.opponent_turn": "对手回合",
     "status.game_over": "游戏结束",
     "status.victory": "胜利！",
     "status.defeat": "失败",

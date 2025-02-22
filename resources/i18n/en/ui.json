@@ -1,12 +1,35 @@
 {
-    "title": "Network I18n Demo",
-    "header": "Network Status Monitor",
-    "footer": "Click the button below to switch language",
+    "title": "Gomoku World",
+    "header": "Game Status",
+    "footer": "Version {version}",
     
-    "status.label": "Current Status:",
-    "language.label": "Current Language:",
+    "menu.game": "Game",
+    "menu.settings": "Settings",
+    "menu.help": "Help",
+    "menu.about": "About",
     
-    "button.refresh": "Refresh Status",
-    "button.reconnect": "Reconnect",
-    "button.settings": "Settings"
+    "settings.general": "General Settings",
+    "settings.display": "Display Settings",
+    "settings.sound": "Sound Settings",
+    "settings.network": "Network Settings",
+    
+    "button.settings": "Settings",
+    "button.profile": "Profile",
+    "button.leaderboard": "Leaderboard",
+    "button.achievements": "Achievements",
+    
+    "dialog.title.settings": "Settings",
+    "dialog.title.profile": "Player Profile",
+    "dialog.title.confirm": "Confirmation",
+    "dialog.title.error": "Error",
+    
+    "label.username": "Username",
+    "label.password": "Password",
+    "label.email": "Email",
+    "label.language": "Language",
+    
+    "tooltip.new_game": "Start a new game",
+    "tooltip.settings": "Open settings",
+    "tooltip.help": "View help",
+    "tooltip.about": "About this game"
 } 

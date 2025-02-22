@@ -13,5 +13,27 @@
     "status.disconnected": "Disconnected",
     "status.error": "Network Error",
     "status.timeout": "Connection Timeout",
-    "status.retry": "Retrying..."
+    "status.retry": "Retrying...",
+    "status.reconnecting": "Reconnecting...",
+    
+    "connection.success": "Successfully connected to server",
+    "connection.failed": "Failed to connect to server",
+    "connection.lost": "Connection lost",
+    "connection.timeout": "Connection timeout",
+    
+    "server.unavailable": "Server unavailable",
+    "server.maintenance": "Server under maintenance",
+    "server.error": "Server error",
+    
+    "peer.connected": "Peer connected",
+    "peer.disconnected": "Peer disconnected",
+    "peer.timeout": "Peer connection timeout",
+    
+    "matchmaking.searching": "Searching for opponent...",
+    "matchmaking.found": "Opponent found",
+    "matchmaking.cancelled": "Matchmaking cancelled",
+    
+    "latency": "Latency: {ms}ms",
+    "bandwidth": "Bandwidth: {speed}",
+    "packets": "Packets: {sent}/{received}"
 } 

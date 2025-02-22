@@ -1,21 +1,28 @@
 {
-    "error.network.connection_failed": "Network connection failed",
-    "error.network.timeout": "Network timeout",
-    "error.network.disconnected": "Network disconnected",
+    "unknown": "An unknown error occurred",
+    "not_found": "Resource not found: {resource}",
+    "invalid_input": "Invalid input: {input}",
     
-    "error.game.invalid_move": "Invalid move",
-    "error.game.out_of_turn": "Not your turn",
-    "error.game.game_over": "Game is over",
+    "network.connection_failed": "Failed to connect to network",
+    "network.timeout": "Network connection timed out",
+    "network.disconnected": "Network connection lost",
     
-    "error.save.failed": "Failed to save game",
-    "error.save.corrupted": "Save data is corrupted",
-    "error.save.incompatible": "Save data is incompatible",
+    "server.unavailable": "Server is currently unavailable",
+    "server.maintenance": "Server is under maintenance",
+    "server.overload": "Server is experiencing high load",
     
-    "error.system.initialization": "System initialization failed",
-    "error.system.resource_missing": "Required resource not found: {resource}",
-    "error.system.out_of_memory": "Out of memory",
+    "game.invalid_move": "Invalid move: {move}",
+    "game.out_of_turn": "Not your turn",
+    "game.already_started": "Game has already started",
+    "game.not_started": "Game has not started yet",
+    "game.already_ended": "Game has already ended",
     
-    "error.validation.invalid_input": "Invalid input: {input}",
-    "error.validation.required_field": "This field is required",
-    "error.validation.invalid_format": "Invalid format"
+    "save.failed": "Failed to save game",
+    "load.failed": "Failed to load game",
+    "file.not_found": "File not found: {file}",
+    "file.invalid_format": "Invalid file format",
+    
+    "system.initialization": "System initialization failed",
+    "system.resource_missing": "Required resource missing: {resource}",
+    "system.version_mismatch": "Version mismatch: expected {expected}, got {actual}"
 } 

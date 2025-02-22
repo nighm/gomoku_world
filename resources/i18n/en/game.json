@@ -1,1 +1,37 @@
-{"new":"New Game","load":"Load Game","save":"Save Game","quit":"Quit Game","mode.single":"Single Player","mode.multi":"Multiplayer","mode.ai":"VS AI","difficulty.easy":"Easy","difficulty.medium":"Medium","difficulty.hard":"Hard","status.your_turn":"Your Turn","status.opponent_turn":"Opponent's Turn","status.game_over":"Game Over","status.victory":"Victory!","status.defeat":"Defeat","status.draw":"Draw"}
+{
+    "new": "New Game",
+    "load": "Load Game",
+    "save": "Save Game",
+    "quit": "Quit Game",
+    "pause": "Pause",
+    "resume": "Resume",
+    "restart": "Restart",
+    
+    "mode.single": "Single Player",
+    "mode.multi": "Multiplayer",
+    "mode.ai": "AI Mode",
+    "mode.online": "Online Mode",
+    
+    "difficulty.easy": "Easy",
+    "difficulty.medium": "Medium",
+    "difficulty.hard": "Hard",
+    "difficulty.expert": "Expert",
+    
+    "player.black": "Black",
+    "player.white": "White",
+    "player.turn": "{player}'s Turn",
+    "player.win": "{player} Wins!",
+    
+    "board.size": "Board Size: {size}x{size}",
+    "board.theme": "Board Theme",
+    
+    "score": "Score: {score}",
+    "time": "Time: {time}",
+    "moves": "Moves: {moves}",
+    "status.your_turn": "Your Turn",
+    "status.opponent_turn": "Opponent's Turn",
+    "status.game_over": "Game Over",
+    "status.victory": "Victory!",
+    "status.defeat": "Defeat",
+    "status.draw": "Draw"
+}

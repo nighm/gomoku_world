@@ -1,21 +1,28 @@
 {
-    "error.network.connection_failed": "网络连接失败",
-    "error.network.timeout": "网络超时",
-    "error.network.disconnected": "网络已断开",
+    "unknown": "发生未知错误",
+    "not_found": "未找到资源：{resource}",
+    "invalid_input": "无效输入：{input}",
     
-    "error.game.invalid_move": "无效的移动",
-    "error.game.out_of_turn": "不是你的回合",
-    "error.game.game_over": "游戏已经结束",
+    "network.connection_failed": "网络连接失败",
+    "network.timeout": "网络连接超时",
+    "network.disconnected": "网络连接已断开",
     
-    "error.save.failed": "保存游戏失败",
-    "error.save.corrupted": "存档数据已损坏",
-    "error.save.incompatible": "存档数据不兼容",
+    "server.unavailable": "服务器当前不可用",
+    "server.maintenance": "服务器正在维护",
+    "server.overload": "服务器负载过高",
     
-    "error.system.initialization": "系统初始化失败",
-    "error.system.resource_missing": "未找到所需资源：{resource}",
-    "error.system.out_of_memory": "内存不足",
+    "game.invalid_move": "无效的落子：{move}",
+    "game.out_of_turn": "不是你的回合",
+    "game.already_started": "游戏已经开始",
+    "game.not_started": "游戏尚未开始",
+    "game.already_ended": "游戏已经结束",
     
-    "error.validation.invalid_input": "无效输入：{input}",
-    "error.validation.required_field": "此字段为必填项",
-    "error.validation.invalid_format": "格式无效"
+    "save.failed": "保存游戏失败",
+    "load.failed": "加载游戏失败",
+    "file.not_found": "未找到文件：{file}",
+    "file.invalid_format": "无效的文件格式",
+    
+    "system.initialization": "系统初始化失败",
+    "system.resource_missing": "缺少必需资源：{resource}",
+    "system.version_mismatch": "版本不匹配：期望 {expected}，实际 {actual}"
 } 

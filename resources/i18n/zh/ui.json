@@ -1,12 +1,35 @@
 {
-    "title": "网络国际化演示",
-    "header": "网络状态监控",
-    "footer": "点击下方按钮切换语言",
+    "title": "五子棋世界",
+    "header": "游戏状态",
+    "footer": "版本 {version}",
     
-    "status.label": "当前状态：",
-    "language.label": "当前语言：",
+    "menu.game": "游戏",
+    "menu.settings": "设置",
+    "menu.help": "帮助",
+    "menu.about": "关于",
     
-    "button.refresh": "刷新状态",
-    "button.reconnect": "重新连接",
-    "button.settings": "设置"
+    "settings.general": "常规设置",
+    "settings.display": "显示设置",
+    "settings.sound": "声音设置",
+    "settings.network": "网络设置",
+    
+    "button.settings": "设置",
+    "button.profile": "个人资料",
+    "button.leaderboard": "排行榜",
+    "button.achievements": "成就",
+    
+    "dialog.title.settings": "设置",
+    "dialog.title.profile": "玩家资料",
+    "dialog.title.confirm": "确认",
+    "dialog.title.error": "错误",
+    
+    "label.username": "用户名",
+    "label.password": "密码",
+    "label.email": "电子邮箱",
+    "label.language": "语言",
+    
+    "tooltip.new_game": "开始新游戏",
+    "tooltip.settings": "打开设置",
+    "tooltip.help": "查看帮助",
+    "tooltip.about": "关于游戏"
 } 
