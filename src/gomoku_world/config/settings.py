@@ -12,10 +12,11 @@ PACKAGE_NAME = "Gomoku World"
 VERSION = __version__
 
 # Translation service settings
-TRANSLATION_SERVICE_URL = os.getenv("TRANSLATION_SERVICE_URL", "https://api.translations.gomokuworld.org")
-TRANSLATION_API_KEY = os.getenv("TRANSLATION_API_KEY")
-TRANSLATION_CACHE_DIR = Path.home() / ".gomoku_world" / "translations"
+TRANSLATION_SERVICE_URL = "https://api.translations.gomokuworld.org"
+TRANSLATION_API_KEY = None  # Set this in local_settings.py
+TRANSLATION_CACHE_DIR = Path.home() / ".gomoku_world" / "cache" / "translations"
 TRANSLATION_TIMEOUT = 5  # seconds
+TRANSLATION_CACHE_TTL = 86400  # 24 hours in seconds
 NETWORK_CHECK_TIMEOUT = 1  # seconds
 NETWORK_CHECK_HOSTS = [
     "api.translations.gomokuworld.org",
@@ -86,6 +87,34 @@ SPECTATOR_FEATURES = {
     "game_info": True,
     "player_stats": True,
     "move_history": True
+}
+
+# Network monitoring settings
+NETWORK_CHECK_INTERVAL = 60  # seconds
+NETWORK_MAX_RETRIES = 3
+NETWORK_RETRY_DELAY = 1  # seconds
+NETWORK_PROXY_SETTINGS = {
+    "enabled": False,
+    "host": "",
+    "port": 0,
+    "username": "",
+    "password": ""
+}
+
+# Font settings
+FONT_DIR = Path.home() / ".gomoku_world" / "fonts"
+FONT_PRELOAD = True
+FONT_FAMILIES = {
+    "latin": ["Arial", "Helvetica", "sans-serif"],
+    "cjk": ["Microsoft YaHei", "SimHei", "Noto Sans CJK", "sans-serif"]
+}
+
+# Default fonts by language
+LANGUAGE_FONTS = {
+    "en": "Arial",
+    "zh": "Microsoft YaHei",
+    "ja": "Noto Sans CJK JP",
+    "ko": "Noto Sans CJK KR"
 }
 
 # Create necessary directories
