@@ -4,7 +4,7 @@ build-backend = "hatchling.build"
 
 [project]
 name = "gomoku-world"
-version = "1.4.6"
+version = "2.1.0"
 description = "A modern Gomoku (Five in a Row) game platform with advanced AI and online features"
 authors = [
     {name = "Gomoku World Team", email = "team@gomokuworld.com"},
@@ -166,4 +166,4 @@ local_scheme = "node-and-date"
 [tool.poetry]
 name = "gomoku_world"
 version = "2.0.0"
-description = "A modern Gomoku game implementation with AI and network support" 
+description = "A modern Gomoku game implementation with AI and network support"
