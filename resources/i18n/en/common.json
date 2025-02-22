@@ -1,0 +1,35 @@
+{
+    "app.name": "Gomoku World",
+    "app.description": "A modern Gomoku (Five in a Row) game",
+    "app.version": "Version {version}",
+    
+    "language.name": "English",
+    "region.name": "United States",
+    
+    "button.ok": "OK",
+    "button.cancel": "Cancel",
+    "button.confirm": "Confirm",
+    "button.save": "Save",
+    "button.load": "Load",
+    "button.close": "Close",
+    "button.back": "Back",
+    "button.next": "Next",
+    
+    "menu.file": "File",
+    "menu.edit": "Edit",
+    "menu.view": "View",
+    "menu.help": "Help",
+    
+    "dialog.error": "Error",
+    "dialog.warning": "Warning",
+    "dialog.info": "Information",
+    "dialog.confirm": "Confirmation",
+    
+    "error.unknown": "An unknown error occurred",
+    "error.not_found": "Resource not found: {resource}",
+    "error.invalid_input": "Invalid input: {input}",
+    
+    "loading": "Loading...",
+    "processing": "Processing...",
+    "please_wait": "Please wait..."
+} 

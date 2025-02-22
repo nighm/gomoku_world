@@ -1,0 +1,42 @@
+{
+    "game.new": "New Game",
+    "game.load": "Load Game",
+    "game.save": "Save Game",
+    "game.quit": "Quit Game",
+    "game.restart": "Restart Game",
+    "game.pause": "Pause Game",
+    "game.resume": "Resume Game",
+    
+    "game.mode.single": "Single Player",
+    "game.mode.multi": "Multiplayer",
+    "game.mode.ai": "vs AI",
+    "game.mode.online": "Online",
+    "game.mode.tournament": "Tournament",
+    
+    "game.difficulty.easy": "Easy",
+    "game.difficulty.medium": "Medium",
+    "game.difficulty.hard": "Hard",
+    
+    "game.status.start": "Game started",
+    "game.status.end": "Game over",
+    "game.status.draw": "Game is a draw",
+    "game.status.win": "{player} wins!",
+    "game.status.turn": "{player}'s turn",
+    
+    "player.black": "Black",
+    "player.white": "White",
+    "player.ai": "AI",
+    "player.guest": "Guest",
+    
+    "move.invalid": "Invalid move",
+    "move.undo": "Undo move",
+    "move.redo": "Redo move",
+    
+    "board.size": "Board Size: {size}x{size}",
+    "board.theme": "Board Theme",
+    
+    "score.wins": "Wins: {count}",
+    "score.losses": "Losses: {count}",
+    "score.draws": "Draws: {count}",
+    "score.rating": "Rating: {rating}"
+} 

@@ -5,6 +5,30 @@ All notable changes to GomokuWorld will be documented in this file.
 The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/),
 and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
+## [1.4.2] - 2024-02-22
+
+### Added / 新增
+- Enhanced internationalization system / 增强的国际化系统
+  - Standard language codes (ISO 639-1) / 标准语言代码（ISO 639-1）
+  - Region codes (ISO 3166-1) / 地区代码（ISO 3166-1）
+  - Language fallback mechanism / 语言回退机制
+  - Resource categorization / 资源分类
+  - Date and time localization / 日期和时间本地化
+  - Number formatting / 数字格式化
+  - Font family selection / 字体系列选择
+- Structured translation resources / 结构化翻译资源
+  - Common translations / 通用翻译
+  - Game-specific translations / 游戏特定翻译
+  - Multiple language support / 多语言支持
+  - Region-specific variations / 地区特定变体
+
+### Changed / 变更
+- Improved i18n architecture / 改进的国际化架构
+  - Centralized i18n management / 集中的国际化管理
+  - Dynamic resource loading / 动态资源加载
+  - Flexible text formatting / 灵活的文本格式化
+  - Enhanced error handling / 增强的错误处理
+
 ## [1.4.1] - 2024-02-22
 
 ### Changed / 变更
