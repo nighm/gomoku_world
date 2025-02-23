@@ -6,12 +6,14 @@ Internationalization (i18n) configuration.
 from pathlib import Path
 from typing import Dict, Any, Optional
 
+from ..config.settings import TRANSLATIONS_DIR
+
 # Default settings / 默认设置
 DEFAULT_SETTINGS: Dict[str, Any] = {
     # General settings / 常规设置
     "DEFAULT_LANGUAGE": "en",
     "FALLBACK_LANGUAGE": "en",
-    "TRANSLATIONS_DIR": "resources/i18n",
+    "TRANSLATIONS_DIR": str(TRANSLATIONS_DIR),
     
     # Cache settings / 缓存设置
     "CACHE_ENABLED": True,
@@ -48,54 +50,110 @@ class I18nConfig:
     
     def _initialize(self) -> None:
         """
-        Initialize configuration with default values.
-        使用默认值初始化配置。
+        Initialize configuration with default settings.
+        使用默认设置初始化配置。
         """
         self._settings = DEFAULT_SETTINGS.copy()
-        self._load_user_config()
     
-    def _load_user_config(self) -> None:
+    @property
+    def translations_dir(self) -> str:
         """
-        Load user configuration from file if exists.
-        如果存在用户配置文件则加载。
+        Get translations directory path.
+        获取翻译目录路径。
         """
-        config_file = Path("config/i18n.yaml")
-        if config_file.exists():
-            import yaml
-            with config_file.open("r", encoding="utf-8") as f:
-                user_config = yaml.safe_load(f)
-                if user_config:
-                    self._settings.update(user_config)
+        return self._settings["TRANSLATIONS_DIR"]
+    
+    @property
+    def default_language(self) -> str:
+        """
+        Get default language code.
+        获取默认语言代码。
+        """
+        return self._settings["DEFAULT_LANGUAGE"]
+    
+    @property
+    def fallback_language(self) -> str:
+        """
+        Get fallback language code.
+        获取回退语言代码。
+        """
+        return self._settings["FALLBACK_LANGUAGE"]
+    
+    @property
+    def cache_enabled(self) -> bool:
+        """
+        Check if cache is enabled.
+        检查是否启用缓存。
+        """
+        return self._settings["CACHE_ENABLED"]
+    
+    @property
+    def cache_ttl(self) -> int:
+        """
+        Get cache TTL in seconds.
+        获取缓存TTL（秒）。
+        """
+        return self._settings["CACHE_TTL"]
+    
+    @property
+    def cache_max_size(self) -> int:
+        """
+        Get maximum cache size.
+        获取最大缓存大小。
+        """
+        return self._settings["CACHE_MAX_SIZE"]
+    
+    @property
+    def online_features_enabled(self) -> bool:
+        """
+        Check if online features are enabled.
+        检查是否启用在线功能。
+        """
+        return self._settings["ONLINE_FEATURES_ENABLED"]
+    
+    @property
+    def debug(self) -> bool:
+        """
+        Check if debug mode is enabled.
+        检查是否启用调试模式。
+        """
+        return self._settings["DEBUG"]
+    
+    @property
+    def log_level(self) -> str:
+        """
+        Get log level.
+        获取日志级别。
+        """
+        return self._settings["LOG_LEVEL"]
     
     def get(self, key: str, default: Any = None) -> Any:
         """
-        Get configuration value.
-        获取配置值。
+        Get configuration value by key.
+        通过键获取配置值。
+        
+        Args:
+            key: Configuration key
+                 配置键
+            default: Default value if key not found
+                    如果未找到键则返回的默认值
         """
         return self._settings.get(key, default)
     
     def set(self, key: str, value: Any) -> None:
         """
-        Set configuration value.
-        设置配置值。
+        Set configuration value by key.
+        通过键设置配置值。
+        
+        Args:
+            key: Configuration key
+                 配置键
+            value: Configuration value
+                  配置值
         """
         self._settings[key] = value
-    
-    def update(self, settings: Dict[str, Any]) -> None:
-        """
-        Update multiple settings at once.
-        一次更新多个设置。
-        """
-        self._settings.update(settings)
-    
-    def reset(self) -> None:
-        """
-        Reset settings to default values.
-        将设置重置为默认值。
-        """
-        self._settings = DEFAULT_SETTINGS.copy()
 
-# Create global config instance / 创建全局配置实例
+# Create singleton instance / 创建单例实例
 config = I18nConfig()
 
 __all__ = ["config", "I18nConfig"] 

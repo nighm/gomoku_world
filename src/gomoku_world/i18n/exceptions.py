@@ -25,6 +25,40 @@ class TranslationNotFoundError(I18nError):
         super().__init__(f"Translation not found for key '{key}' in language '{language}' / "
                         f"在语言'{language}'中未找到键'{key}'的翻译")
 
+class TranslationFileNotFoundError(I18nError):
+    """
+    Raised when a translation file is not found.
+    当找不到翻译文件时抛出。
+    """
+    def __init__(self, file_path: str, language: str):
+        self.file_path = file_path
+        self.language = language
+        super().__init__(f"Translation file not found: '{file_path}' for language '{language}' / "
+                        f"未找到语言'{language}'的翻译文件：'{file_path}'")
+
+class InvalidTranslationFormatError(I18nError):
+    """
+    Raised when a translation file has an invalid format.
+    当翻译文件格式无效时抛出。
+    """
+    def __init__(self, file_path: str, error: str):
+        self.file_path = file_path
+        self.error = error
+        super().__init__(f"Invalid translation format in file '{file_path}': {error} / "
+                        f"文件'{file_path}'中的翻译格式无效：{error}")
+
+class InvalidTranslationValueError(I18nError):
+    """
+    Raised when a translation value is invalid.
+    当翻译值无效时抛出。
+    """
+    def __init__(self, key: str, value: str, error: str):
+        self.key = key
+        self.value = value
+        self.error = error
+        super().__init__(f"Invalid translation value for key '{key}': {value} - {error} / "
+                        f"键'{key}'的翻译值无效：{value} - {error}")
+
 class LanguageNotSupportedError(I18nError):
     """
     Raised when trying to use an unsupported language.
@@ -78,4 +112,17 @@ class CacheError(I18nError):
         self.operation = operation
         self.error = error
         super().__init__(f"Cache {operation} failed: {error} / "
-                        f"缓存{operation}失败：{error}") 
+                        f"缓存{operation}失败：{error}")
+
+__all__ = [
+    "I18nError",
+    "TranslationNotFoundError",
+    "TranslationFileNotFoundError",
+    "InvalidTranslationFormatError",
+    "InvalidTranslationValueError",
+    "LanguageNotSupportedError",
+    "TranslationFileError",
+    "FormatterError",
+    "ValidationError",
+    "CacheError"
+] 

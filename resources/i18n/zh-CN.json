@@ -1,0 +1,48 @@
+{
+    "menu": {
+        "file": "文件",
+        "settings": "设置",
+        "help": "帮助",
+        "language": "语言",
+        "theme": "主题",
+        "about": "关于"
+    },
+    "game": {
+        "new": "新游戏",
+        "quit": "退出",
+        "title": "五子棋世界"
+    },
+    "app": {
+        "description": "五子棋世界是一款经典的棋盘游戏，玩家轮流在棋盘上放置棋子，目标是将五个棋子连成一线。"
+    },
+    "board": {
+        "size": "棋盘大小",
+        "win_length": "获胜长度",
+        "black": "黑棋",
+        "white": "白棋",
+        "current_turn": "当前回合",
+        "game_over": "游戏结束",
+        "winner": "{player}获胜！",
+        "draw": "平局！",
+        "invalid_move": "无效的落子！"
+    },
+    "settings": {
+        "language": "语言",
+        "theme": "主题",
+        "sound": "声音",
+        "volume": "音量",
+        "ai_difficulty": "AI难度",
+        "easy": "简单",
+        "medium": "中等",
+        "hard": "困难",
+        "save": "保存设置",
+        "reset": "恢复默认"
+    },
+    "errors": {
+        "load_failed": "加载游戏失败",
+        "save_failed": "保存游戏失败",
+        "invalid_config": "无效的配置",
+        "network_error": "网络错误",
+        "unknown_error": "发生未知错误"
+    }
+} 

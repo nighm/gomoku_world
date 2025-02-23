@@ -37,8 +37,7 @@ from .formatters.string import (
 )
 from .loaders import (
     JsonLoader,
-    YamlLoader,
-    IniLoader
+    YamlLoader
 )
 from .manager import I18nManager
 from .exceptions import (
@@ -77,7 +76,6 @@ __all__ = [
     'NamedFormatter',
     'JsonLoader',
     'YamlLoader',
-    'IniLoader',
     'I18nManager',
     'TranslationManager',
     # Exceptions

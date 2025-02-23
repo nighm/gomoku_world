@@ -1,12 +1,14 @@
 """
-Game list window implementation
-娓告垙鍒楄〃绐楀彛瀹炵幇
+Game list window implementation.
+
+游戏列表窗口实现。
 """
 
 import tkinter as tk
 from tkinter import ttk
 from typing import Callable, Dict, List, Optional
 
+from ..i18n import i18n_manager
 from ..config import WINDOW_SIZE
 from ..utils.logger import get_logger
 
@@ -33,8 +35,8 @@ class GameListWindow(tk.Toplevel):
         self.on_spectate = on_spectate
         
         # Window setup
-        self.title("Available Games")
-        self.geometry(WINDOW_SIZE)
+        self.title(i18n_manager.get_text("window.game_list"))
+        self.geometry(f"{WINDOW_SIZE[0]}x{WINDOW_SIZE[1]}")  # Format: "widthxheight"
         
         # Create UI components
         self._create_widgets()
@@ -48,7 +50,7 @@ class GameListWindow(tk.Toplevel):
         self.control_frame = ttk.Frame(self)
         self.refresh_btn = ttk.Button(
             self.control_frame,
-            text="Refresh",
+            text=i18n_manager.get_text("button.refresh"),
             command=self._on_refresh
         )
         
@@ -84,7 +86,7 @@ class GameListWindow(tk.Toplevel):
         # Spectate button
         self.spectate_btn = ttk.Button(
             self,
-            text="Spectate",
+            text=i18n_manager.get_text("button.spectate"),
             command=self._on_spectate,
             state=tk.DISABLED
         )

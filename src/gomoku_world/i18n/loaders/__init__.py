@@ -5,5 +5,6 @@ Translation loader implementations package.
 """
 
 from .json import JsonLoader
+from .yaml import YamlLoader
 
-__all__ = ['JsonLoader'] 
+__all__ = ['JsonLoader', 'YamlLoader'] 

@@ -1,13 +1,14 @@
 """
-Control panel implementation
-鎺у埗闈㈡澘瀹炵幇
+Control panel implementation.
+
+控制面板实现。
 """
 
 import tkinter as tk
 from tkinter import ttk
-from typing import TYPE_CHECKING
+from typing import TYPE_CHECKING, Optional
 
-# 浣跨敤鐩稿瀵煎叆
+from ..i18n import i18n_manager
 from ..utils.logger import get_logger
 
 if TYPE_CHECKING:
@@ -16,54 +17,55 @@ if TYPE_CHECKING:
 logger = get_logger(__name__)
 
 class ControlPanel(ttk.Frame):
-    """
-    Control panel for game operations
-    娓告垙鎿嶄綔鎺у埗闈㈡澘
-    """
+    """Control panel widget"""
     
     def __init__(self, parent, main_window: 'GomokuGUI'):
         """
-        Initialize control panel
-        鍒濆鍖栨帶鍒堕潰鏉?
+        Initialize control panel.
         
         Args:
             parent: Parent widget
             main_window: Main window instance
         """
         super().__init__(parent)
-        
         self.main_window = main_window
         
+        # Create variables
+        self.mode_var = tk.StringVar(value="pvp")
+        self.difficulty_var = tk.StringVar(value="medium")
+        
+        # Create widgets
         self._create_widgets()
+        
+        # Setup layout
         self._setup_layout()
         
         logger.info("Control panel initialized")
     
     def _create_widgets(self):
-        """
-        Create all control widgets
-        鍒涘缓鎵鏈夋帶鍒剁粍浠?
-        """
+        """Create control panel widgets"""
         # Game control buttons
         self.new_game_btn = ttk.Button(
             self,
-            text="New Game",
-            command=self.main_window.new_game
+            text=i18n_manager.get_text("game.new"),
+            command=self.main_window.start_new_game
         )
         
         self.undo_btn = ttk.Button(
             self,
-            text="Undo",
+            text=i18n_manager.get_text("game.undo"),
             command=self.main_window.undo_move
         )
         
         # Game mode selection
-        self.mode_frame = ttk.LabelFrame(self, text="Game Mode")
-        self.mode_var = tk.StringVar(value="pvp")
+        self.mode_frame = ttk.LabelFrame(
+            self,
+            text=i18n_manager.get_text("game.mode")
+        )
         
         self.pvp_radio = ttk.Radiobutton(
             self.mode_frame,
-            text="Player vs Player",
+            text=i18n_manager.get_text("game.mode.pvp"),
             variable=self.mode_var,
             value="pvp",
             command=self._on_mode_change
@@ -71,19 +73,21 @@ class ControlPanel(ttk.Frame):
         
         self.pvc_radio = ttk.Radiobutton(
             self.mode_frame,
-            text="Player vs Computer",
+            text=i18n_manager.get_text("game.mode.pvc"),
             variable=self.mode_var,
             value="pvc",
             command=self._on_mode_change
         )
         
         # Difficulty selection
-        self.difficulty_frame = ttk.LabelFrame(self, text="AI Difficulty")
-        self.difficulty_var = tk.StringVar(value="medium")
+        self.difficulty_frame = ttk.LabelFrame(
+            self,
+            text=i18n_manager.get_text("game.difficulty")
+        )
         
         self.easy_radio = ttk.Radiobutton(
             self.difficulty_frame,
-            text="Easy",
+            text=i18n_manager.get_text("game.difficulty.easy"),
             variable=self.difficulty_var,
             value="easy",
             command=self._on_difficulty_change
@@ -91,7 +95,7 @@ class ControlPanel(ttk.Frame):
         
         self.medium_radio = ttk.Radiobutton(
             self.difficulty_frame,
-            text="Medium",
+            text=i18n_manager.get_text("game.difficulty.medium"),
             variable=self.difficulty_var,
             value="medium",
             command=self._on_difficulty_change
@@ -99,22 +103,17 @@ class ControlPanel(ttk.Frame):
         
         self.hard_radio = ttk.Radiobutton(
             self.difficulty_frame,
-            text="Hard",
+            text=i18n_manager.get_text("game.difficulty.hard"),
             variable=self.difficulty_var,
             value="hard",
             command=self._on_difficulty_change
         )
         
-        # Initially disable difficulty selection
+        # Update difficulty state
         self._update_difficulty_state()
-        
-        logger.debug("Control widgets created")
     
     def _setup_layout(self):
-        """
-        Setup the layout of all widgets
-        璁剧疆鎵鏈夌粍浠剁殑甯冨眬
-        """
+        """Setup the layout of all widgets"""
         # Game control buttons
         self.new_game_btn.pack(fill=tk.X, padx=5, pady=5)
         self.undo_btn.pack(fill=tk.X, padx=5, pady=5)
@@ -133,29 +132,34 @@ class ControlPanel(ttk.Frame):
         logger.debug("Layout setup completed")
     
     def _on_mode_change(self):
-        """
-        Handle game mode change
-        澶勭悊娓告垙妯″紡鍙樻洿
-        """
+        """Handle game mode change"""
         self._update_difficulty_state()
-        # TODO: Implement mode change logic
         logger.info(f"Game mode changed to {self.mode_var.get()}")
     
     def _on_difficulty_change(self):
-        """
-        Handle difficulty change
-        澶勭悊闅惧害鍙樻洿
-        """
-        # TODO: Implement difficulty change logic
+        """Handle difficulty change"""
         logger.info(f"AI difficulty changed to {self.difficulty_var.get()}")
     
     def _update_difficulty_state(self):
-        """
-        Update difficulty selection state
-        鏇存柊闅惧害閫夋嫨鐘舵?
-        """
+        """Update difficulty selection state"""
         state = 'normal' if self.mode_var.get() == 'pvc' else 'disabled'
-        self.difficulty_frame.configure(state=state)
         self.easy_radio.configure(state=state)
         self.medium_radio.configure(state=state)
-        self.hard_radio.configure(state=state) 
+        self.hard_radio.configure(state=state)
+    
+    def update_language(self):
+        """Update all text elements when language changes"""
+        # Update mode selection
+        self.mode_frame["text"] = i18n_manager.get_text("game.mode")
+        self.pvp_radio["text"] = i18n_manager.get_text("game.mode.pvp")
+        self.pvc_radio["text"] = i18n_manager.get_text("game.mode.pvc")
+        
+        # Update difficulty selection
+        self.difficulty_frame["text"] = i18n_manager.get_text("game.difficulty")
+        self.easy_radio["text"] = i18n_manager.get_text("game.difficulty.easy")
+        self.medium_radio["text"] = i18n_manager.get_text("game.difficulty.medium")
+        self.hard_radio["text"] = i18n_manager.get_text("game.difficulty.hard")
+        
+        # Update buttons
+        self.new_game_btn["text"] = i18n_manager.get_text("game.new")
+        self.undo_btn["text"] = i18n_manager.get_text("game.undo") 

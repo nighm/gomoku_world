@@ -1,6 +1,7 @@
 """
-Main window implementation for the Gomoku World game
-浜斿瓙妫嬩笘鐣屾父鎴忕殑涓荤獥鍙ｅ疄鐜?
+Main window implementation for the Gomoku World game.
+
+五子棋世界游戏的主窗口实现。
 """
 
 import sys
@@ -11,7 +12,7 @@ import asyncio
 import pygame
 
 # 浣跨敤鐩稿瀵煎叆
-from ..core.game import Game
+from ..core import Game
 from ..utils.logger import get_logger
 from ..utils.resources import resource_manager
 from ..utils.sound import sound_manager
@@ -29,17 +30,23 @@ logger = get_logger(__name__)
 
 class GomokuGUI:
     """
-    Main window class for the Gomoku World game
-    浜斿瓙妫嬩笘鐣屾父鎴忕殑涓荤獥鍙ｇ被
+    Main window class for the Gomoku World game.
+    
+    五子棋世界游戏的主窗口类。
     """
     
     def __init__(self):
         """
-        Initialize the main window
-        鍒濆鍖栦富绐楀彛
+        Initialize the main window.
+        
+        初始化主窗口。
         """
+        # Initialize pygame modules
+        pygame.init()
+        pygame.font.init()  # Initialize font module
+        
         self.root = tk.Tk()
-        self.root.title(resource_manager.get_text("game.title"))
+        self.root.title(i18n_manager.get_text("game.title"))
         self.root.geometry("800x600")
         
         # Initialize game
@@ -62,9 +69,9 @@ class GomokuGUI:
         
         # Create UI elements
         self.buttons: List[Button] = [
-            Button("button.new_game", 300, 200, callback=self.start_new_game),
-            Button("button.settings", 300, 260, callback=self.open_settings),
-            Button("button.quit", 300, 320, callback=self.quit_game)
+            Button("button.new_game", 300, 200, width=200, height=40, callback=self.start_new_game),
+            Button("button.settings", 300, 260, width=200, height=40, callback=self.open_settings),
+            Button("button.quit", 300, 320, width=200, height=40, callback=self.quit_game)
         ]
         
         # Register for language/theme changes

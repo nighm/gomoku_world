@@ -68,7 +68,7 @@ class MenuBar(tk.Menu):
         )
         
         # Add language options
-        self.language_var = tk.StringVar(value=i18n_manager.current_language)
+        self.language_var = tk.StringVar(value=i18n_manager.get_language())
         
         for lang_code, lang_info in LANGUAGE_CODES.items():
             language_menu.add_radiobutton(

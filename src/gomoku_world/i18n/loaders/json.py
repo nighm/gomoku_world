@@ -20,7 +20,7 @@ import json
 import os
 import logging
 from pathlib import Path
-from typing import Dict, Optional, Any
+from typing import Dict, Optional, Any, Union
 
 from ..base import TranslationLoader, TranslationDict, LanguageCode
 from ..exceptions import TranslationFileError, ValidationError
@@ -50,20 +50,20 @@ class JsonLoader(TranslationLoader):
         从JSON文件加载指定语言的翻译。
         
         Args:
-            language (LanguageCode): Language code (e.g. 'en', 'zh-CN')
-                                   语言代码（如'en'、'zh-CN'）
-                          
+            language (LanguageCode): Language code to load
+                                   要加载的语言代码
+                                   
         Returns:
-            TranslationDict: Dictionary of translation strings
-                           翻译字符串字典
+            TranslationDict: Dictionary of translations
+                           翻译字典
                            
         Raises:
-            TranslationFileError: If file cannot be read or is invalid
-                                如果文件无法读取或无效
-            ValidationError: If translations are invalid
-                           如果翻译无效
+            TranslationFileError: If file cannot be read or has invalid format
+                                如果文件无法读取或格式无效
+            ValidationError: If translation values are invalid
+                           如果翻译值无效
         """
-        file_path = self._get_file_path(language)
+        file_path = self._base_dir / f"{language}.json"
         
         try:
             with open(file_path, 'r', encoding='utf-8') as f:
@@ -75,86 +75,74 @@ class JsonLoader(TranslationLoader):
         except Exception as e:
             raise TranslationFileError(str(file_path), str(e))
             
-        # Validate translations
-        self._validate_translations(translations, language)
+        if not isinstance(translations, dict):
+            raise ValidationError(
+                f"Invalid translation format in {language}",
+                {"error": "Root must be a dictionary"}
+            )
             
+        self._validate_translations(translations, language)
         return translations
+    
+    def _validate_translations(self, translations: Dict[str, Any], language: str) -> None:
+        """
+        Validate translation values recursively.
+        递归验证翻译值。
         
+        Args:
+            translations (Dict[str, Any]): Dictionary of translations
+                                         翻译字典
+            language (str): Language code being validated
+                          正在验证的语言代码
+                          
+        Raises:
+            ValidationError: If translation values are invalid
+                           如果翻译值无效
+        """
+        invalid_entries = {}
+        
+        def validate_value(value: Any, path: str) -> None:
+            if isinstance(value, dict):
+                for key, val in value.items():
+                    validate_value(val, f"{path}.{key}" if path else key)
+            elif not isinstance(value, str):
+                invalid_entries[path] = type(value).__name__
+        
+        for key, value in translations.items():
+            validate_value(value, key)
+            
+        if invalid_entries:
+            raise ValidationError(
+                f"Invalid translation values in {language}",
+                {"invalid_entries": invalid_entries}
+            )
+    
     def save(self, language: LanguageCode, translations: TranslationDict) -> None:
         """
         Save translations for a language to JSON file.
         将指定语言的翻译保存到JSON文件。
         
         Args:
-            language (LanguageCode): Language code (e.g. 'en', 'zh-CN')
-                                   语言代码（如'en'、'zh-CN'）
-            translations (TranslationDict): Dictionary of translation strings
-                                         翻译字符串字典
+            language (LanguageCode): Language code to save
+                                   要保存的语言代码
+            translations (TranslationDict): Dictionary of translations
+                                         翻译字典
                                          
         Raises:
             TranslationFileError: If file cannot be written
                                 如果文件无法写入
-            ValidationError: If translations are invalid
-                           如果翻译无效
         """
-        # Validate translations before saving
-        self._validate_translations(translations, language)
-        
-        file_path = self._get_file_path(language)
+        os.makedirs(self._base_dir, exist_ok=True)
+        file_path = self._base_dir / f"{language}.json"
         
         try:
-            # Create directory if it doesn't exist
-            os.makedirs(os.path.dirname(file_path), exist_ok=True)
-            
             with open(file_path, 'w', encoding='utf-8') as f:
-                json.dump(translations, f, ensure_ascii=False, indent=2)
-                
-            logger.info(f"Saved translations for language: {language}")
-            
+                json.dump(
+                    translations,
+                    f,
+                    ensure_ascii=False,
+                    indent=4,
+                    sort_keys=True
+                )
         except Exception as e:
-            raise TranslationFileError(str(file_path), f"Failed to save: {e}")
-            
-    def _get_file_path(self, language: LanguageCode) -> Path:
-        """
-        Get file path for a language.
-        获取指定语言的文件路径。
-        
-        Args:
-            language (LanguageCode): Language code
-                                   语言代码
-                                   
-        Returns:
-            Path: Path to translation file
-                 翻译文件路径
-        """
-        return self._base_dir / f"{language}.json"
-        
-    def _validate_translations(self, translations: Dict[str, Any], language: LanguageCode) -> None:
-        """
-        Validate translation dictionary.
-        验证翻译字典。
-        
-        Args:
-            translations (Dict[str, Any]): Translations to validate
-                                         要验证的翻译
-            language (LanguageCode): Language code
-                                   语言代码
-                                   
-        Raises:
-            ValidationError: If translations are invalid
-                           如果翻译无效
-        """
-        if not isinstance(translations, dict):
-            raise ValidationError(
-                f"Translations for {language} must be a dictionary",
-                {"type": type(translations).__name__}
-            )
-            
-        invalid = {k: type(v).__name__ for k, v in translations.items() 
-                  if not isinstance(v, str)}
-                  
-        if invalid:
-            raise ValidationError(
-                f"Invalid translation values in {language}",
-                {"invalid_entries": invalid}
-            ) 
+            raise TranslationFileError(str(file_path), str(e)) 

@@ -23,5 +23,31 @@ Features:
 """
 
 from .base import ConfigManager, game_config, i18n_config
+from .settings import (
+    PACKAGE_NAME, VERSION,
+    LOG_DIR, LOG_FILE, LOG_FORMAT, LOG_LEVEL,
+    BOARD_SIZE, WIN_LENGTH, CELL_SIZE, PIECE_RADIUS,
+    DEFAULT_THEME, DEFAULT_LANGUAGE, FALLBACK_LANGUAGE,
+    RESOURCES_DIR, TRANSLATIONS_DIR, THEMES_DIR, SOUNDS_DIR, IMAGES_DIR,
+    SAVE_DIR, WINDOW_SIZE, 
+    # Network settings
+    SPECTATOR_CHAT_ENABLED, SPECTATOR_CHAT_HISTORY, SPECTATOR_FEATURES
+)
 
-__all__ = ["ConfigManager", "game_config", "i18n_config"]
+__all__ = [
+    # Configuration managers
+    "ConfigManager", "game_config", "i18n_config",
+    # Package information
+    "PACKAGE_NAME", "VERSION",
+    # Logging
+    "LOG_DIR", "LOG_FILE", "LOG_FORMAT", "LOG_LEVEL",
+    # Game settings
+    "BOARD_SIZE", "WIN_LENGTH", "CELL_SIZE", "PIECE_RADIUS",
+    # Display settings
+    "DEFAULT_THEME", "DEFAULT_LANGUAGE", "FALLBACK_LANGUAGE", "WINDOW_SIZE",
+    # Network settings
+    "SPECTATOR_CHAT_ENABLED", "SPECTATOR_CHAT_HISTORY", "SPECTATOR_FEATURES",
+    # Resource paths
+    "RESOURCES_DIR", "TRANSLATIONS_DIR", "THEMES_DIR", "SOUNDS_DIR", "IMAGES_DIR",
+    "SAVE_DIR"
+]

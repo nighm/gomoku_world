@@ -6,6 +6,7 @@ YAML翻译加载器实现。
 
 import os
 import logging
+from pathlib import Path
 from typing import Dict, Any
 
 import yaml
@@ -29,110 +30,107 @@ class YamlLoader(TranslationLoader):
     
     def __init__(self, base_dir: str):
         """
-        Initialize the YAML loader.
-        
+        Initialize YAML loader.
         初始化YAML加载器。
 
         Args:
-            base_dir: Base directory containing translation files
-                     包含翻译文件的基础目录
+            base_dir: Base directory for translation files
+                     翻译文件的基础目录
         """
-        self.base_dir = base_dir
+        self.base_dir = Path(base_dir)
         
-    def load(self, language: str) -> Dict[str, str]:
+    def load(self, path: Path) -> Dict[str, Any]:
         """
-        Load translations for a language from a YAML file.
-        
-        从YAML文件加载指定语言的翻译。
+        Load translations from YAML file.
+        从YAML文件加载翻译。
 
         Args:
-            language: Language code (e.g. 'en', 'zh-CN')
-                     语言代码（如'en'、'zh-CN'）
-
+            path: Path to translation file
+                 翻译文件路径
+                 
         Returns:
-            Dictionary of translation strings
-            翻译字符串字典
-
+            Dict[str, Any]: Dictionary of translations
+                           翻译字典
+                           
         Raises:
-            TranslationFileNotFoundError: If translation file not found
-                                        如果翻译文件未找到
-            InvalidTranslationFormatError: If YAML format is invalid
-                                         如果YAML格式无效
-            InvalidTranslationValueError: If translation values are not strings
-                                        如果翻译值不是字符串
+            TranslationFileNotFoundError: If file doesn't exist
+                                        如果文件不存在
+            InvalidTranslationFormatError: If file format is invalid
+                                         如果文件格式无效
+            InvalidTranslationValueError: If translation value is invalid
+                                        如果翻译值无效
         """
-        file_path = os.path.join(self.base_dir, f"{language}.yaml")
-        
-        if not os.path.exists(file_path):
-            raise TranslationFileNotFoundError(
-                f"Translation file not found: {file_path}"
-            )
+        if not path.exists():
+            raise TranslationFileNotFoundError(str(path), "yaml")
             
         try:
-            with open(file_path, 'r', encoding='utf-8') as f:
+            with path.open("r", encoding="utf-8") as f:
                 translations = yaml.safe_load(f)
+                
+            if not isinstance(translations, dict):
+                raise InvalidTranslationFormatError(
+                    str(path),
+                    "Root element must be a dictionary"
+                )
+                
+            self._validate_translations(translations, path)
+            return translations
+            
         except yaml.YAMLError as e:
-            raise InvalidTranslationFormatError(
-                f"Invalid YAML format in {file_path}: {e}"
-            )
+            raise InvalidTranslationFormatError(str(path), str(e))
             
-        if not isinstance(translations, dict):
-            raise InvalidTranslationFormatError(
-                f"Invalid translation format in {file_path}: "
-                "root must be a dictionary"
-            )
-            
-        # Validate all values are strings
-        invalid_keys = [
-            key for key, value in translations.items()
-            if not isinstance(value, str)
-        ]
-        if invalid_keys:
-            raise InvalidTranslationValueError(
-                f"Non-string translation values found for keys: {invalid_keys}"
-            )
-            
-        return translations
+        except Exception as e:
+            logger.error(f"Error loading translations from {path}: {e}")
+            raise
+    
+    def _validate_translations(self, translations: Dict[str, Any], path: Path) -> None:
+        """
+        Validate translation values.
+        验证翻译值。
+        
+        Args:
+            translations: Dictionary of translations
+                        翻译字典
+            path: Path to translation file
+                 翻译文件路径
+                 
+        Raises:
+            InvalidTranslationValueError: If translation value is invalid
+                                        如果翻译值无效
+        """
+        for key, value in translations.items():
+            if isinstance(value, dict):
+                self._validate_translations(value, path)
+            elif not isinstance(value, str):
+                raise InvalidTranslationValueError(
+                    key,
+                    str(value),
+                    "Translation value must be a string"
+                )
         
     def save(self, language: str, translations: Dict[str, str]) -> None:
         """
-        Save translations for a language to a YAML file.
+        Save translations to YAML file.
+        将翻译保存到YAML文件。
         
-        将指定语言的翻译保存到YAML文件。
-
         Args:
-            language: Language code (e.g. 'en', 'zh-CN')
-                     语言代码（如'en'、'zh-CN'）
-            translations: Dictionary of translation strings
-                        翻译字符串字典
-
-        Raises:
-            InvalidTranslationValueError: If translation values are not strings
-                                        如果翻译值不是字符串
+            language: Language code
+                     语言代码
+            translations: Dictionary of translations
+                        翻译字典
         """
-        # Validate all values are strings
-        invalid_keys = [
-            key for key, value in translations.items()
-            if not isinstance(value, str)
-        ]
-        if invalid_keys:
-            raise InvalidTranslationValueError(
-                f"Non-string translation values found for keys: {invalid_keys}"
-            )
-            
-        # Create directory if it doesn't exist
-        os.makedirs(self.base_dir, exist_ok=True)
-        
-        file_path = os.path.join(self.base_dir, f"{language}.yaml")
+        file_path = self.base_dir / f"{language}.yaml"
         
         try:
+            os.makedirs(os.path.dirname(file_path), exist_ok=True)
             with open(file_path, 'w', encoding='utf-8') as f:
                 yaml.safe_dump(
                     translations,
                     f,
                     allow_unicode=True,
-                    default_flow_style=False
+                    default_flow_style=False,
+                    sort_keys=False
                 )
         except Exception as e:
-            logger.error(f"Failed to save translations to {file_path}: {e}")
+            logger.error(f"Error saving translations to {file_path}: {e}")
             raise 

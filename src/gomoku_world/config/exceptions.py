@@ -7,10 +7,12 @@ This module defines all exceptions that can be raised by the configuration syste
 本模块定义了配置系统可能抛出的所有异常。
 """
 
+from typing import Any
+
 class ConfigError(Exception):
     """
-    Base exception for all configuration related errors.
-    所有配置相关错误的基类。
+    Base configuration error.
+    基础配置错误。
     """
     pass
 
@@ -47,24 +49,45 @@ class SchemaError(ConfigError):
 
 class ConfigValueError(ConfigError):
     """
-    Raised when there is an error with a configuration value.
-    当配置值出现错误时抛出。
+    Configuration value error.
+    配置值错误。
     """
-    def __init__(self, key: str, value: any, message: str):
+    
+    def __init__(self, key: str, value: Any, reason: str):
+        """
+        Initialize configuration value error.
+        初始化配置值错误。
+        
+        Args:
+            key: Configuration key that caused the error
+                 导致错误的配置键
+            value: Invalid configuration value
+                   无效的配置值
+            reason: Error reason
+                    错误原因
+        """
         self.key = key
         self.value = value
-        super().__init__(f"Invalid value for '{key}': {value}. {message} / "
-                        f"'{key}'的值无效：{value}。{message}")
+        self.reason = reason
+        super().__init__(f"Invalid configuration value for {key}: {value} ({reason})")
 
 class ConfigKeyError(ConfigError):
     """
-    Raised when a configuration key is not found.
-    当找不到配置键时抛出。
+    Configuration key error.
+    配置键错误。
     """
+    
     def __init__(self, key: str):
+        """
+        Initialize configuration key error.
+        初始化配置键错误。
+        
+        Args:
+            key: Configuration key that caused the error
+                 导致错误的配置键
+        """
         self.key = key
-        super().__init__(f"Configuration key not found: {key} / "
-                        f"未找到配置键：{key}")
+        super().__init__(f"Configuration key not found: {key}")
 
 class ConfigTypeError(ConfigError):
     """
@@ -118,4 +141,27 @@ class ConfigEnumError(ConfigError):
         self.value = value
         self.allowed_values = allowed_values
         super().__init__(f"Value {value} for '{key}' must be one of {allowed_values} / "
-                        f"'{key}'的值 {value} 必须是 {allowed_values} 之一") 
+                        f"'{key}'的值 {value} 必须是 {allowed_values} 之一")
+
+class ConfigValidationError(ConfigError):
+    """
+    Configuration validation error.
+    配置验证错误。
+    """
+    
+    def __init__(self, errors: dict):
+        """
+        Initialize configuration validation error.
+        初始化配置验证错误。
+        
+        Args:
+            errors: Dictionary of validation errors
+                   验证错误字典
+        """
+        self.errors = errors
+        messages = []
+        for key, error in errors.items():
+            messages.append(f"{key}: {error}")
+        super().__init__("Configuration validation failed:\n" + "\n".join(messages))
+
+__all__ = ["ConfigError", "ConfigKeyError", "ConfigValueError", "ConfigValidationError"] 

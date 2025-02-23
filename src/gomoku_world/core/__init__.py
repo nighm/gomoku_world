@@ -6,6 +6,7 @@ Core game logic module
 from .board import Board
 from .rules import Rules
 from .ai import AI
+from .game import Game
 from .save_manager import SaveManager, GameSave
 
-__all__ = ['Board', 'Rules', 'AI', 'SaveManager', 'GameSave']
+__all__ = ['Board', 'Rules', 'AI', 'Game', 'SaveManager', 'GameSave']

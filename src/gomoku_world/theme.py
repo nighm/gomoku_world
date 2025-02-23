@@ -9,8 +9,11 @@ The themes control colors, styles, and other visual aspects of the application.
 本模块提供管理和切换不同UI主题的功能。主题控制应用程序的颜色、样式和其他视觉方面。
 """
 
-from typing import Dict, Any
+from typing import Dict, Any, List, Callable
 from .utils.resources import resource_manager
+from .utils.logger import get_logger
+
+logger = get_logger(__name__)
 
 class Theme:
     """
@@ -32,6 +35,70 @@ class Theme:
         初始化主题管理器。
         """
         self._theme = resource_manager.get_theme()
+        self._current_theme = "default"
+        self._available_themes = ["default", "dark", "light"]
+        self._change_listeners = []  # Add change listeners list
+    
+    def add_change_listener(self, listener: Callable[[], None]):
+        """
+        Add a theme change listener.
+        添加主题变更监听器。
+        
+        Args:
+            listener: Callback function to be called when theme changes
+                     当主题变更时要调用的回调函数
+        """
+        if listener not in self._change_listeners:
+            self._change_listeners.append(listener)
+    
+    def remove_change_listener(self, listener: Callable[[], None]):
+        """
+        Remove a theme change listener.
+        移除主题变更监听器。
+        
+        Args:
+            listener: Callback function to remove
+                     要移除的回调函数
+        """
+        if listener in self._change_listeners:
+            self._change_listeners.remove(listener)
+    
+    def _notify_listeners(self):
+        """
+        Notify all listeners about theme change.
+        通知所有监听器主题已变更。
+        """
+        for listener in self._change_listeners:
+            try:
+                listener()
+            except Exception as e:
+                logger.error(f"Error in theme change listener: {e}")
+    
+    @property
+    def current_theme(self) -> str:
+        """
+        Get current theme name.
+        
+        获取当前主题名称。
+        
+        Returns:
+            str: Current theme name.
+                 当前主题名称。
+        """
+        return self._current_theme
+    
+    @property
+    def available_themes(self) -> List[str]:
+        """
+        Get list of available themes.
+        
+        获取可用主题列表。
+        
+        Returns:
+            List[str]: List of available theme names.
+                       可用主题名称列表。
+        """
+        return self._available_themes
     
     def get_color(self, key: str) -> str:
         """
@@ -70,8 +137,11 @@ class Theme:
             theme_name: Name of the theme to apply.
                        要应用的主题名称。
         """
-        # TODO: Implement theme switching / 实现主题切换
-        pass
+        if theme_name in self._available_themes:
+            self._current_theme = theme_name
+            # TODO: Load theme colors from resource manager
+            # TODO: 从资源管理器加载主题颜色
+            self._notify_listeners()  # Notify listeners about theme change
 
 # Create global theme instance / 创建全局主题实例
 theme = Theme()

@@ -1,0 +1,48 @@
+{
+    "menu": {
+        "file": "File",
+        "settings": "Settings",
+        "help": "Help",
+        "language": "Language",
+        "theme": "Theme",
+        "about": "About"
+    },
+    "game": {
+        "new": "New Game",
+        "quit": "Exit",
+        "title": "Gomoku World"
+    },
+    "app": {
+        "description": "Gomoku World is a classic board game where players take turns placing pieces on a grid with the goal of getting five in a row."
+    },
+    "board": {
+        "size": "Board Size",
+        "win_length": "Win Length",
+        "black": "Black",
+        "white": "White",
+        "current_turn": "Current Turn",
+        "game_over": "Game Over",
+        "winner": "{player} wins!",
+        "draw": "Draw!",
+        "invalid_move": "Invalid move!"
+    },
+    "settings": {
+        "language": "Language",
+        "theme": "Theme",
+        "sound": "Sound",
+        "volume": "Volume",
+        "ai_difficulty": "AI Difficulty",
+        "easy": "Easy",
+        "medium": "Medium",
+        "hard": "Hard",
+        "save": "Save Settings",
+        "reset": "Reset to Default"
+    },
+    "errors": {
+        "load_failed": "Failed to load game",
+        "save_failed": "Failed to save game",
+        "invalid_config": "Invalid configuration",
+        "network_error": "Network error",
+        "unknown_error": "Unknown error occurred"
+    }
+} 
