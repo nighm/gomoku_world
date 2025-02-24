@@ -50,6 +50,28 @@ THEMES_DIR = RESOURCES_DIR / "themes"
 SOUNDS_DIR = RESOURCES_DIR / "sounds"
 IMAGES_DIR = RESOURCES_DIR / "images"
 
+# AI settings / AI设置
+AI_THINKING_TIME = 5.0  # Maximum thinking time in seconds / AI最大思考时间（秒）
+AI_CACHE_SIZE = 100000  # Maximum number of cached positions / 最大缓存局面数量
+AI_DEPTH_EASY = 2      # Search depth for easy difficulty / 简单难度的搜索深度
+AI_DEPTH_MEDIUM = 4    # Search depth for medium difficulty / 中等难度的搜索深度
+AI_DEPTH_HARD = 6      # Search depth for hard difficulty / 困难难度的搜索深度
+
+# Network settings / 网络设置
+NETWORK_CHECK_TIMEOUT = 5.0  # Network check timeout in seconds / 网络检查超时时间（秒）
+NETWORK_CHECK_INTERVAL = 60.0  # Network check interval in seconds / 网络检查间隔时间（秒）
+NETWORK_RETRY_INTERVAL = 1.0  # Retry interval in seconds / 重试间隔时间（秒）
+NETWORK_MAX_RETRIES = 3      # Maximum number of retries / 最大重试次数
+NETWORK_CHECK_HOSTS = [      # Hosts to check for network connectivity / 用于检查网络连接的主机
+    "www.google.com",
+    "www.github.com",
+    "www.baidu.com"
+]
+
+# Debug settings / 调试设置
+DEBUG_ENABLED = True         # Enable debug mode / 启用调试模式
+DEBUG_LOG_LEVEL = "DEBUG"    # Debug log level / 调试日志级别
+
 # Create directories if they don't exist / 如果目录不存在则创建
 for directory in [LOG_DIR, SAVE_DIR, RESOURCES_DIR, TRANSLATIONS_DIR, THEMES_DIR, SOUNDS_DIR, IMAGES_DIR]:
-    directory.mkdir(parents=True, exist_ok=True) 
+    directory.mkdir(parents=True, exist_ok=True)

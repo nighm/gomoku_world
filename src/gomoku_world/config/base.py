@@ -4,11 +4,11 @@ Base configuration management.
 """
 
 from pathlib import Path
-from typing import Any, Dict, Optional
+from typing import Any, Dict, Optional, Union
 import yaml
 
 from .defaults import GAME_DEFAULTS, I18N_DEFAULTS
-from .exceptions import ConfigError, ConfigKeyError, ConfigValueError
+from .exceptions import ConfigError, ConfigKeyError, ConfigValueError, ConfigTypeError, ConfigRangeError, ConfigEnumError
 
 class ConfigManager:
     """
@@ -65,12 +65,20 @@ class ConfigManager:
         Merge user configuration with defaults.
         合并用户配置和默认配置。
         """
-        def merge_dict(base: Dict[str, Any], update: Dict[str, Any]) -> None:
+        def merge_dict(base: Dict[str, Any], update: Dict[str, Any], prefix: str = "") -> None:
             for key, value in update.items():
+                full_key = f"{prefix}.{key}" if prefix else key
                 if key in base and isinstance(base[key], dict) and isinstance(value, dict):
-                    merge_dict(base[key], value)
+                    merge_dict(base[key], value, full_key)
                 else:
-                    base[key] = value
+                    try:
+                        if key in base:
+                            # Validate the value before merging
+                            if isinstance(base[key], (int, float, str, bool)):
+                                self.validate(full_key, value)
+                        base[key] = value
+                    except Exception as e:
+                        raise ConfigValueError(key, value, str(e))
         
         merge_dict(self._config, user_config)
     
@@ -113,6 +121,9 @@ class ConfigManager:
                   是否保存到文件
         """
         try:
+            # Validate value before setting
+            self.validate(key, value)
+            
             parts = key.split(".")
             config = self._config
             for part in parts[:-1]:
@@ -150,9 +161,77 @@ class ConfigManager:
         将配置转换为字典。
         """
         return self._config.copy()
+    
+    def export(self, file_path: Union[str, Path]) -> None:
+        """
+        Export configuration to a file.
+        导出配置到文件。
+        
+        Args:
+            file_path: Path to export the configuration
+                      导出配置的文件路径
+        """
+        file_path = Path(file_path)
+        file_path.parent.mkdir(parents=True, exist_ok=True)
+        try:
+            with file_path.open("w", encoding="utf-8") as f:
+                yaml.safe_dump(self._config, f, allow_unicode=True)
+        except Exception as e:
+            raise ConfigError(f"Failed to export config: {e}")
+    
+    def validate(self, key: str, value: Any) -> bool:
+        """
+        Validate configuration value.
+        验证配置值。
+        
+        Args:
+            key: Configuration key
+                 配置键
+            value: Configuration value to validate
+                   要验证的配置值
+                   
+        Returns:
+            bool: True if valid, False otherwise
+            
+        Raises:
+            ConfigValueError: If validation fails
+        """
+        try:
+            parts = key.split(".")
+            current = self._defaults
+            for part in parts:
+                current = current[part]
+            
+            # Type validation
+            if not isinstance(value, type(current)):
+                raise ConfigTypeError(key, value, type(current))
+            
+            # Range validation for numeric values
+            if isinstance(value, (int, float)):
+                if key == "sound.volume" and not (0 <= value <= 100):
+                    raise ConfigRangeError(key, value, 0, 100)
+                elif key == "board.size" and not (5 <= value <= 19):
+                    raise ConfigRangeError(key, value, 5, 19)
+            
+            # Enum validation for string values
+            if isinstance(value, str):
+                if key == "display.theme" and value not in ["light", "dark"]:
+                    raise ConfigEnumError(key, value, ["light", "dark"])
+                elif key == "ai.difficulty" and value not in ["easy", "medium", "hard"]:
+                    raise ConfigEnumError(key, value, ["easy", "medium", "hard"])
+                elif key == "debug.log_level" and value not in ["DEBUG", "INFO", "WARNING", "ERROR"]:
+                    raise ConfigEnumError(key, value, ["DEBUG", "INFO", "WARNING", "ERROR"])
+            
+            return True
+        except KeyError:
+            raise ConfigKeyError(key)
+        except (ConfigTypeError, ConfigRangeError, ConfigEnumError) as e:
+            raise ConfigValueError(key, value, str(e))
+        except Exception as e:
+            raise ConfigValueError(key, value, str(e))
 
 # Create global instances
 game_config = ConfigManager("game", GAME_DEFAULTS)
 i18n_config = ConfigManager("i18n", I18N_DEFAULTS)
 
-__all__ = ["ConfigManager", "game_config", "i18n_config"] 
+__all__ = ["ConfigManager", "game_config", "i18n_config"]

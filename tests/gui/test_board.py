@@ -1,6 +1,6 @@
 """
 Unit tests for the Board component
-妫嬬洏缁勪欢鍗曞厓娴嬭瘯
+棋盘组件单元测试
 """
 
 import unittest
@@ -185,4 +185,4 @@ class TestBoard(GUITestCase):
                 self.assertIsNone(move)
 
 if __name__ == '__main__':
-    unittest.main() 
+    unittest.main()

@@ -1,0 +1,25 @@
+ai:
+  difficulty: medium
+  search_depth: 3
+board:
+  size: 15
+  win_count: 5
+debug:
+  enabled: false
+  log_level: INFO
+display:
+  animations_enabled: true
+  theme: light
+  window_size:
+    height: 600
+    width: 800
+sound:
+  enabled: true
+  volume: 100
+test:
+  boolean: true
+  float: 3.14
+  integer: 42
+  nested:
+    key: value
+  string: value

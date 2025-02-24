@@ -58,7 +58,7 @@ class Game:
     
     Attributes:
         size (int): The size of the game board (size x size)
-        board (List[List[int]]): The game board represented as a 2D list
+        board (np.ndarray): The game board represented as a numpy array
         current_player (int): The current player (1 for black, 2 for white)
         move_history (List[Position]): History of moves made in the game
         winner (Optional[int]): The winner of the game (None if game is not over)
@@ -194,6 +194,7 @@ class Board:
                               Game board represented as a 2D array.
         move_history (List[Position]): History of moves made in the game.
                                       Game moves history.
+        shape (Tuple[int, int]): The shape of the board (rows, columns).
     """
     
     def __init__(self, size: int = 15):
@@ -217,6 +218,18 @@ class Board:
         self.board = np.zeros((size, size), dtype=np.int8)
         self.move_history = []
         
+    @property
+    def shape(self) -> Tuple[int, int]:
+        """Get the shape of the board"""
+        return self.board.shape
+        
+    def copy(self) -> 'Board':
+        """Create a deep copy of the board"""
+        new_board = Board(self.size)
+        new_board.board = self.board.copy()
+        new_board.move_history = self.move_history.copy()
+        return new_board
+        
     def is_valid_move(self, row: int, col: int) -> bool:
         """
         Check if a move is valid.
@@ -232,12 +245,16 @@ class Board:
         Returns:
             bool: True if the move is valid, False otherwise.
                   If the move is valid then return True, otherwise return False.
+                  
+        Raises:
+            ValueError: If coordinates are out of board bounds.
         """
-        return (0 <= row < self.size and 
-                0 <= col < self.size and 
-                self.board[row, col] == 0)
+        if not (0 <= row < self.size and 0 <= col < self.size):
+            raise ValueError(f"Coordinates ({row}, {col}) are out of board bounds")
+            
+        return self.board[row, col] == 0
                 
-    def place_piece(self, row: int, col: int, player: int):
+    def place_piece(self, row: int, col: int, player: int) -> bool:
         """
         Place a piece on the board.
         
@@ -251,15 +268,21 @@ class Board:
             player (int): Player number (1 for black, 2 for white).
                           Player number (1 for black, 2 for white).
                          
-        Raises:
-            InvalidMoveError: If the move is invalid.
-                             If the move is invalid.
-        """
-        if not self.is_valid_move(row, col):
-            raise InvalidMoveError(f"Invalid move at ({row}, {col}) / Move at ({row}, {col}) is invalid")
+        Returns:
+            bool: True if the piece was placed successfully, False otherwise.
             
+        Raises:
+            ValueError: If coordinates are out of board bounds.
+        """
+        if not (0 <= row < self.size and 0 <= col < self.size):
+            raise ValueError(f"Coordinates ({row}, {col}) are out of board bounds")
+            
+        if self.board[row, col] != 0:
+            return False
+                
         self.board[row, col] = player
         self.move_history.append(Position(row, col))
+        return True
         
     def clear_cell(self, row: int, col: int):
         """
@@ -336,4 +359,4 @@ class Board:
             str: ASCII representation of the board.
                   ASCII representation of the board.
         """
-        return str(self.board) 
+        return str(self.board)

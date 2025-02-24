@@ -1,0 +1,9 @@
+test:
+  boolean: true
+  float: 3.14
+  integer: not_an_integer
+  nested:
+    key: value
+    new_key: nested_value
+  new_key: new_value
+  string: modified

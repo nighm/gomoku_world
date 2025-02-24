@@ -1,12 +1,17 @@
-"""
-Core game logic module
-鏍稿績娓告垙閫昏緫妯″潡
+"""Core module for Gomoku.
+
+五子棋核心模块。
 """
 
-from .board import Board
+from .board import Game, InvalidMoveError, Position, Board
 from .rules import Rules
-from .ai import AI
-from .game import Game
-from .save_manager import SaveManager, GameSave
+from .ai.strategy import AIStrategy as AI
 
-__all__ = ['Board', 'Rules', 'AI', 'Game', 'SaveManager', 'GameSave']
+__all__ = [
+    'Game',
+    'InvalidMoveError',
+    'Position',
+    'Board',
+    'Rules',
+    'AI'
+]

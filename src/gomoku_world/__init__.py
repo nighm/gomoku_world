@@ -10,7 +10,7 @@ if not __version__:
 __author__ = "Gomoku World Team"
 __email__ = "team@gomokuworld.com"
 
-from .core import Board, Rules, AI, SaveManager, GameSave
+from .core import Game, InvalidMoveError, Position
 from .gui import GomokuGUI
 from .utils import get_logger, setup_logging, resource_manager, sound_manager
 from .core.platforms import get_platform, PLATFORM
@@ -22,7 +22,7 @@ from .config import (
 
 __all__ = [
     # Core components
-    'Board', 'Rules', 'AI', 'SaveManager', 'GameSave',
+    'Game', 'InvalidMoveError', 'Position',
     # GUI components
     'GomokuGUI',
     # Utilities

@@ -18,7 +18,7 @@ class TestAI:
     def test_init(self, ai):
         """测试AI初始化"""
         assert ai.difficulty == "medium"
-        assert ai.max_depth == 3
+        assert ai.depth == 4  # medium难度的搜索深度为4
         
     def test_get_depth_for_difficulty(self, ai):
         """测试不同难度级别的搜索深度"""
@@ -26,10 +26,10 @@ class TestAI:
         assert ai._get_depth_for_difficulty() == 2
         
         ai.difficulty = "medium"
-        assert ai._get_depth_for_difficulty() == 3
+        assert ai._get_depth_for_difficulty() == 4
         
         ai.difficulty = "hard"
-        assert ai._get_depth_for_difficulty() == 4
+        assert ai._get_depth_for_difficulty() == 6
         
     def test_get_move(self, ai, board):
         """测试获取移动"""
@@ -40,8 +40,13 @@ class TestAI:
         assert 0 <= move[0] < board.size
         assert 0 <= move[1] < board.size
         
-        # 测试简单难度的随机移动
+        # 测试不同难度的移动
         ai.difficulty = "easy"
+        move = ai.get_move(board, 1)
+        assert isinstance(move, tuple)
+        assert len(move) == 2
+        
+        ai.difficulty = "hard"
         move = ai.get_move(board, 1)
         assert isinstance(move, tuple)
         assert len(move) == 2
@@ -49,68 +54,41 @@ class TestAI:
     def test_evaluate_position(self, ai, board):
         """测试位置评估"""
         # 测试空棋盘
-        score = ai._evaluate_position(board, 1)
+        score = ai.evaluate_position(board, 1)
         assert score == 0
         
         # 测试有一个棋子的情况
         board.place_piece(7, 7, 1)
-        score = ai._evaluate_position(board, 1)
+        score = ai.evaluate_position(board, 1)
         assert score > 0
         
-    def test_count_consecutive(self, ai, board):
-        """测试连续棋子计数"""
-        # 放置三个连续的棋子
-        board.place_piece(7, 7, 1)
-        board.place_piece(7, 8, 1)
-        board.place_piece(7, 9, 1)
+    def test_set_difficulty(self, ai):
+        """测试设置难度"""
+        ai.set_difficulty("easy")
+        assert ai.difficulty == "easy"
+        assert ai.depth == 2
         
-        count = ai._count_consecutive(board, 7, 7, 0, 1, 1)
-        assert count == 3
+        ai.set_difficulty("medium")
+        assert ai.difficulty == "medium"
+        assert ai.depth == 4
         
-    def test_score_sequence(self, ai):
-        """测试序列评分"""
-        assert ai._score_sequence(5, 1) == 1000000  # 胜利
-        assert ai._score_sequence(4, 1) == 10000   # 四子连珠
-        assert ai._score_sequence(3, 1) == 1000    # 三子连珠
-        assert ai._score_sequence(2, 1) == 100     # 两子连珠
-        assert ai._score_sequence(1, 1) == 10      # 单子
+        ai.set_difficulty("hard")
+        assert ai.difficulty == "hard"
+        assert ai.depth == 6
         
-    def test_is_terminal(self, ai, board):
-        """测试终局判断"""
-        assert not ai._is_terminal(board)  # 空棋盘
-        
-        # 创建获胜局面
-        for i in range(5):
-            board.place_piece(7, 7+i, 1)
-        assert ai._is_terminal(board)
-        
-    def test_check_win(self, ai, board):
-        """测试获胜判断"""
-        assert not ai._check_win(board, 7, 7)  # 空位置
-        
-        # 创建水平获胜线
-        for i in range(5):
-            board.place_piece(7, 7+i, 1)
-        assert ai._check_win(board, 7, 7)
-        
-    def test_get_prioritized_moves(self, ai, board):
-        """测试移动优先级排序"""
-        moves = ai._get_prioritized_moves(board)
+    def test_get_best_moves(self, ai, board):
+        """测试获取最佳移动"""
+        # 测试空棋盘
+        moves = ai.get_best_moves(board, 1, num_moves=3)
         assert isinstance(moves, list)
+        assert len(moves) <= 3
         assert all(isinstance(move, tuple) for move in moves)
         assert all(len(move) == 2 for move in moves)
         
-    def test_score_move_position(self, ai, board):
-        """测试移动位置评分"""
-        # 测试中心位置
-        center_score = ai._score_move_position(board, board.size//2, board.size//2)
-        edge_score = ai._score_move_position(board, 0, 0)
-        assert center_score > edge_score  # 中心位置应该得分更高
-        
-    def test_get_random_move(self, ai, board):
-        """测试随机移动"""
-        move = ai._get_random_move(board)
-        assert isinstance(move, tuple)
-        assert len(move) == 2
-        assert 0 <= move[0] < board.size
-        assert 0 <= move[1] < board.size
+        # 测试有棋子的情况
+        board.place_piece(7, 7, 1)
+        moves = ai.get_best_moves(board, 1, num_moves=3)
+        assert isinstance(moves, list)
+        assert len(moves) <= 3
+        assert all(isinstance(move, tuple) for move in moves)
+        assert all(len(move) == 2 for move in moves)

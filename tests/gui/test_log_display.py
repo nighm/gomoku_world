@@ -92,18 +92,25 @@ class TestLogDisplay(GUITestCase):
     def test_unicode_text(self):
         """Test handling of Unicode text"""
         unicode_messages = [
-            "浣犲ソ锛屼笘鐣?,  # Chinese
-            "銇撱倱銇仭銇?,  # Japanese
-            "鞎堧厱頃橃劯鞖?,  # Korean
-            "袩褉懈胁械褌",    # Russian
-            "馃幃馃幉馃幆"     # Emojis
+            "你好，世界",  # Chinese
+            "こんにちは",  # Japanese
+            "안녕하세요",  # Korean
+            "Привет",    # Russian
+            "🎃🎈🎆"     # Emojis
         ]
         
+        # Add Unicode messages
         for msg in unicode_messages:
             self.log_display.add_line(msg)
-            self.log_display.draw(self.screen)
-            # Just verify no exceptions are raised
-            self.assertTrue(True)
+        
+        # Check that messages are stored correctly
+        self.assertEqual(len(self.log_display.lines), 5)
+        for i, msg in enumerate(unicode_messages):
+            self.assertEqual(self.log_display.lines[i], msg)
+        
+        # Test drawing with Unicode text
+        self.log_display.draw(self.screen)
+        # No assertion here as we just want to ensure it doesn't crash
     
     def test_long_text(self):
         """Test handling of long text"""
@@ -165,4 +172,4 @@ class TestLogDisplay(GUITestCase):
             self.assertTrue(True)
 
 if __name__ == '__main__':
-    unittest.main() 
+    unittest.main()
