@@ -5,6 +5,24 @@ All notable changes to this project will be documented in this file.
 The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/),
 and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
+## [2.1.3] - 2024-03-21
+
+### Changed
+- 优化AI缓存系统，提升性能 / Optimized AI caching system for better performance
+- 改进日志记录，增加更多调试信息 / Improved logging with more debug information
+
+## [2.1.2] - 2024-03-20
+
+### Changed
+- 重构AI模块架构，提升代码可维护性 / Refactored AI module architecture for better maintainability
+- 优化AI搜索算法，提高性能 / Optimized AI search algorithm for better performance
+- 改进AI策略评估系统 / Improved AI strategy evaluation system
+- 更新API文档以反映最新变更 / Updated API documentation to reflect latest changes
+
+### Added
+- 新增AI难度动态调整功能 / Added dynamic AI difficulty adjustment
+- 增强AI决策树剪枝算法 / Enhanced AI decision tree pruning algorithm
+
 ## [1.4.6] - 2024-03-15
 
 ### Changed
