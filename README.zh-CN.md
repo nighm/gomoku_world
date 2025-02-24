@@ -11,9 +11,9 @@
 
 ## 最新版本 / Latest Release
 
-版本2.1.2现已发布！查看详细发布说明：
-- [用户发布说明](docs/release_notes/v2.1.2.user.zh-CN.md)
-- [开发者说明](docs/release_notes/v2.1.2.dev.zh-CN.md)
+版本2.1.3现已发布！查看详细发布说明：
+- [用户发布说明](docs/release_notes/v2.1.3.user.zh-CN.md)
+- [开发者说明](docs/release_notes/v2.1.3.dev.zh-CN.md)
 
 ## 功能特点 / Features
 
@@ -170,7 +170,7 @@ sphinx-build docs/ docs/_build/html
   title = {Gomoku World},
   author = {Gomoku World Team},
   year = {2024},
-  version = {2.1.2},
+  version = {2.1.3},
   url = {https://github.com/nighm/gomoku_world}
 }
-``` 
+```

@@ -11,9 +11,9 @@ A modern Gomoku (Five in a Row) game platform with advanced AI opponents, online
 
 ## Latest Release / 最新版本
 
-Version 2.1.2 is now available! Check out our detailed release notes:
-- [User Release Notes](docs/release_notes/v2.1.2.user.md)
-- [Developer Notes](docs/release_notes/v2.1.2.dev.md)
+Version 2.1.3 is now available! Check out our detailed release notes:
+- [User Release Notes](docs/release_notes/v2.1.3.user.md)
+- [Developer Notes](docs/release_notes/v2.1.3.dev.md)
 
 ## Features / 功能特点
 
@@ -170,7 +170,7 @@ If you use this project in your research, please cite:
   title = {Gomoku World},
   author = {Gomoku World Team},
   year = {2024},
-  version = {2.1.2},
+  version = {2.1.3},
   url = {https://github.com/nighm/gomoku_world}
 }
-``` 
+```
