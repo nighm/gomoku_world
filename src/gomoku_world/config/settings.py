@@ -8,7 +8,7 @@ from pathlib import Path
 
 # Package information / 包信息
 PACKAGE_NAME = "gomoku_world"
-VERSION = "2.1.0"
+VERSION = "2.1.2"
 
 # Paths / 路径
 BASE_DIR = Path(__file__).parent.parent.parent.parent

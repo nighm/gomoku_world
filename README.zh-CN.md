@@ -7,27 +7,27 @@
 
 [English](./README.md) | [简体中文](./README.zh-CN.md)
 
-一个现代化的五子棋游戏平台，具有高级 AI 对手、联机对战和比赛系统功能。
+一个现代化的五子棋游戏平台，具有高级AI对手、在线多人对战和比赛功能。
 
 ## 最新版本 / Latest Release
 
-版本 1.4.6 现已发布！查看详细的版本说明：
-- [用户版本说明](docs/release_notes/v1.4.6.user.md)
-- [开发者版本说明](docs/release_notes/v1.4.6.dev.md)
+版本2.1.2现已发布！查看详细发布说明：
+- [用户发布说明](docs/release_notes/v2.1.2.user.zh-CN.md)
+- [开发者说明](docs/release_notes/v2.1.2.dev.zh-CN.md)
 
-## 功能特点
+## 功能特点 / Features
 
 - 🎮 **丰富的游戏模式**
-  - 人机对战（多级 AI）
+  - 人机对战（多级AI）
   - 本地双人对战
   - 在线多人对战
   - 比赛系统
 
-- 🤖 **先进的 AI**
+- 🤖 **先进的AI**
   - 多层深度搜索
   - 神经网络评估
   - 自适应难度
-  - 开放 AI 接口
+  - 开放AI接口
 
 - 🌐 **完整的网络功能**
   - 实时对战
@@ -41,12 +41,12 @@
   - 动画效果
   - 多语言支持
 
-## 快速开始
+## 快速开始 / Quick Start
 
-### 安装
+### 安装 / Installation
 
 ```bash
-# 从 PyPI 安装
+# 从PyPI安装
 pip install gomoku-world
 
 # 或从源码安装
@@ -55,7 +55,7 @@ cd gomoku-world
 pip install -e ".[dev]"
 ```
 
-### 运行
+### 运行 / Running
 
 ```python
 from gomoku_world import GomokuGUI
@@ -64,14 +64,14 @@ from gomoku_world import GomokuGUI
 GomokuGUI().run()
 ```
 
-## 项目结构
+## 项目结构 / Project Structure
 
 ```
 gomoku-world/
 ├── src/                    # 源代码
 │   └── gomoku_world/       # 主包
 │       ├── core/          # 核心游戏逻辑
-│       ├── ai/            # AI 实现
+│       ├── ai/            # AI实现
 │       ├── gui/           # 图形界面
 │       ├── network/       # 网络功能
 │       └── utils/         # 工具函数
@@ -81,16 +81,16 @@ gomoku-world/
 └── scripts/              # 工具脚本
 ```
 
-## 文档
+## 文档 / Documentation
 
 - [教程总纲](docs/index.md)
 - [开发文档](docs/README.md)
-- [API 参考](https://docs.gomokuworld.com/api)
+- [API参考](https://docs.gomokuworld.com/api)
 - [示例代码](examples/)
 
-## 开发指南
+## 开发指南 / Development
 
-### 环境设置
+### 环境设置 / Setup
 
 ```bash
 # 创建虚拟环境
@@ -101,11 +101,11 @@ venv\Scripts\activate     # Windows
 # 安装依赖
 pip install -e ".[dev]"
 
-# 安装 pre-commit hooks
+# 安装pre-commit hooks
 pre-commit install
 ```
 
-### 测试
+### 测试 / Testing
 
 ```bash
 # 运行所有测试
@@ -118,7 +118,7 @@ pytest --cov=gomoku_world
 pytest tests/performance/
 ```
 
-### 构建
+### 构建 / Building
 
 ```bash
 # 构建包
@@ -128,7 +128,7 @@ python -m build
 sphinx-build docs/ docs/_build/html
 ```
 
-## 贡献指南
+## 贡献指南 / Contributing
 
 我们欢迎各种形式的贡献，包括但不限于：
 
@@ -137,31 +137,31 @@ sphinx-build docs/ docs/_build/html
 - 提交代码修改
 - 分享使用经验
 
-详见 [贡献指南](CONTRIBUTING.md)。
+详见[贡献指南](CONTRIBUTING.md)。
 
-## 社区
+## 社区 / Community
 
 - [Discord](https://discord.gg/gomokuworld)
 - [论坛](https://forum.gomokuworld.com)
 - [微信群](https://gomokuworld.com/wechat)
 
-## 版本历史
+## 版本历史 / Changelog
 
-详见 [CHANGELOG.md](CHANGELOG.md)
+详见[CHANGELOG.md](CHANGELOG.md)
 
-## 许可证
+## 许可证 / License
 
-本项目采用 MIT 许可证 - 详见 [LICENSE](LICENSE) 文件
+本项目采用MIT许可证 - 详见[LICENSE](LICENSE)文件
 
-## 作者
+## 作者 / Authors
 
 - 开发团队 - [贡献者列表](https://github.com/gomokuworld/gomoku-world/graphs/contributors)
 
-## 致谢
+## 致谢 / Acknowledgments
 
 感谢所有为本项目做出贡献的开发者和用户。
 
-## 引用
+## 引用 / Citation
 
 如果您在研究中使用了本项目，请引用：
 
@@ -170,6 +170,7 @@ sphinx-build docs/ docs/_build/html
   title = {Gomoku World},
   author = {Gomoku World Team},
   year = {2024},
+  version = {2.1.2},
   url = {https://github.com/gomokuworld/gomoku-world}
 }
 ``` 
