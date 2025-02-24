@@ -1,9 +1,9 @@
 # Gomoku World / 五子棋世界
 
-![License](https://img.shields.io/github/license/gomokuworld/gomoku-world)
+![License](https://img.shields.io/github/license/nighm/gomoku_world)
 ![Python Version](https://img.shields.io/badge/python-3.8%2B-blue)
-![Build Status](https://img.shields.io/github/workflow/status/gomokuworld/gomoku-world/CI)
-![Code Coverage](https://img.shields.io/codecov/c/github/gomokuworld/gomoku-world)
+![Build Status](https://img.shields.io/github/workflow/status/nighm/gomoku_world/CI)
+![Code Coverage](https://img.shields.io/codecov/c/github/nighm/gomoku_world)
 
 [English](./README.md) | [简体中文](./README.zh-CN.md)
 
@@ -50,8 +50,8 @@ Version 2.1.2 is now available! Check out our detailed release notes:
 pip install gomoku-world
 
 # Or install from source
-git clone https://github.com/gomokuworld/gomoku-world.git
-cd gomoku-world
+git clone https://github.com/nighm/gomoku_world.git
+cd gomoku_world
 pip install -e ".[dev]"
 ```
 
@@ -155,7 +155,7 @@ This project is licensed under the MIT License - see the [LICENSE](LICENSE) file
 
 ## Authors / 作者
 
-- Development Team - [Contributors](https://github.com/gomokuworld/gomoku-world/graphs/contributors)
+- Development Team - [Contributors](https://github.com/nighm/gomoku_world/graphs/contributors)
 
 ## Acknowledgments / 致谢
 
@@ -171,6 +171,6 @@ If you use this project in your research, please cite:
   author = {Gomoku World Team},
   year = {2024},
   version = {2.1.2},
-  url = {https://github.com/gomokuworld/gomoku-world}
+  url = {https://github.com/nighm/gomoku_world}
 }
 ``` 

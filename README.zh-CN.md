@@ -1,9 +1,9 @@
 # 五子棋世界 / Gomoku World
 
-![许可证](https://img.shields.io/github/license/gomokuworld/gomoku-world)
+![许可证](https://img.shields.io/github/license/nighm/gomoku_world)
 ![Python版本](https://img.shields.io/badge/python-3.8%2B-blue)
-![构建状态](https://img.shields.io/github/workflow/status/gomokuworld/gomoku-world/CI)
-![代码覆盖率](https://img.shields.io/codecov/c/github/gomokuworld/gomoku-world)
+![构建状态](https://img.shields.io/github/workflow/status/nighm/gomoku_world/CI)
+![代码覆盖率](https://img.shields.io/codecov/c/github/nighm/gomoku_world)
 
 [English](./README.md) | [简体中文](./README.zh-CN.md)
 
@@ -50,8 +50,8 @@
 pip install gomoku-world
 
 # 或从源码安装
-git clone https://github.com/gomokuworld/gomoku-world.git
-cd gomoku-world
+git clone https://github.com/nighm/gomoku_world.git
+cd gomoku_world
 pip install -e ".[dev]"
 ```
 
@@ -155,7 +155,7 @@ sphinx-build docs/ docs/_build/html
 
 ## 作者 / Authors
 
-- 开发团队 - [贡献者列表](https://github.com/gomokuworld/gomoku-world/graphs/contributors)
+- 开发团队 - [贡献者列表](https://github.com/nighm/gomoku_world/graphs/contributors)
 
 ## 致谢 / Acknowledgments
 
@@ -171,6 +171,6 @@ sphinx-build docs/ docs/_build/html
   author = {Gomoku World Team},
   year = {2024},
   version = {2.1.2},
-  url = {https://github.com/gomokuworld/gomoku-world}
+  url = {https://github.com/nighm/gomoku_world}
 }
 ``` 
